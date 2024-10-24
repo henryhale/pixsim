@@ -3,9 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
-  
+
   workflow_dispatch:
-  
+
 permissions:
   contents: write
   pages: write
@@ -28,7 +28,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
           node-version: 22
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         id: pnpm-install
         with:
@@ -57,4 +57,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .dist/
+          publish_dir: dist/
