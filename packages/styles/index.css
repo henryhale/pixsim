@@ -42,13 +42,13 @@
 	background: var(--pixel-off);	
 }
 
-.pixsim td:focus {
-	outline: 2px solid var(--pixel-outline);
-	outline-offset: 2px;
-}
-
 .pixsim td.on {
 	background: var(--pixel-on);
+}
+
+.pixsim td.active:focus {
+	outline: 2px solid var(--pixel-outline);
+	outline-offset: 2px;
 }
 
 .pixsim td.active:hover {
