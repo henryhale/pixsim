@@ -1,0 +1,64 @@
+.pixsim {
+	--pixel-off: rgb(0,0,0);
+	--pixel-on: rgb(255,255,255);
+	--pixel-border: rgb(43, 41, 41);
+	--pixel-hover: rgba(0,0,0,0.5);
+	--grid-border: rgba(0,0,0,0.75);
+	--pixel-outline: #04bfc5;
+}
+
+.pixsim.green {
+	--pixel-off: rgb(52, 222, 107);
+	--pixel-on: rgb(255,255,255);
+	--pixel-border: rgb(37, 146, 71);
+	--pixel-hover: rgb(83, 172, 135);
+	--grid-border: rgba(56, 56, 56, 0.75);
+}
+
+.pixsim.tailwind-red {
+	--pixel-off:  rgb(248 113 113);
+	--pixel-on: rgb(255,255,255);
+	--pixel-border: rgb(239 68 68);
+	--pixel-hover: rgb(254 202 202);
+	--grid-border: rgba(56, 56, 56, 0.75);
+}
+
+.pixsim.tailwind-blue {
+	--pixel-off:  rgb(96 165 250);
+	--pixel-on: rgb(255,255,255);
+	--pixel-border: rgb(59 130 246);
+	--pixel-hover: rgb(147 197 253);
+	--grid-border: rgba(56, 56, 56, 0.75);
+}
+
+.pixsim.dracula {
+	--pixel-off: #282a36;
+	--pixel-on: #50fa7b;
+	--pixel-border:  rgba(98, 114, 164,0.25);
+	--pixel-hover: rgb(98, 114, 164);
+	--grid-border: #44475a;
+}
+
+.pixsim.monokai {
+	--pixel-off: #272822;
+	--pixel-on: #a6e22e;
+	--pixel-border:  rgba(73, 72, 62,0.25);
+	--pixel-hover: rgb(73, 72, 62);
+	--grid-border: #49483e;
+}
+
+.pixsim.onedark {
+	--pixel-off: #282c34;
+	--pixel-on: #c678dd;
+	--pixel-border:  rgba(76, 86, 106,0.25);
+	--pixel-hover: rgb(73, 72, 62);
+	--grid-border: #49483e;
+}
+
+.pixsim.nord {
+	--pixel-off: #2E3440;
+	--pixel-on: #81A1C1;
+	--pixel-border:  rgba(76, 86, 106,0.25);
+	--pixel-hover: rgb(76, 86, 106);
+	--grid-border: #4C566A;
+}

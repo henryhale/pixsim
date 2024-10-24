@@ -1,0 +1,47 @@
+<style type="text/css">
+	@import url(../styles/index.css);
+
+	body>* {
+		margin: 1rem auto;
+	}
+
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+</style>
+
+<script type="module">
+	import { $, h, range } from "../shared/index.js"
+	import { createGrid } from "../core/index.js"
+	import { generateSVG, downloadSVG, generatePNG, downloadPNG } from "./index.js"
+
+	const grid = createGrid({
+		root: document.body,
+		cols: 5,
+		rows: 5,
+		size: 50,
+		active: true,
+		controls: true
+	})
+
+	// extra
+	const btnsvg = h('button', 'download svg')
+	btnsvg.setAttribute('type', 'button')
+	document.body.append(btnsvg)
+	btnsvg.onclick = async () => {
+		const svg = await generateSVG(grid)
+		downloadSVG(svg)
+	}
+
+	const btnpng = h('button', 'download png')
+	btnpng.setAttribute('type', 'button')
+	document.body.append(btnpng)
+	btnpng.onclick = async () => {
+		const png = await generatePNG(grid)
+		downloadPNG(png)
+	}
+
+</script>

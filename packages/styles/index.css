@@ -1,0 +1,89 @@
+/* color themes */
+@import url(./themes.css);
+
+/* layout */
+.pixsim *,
+.pixsim *::before,
+.pixsim *::after {
+	padding: 0;
+	margin: 0;
+	line-height: 0.25rem;
+	user-select: none;
+	box-sizing: border-box;
+}
+
+.pixsim {
+	--pixel-size: 10px;
+	/* overflow-x: auto; */
+	gap: 1rem;
+	flex-direction: column;
+}
+
+.pixsim,
+.pixsim > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pixsim > div > *:not(:last-child) {
+	margin-right: 1rem;
+}
+
+.pixsim table {
+	max-width: auto;
+	border: 5px solid var(--grid-border);
+}
+
+.pixsim td {
+	width: var(--pixel-size);
+	height: var(--pixel-size);
+	border: 1px solid var(--pixel-border);
+	background: var(--pixel-off);	
+}
+
+.pixsim td:focus {
+	outline: 2px solid var(--pixel-outline);
+	outline-offset: 2px;
+}
+
+.pixsim td.on {
+	background: var(--pixel-on);
+}
+
+.pixsim td.active:hover {
+	background: var(--pixel-hover);
+}
+
+.pixsim input:not(input[type=checkbox]) {
+	width: 60px;
+}
+
+.pixsim input,
+.pixsim select {
+	padding: 4px 8px;
+}
+
+.pixsim button {
+	padding: 6px 12px;
+}
+
+.pixsim .error {
+	display: none;
+	padding: 4px 6px;
+	border: 1px solid rgb(211, 84, 84);
+	background-color: rgb(235, 168, 168);
+}
+
+.pixsim .controls {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 5px;
+	max-width: 350px;
+}
+
+.pixsim .controls * {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+}

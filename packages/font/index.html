@@ -1,0 +1,134 @@
+<style type="text/css">
+	@import url(../styles/index.css);
+	body > * {
+		display: flex;
+		justify-content: center;
+		margin: 2rem auto;
+	}
+
+	div > *:not(:last-child) {
+		margin-right: 0.5rem;
+	}
+
+	input.char {
+		text-transform: uppercase;
+		width: 50px;
+		padding: 6px;
+	}
+
+	button {
+		padding: 4px 10px;
+	}
+
+	table {
+		border-width: 10px;
+	}
+
+	/* #charset {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.5rem;
+		padding: 10px;
+		text-align: center;
+	} */
+
+	#charset {
+		display: flex;
+		flex-wrap: wrap;
+		overflow-x: auto;
+		padding: 10px;
+		text-align: center;
+	}
+
+	#charset div {
+		cursor: pointer;
+		/* padding: 10px; */
+	}
+
+	#charset div:hover {
+		background: #ddd;
+	}
+
+	#charset div > * {
+		margin: 0.125rem auto;
+	}
+</style>
+
+<div id="root"></div>
+
+<div>
+	<label>
+		Character:
+		<input class="char" value=" " type="text" disabled />
+	</label>
+	<div>
+		<button id="save">save</button>
+	</div>
+</div>
+
+<div id="charset"></div>
+
+<div>
+	<button id="import">import font</button>
+	<button id="export">export font</button>
+</div>
+
+<script type="module">
+import { createGrid } from "../core/index.js"
+import { $, h } from "../shared/index.js"
+import charset from "./charset.js"
+
+const cols = 16
+const rows = 16
+
+const grid = createGrid({
+	rows,
+	cols,
+	size: 16,
+	root: $('#root'),
+	active: true,
+	controls: true
+})
+
+let nil
+setTimeout(() => {
+	nil = grid.string()
+}, 1000);
+
+const inputchar = $('input')
+
+const boxes = {}
+const font = new Map()
+
+$('#save').onclick = () => {
+	const bin = inputchar.dataset.bin
+	if (!bin) return
+	const s = grid.string()
+	font.set(bin, s)
+	boxes[bin].import(s, true)
+}
+
+const box = $('#charset')
+for (const x of charset) {
+	const div = h('div', x.char.replace(' ', 'SPACE') + '<br>' + x.bin)
+	const g = createGrid({ rows, cols, active: false, root: div })	
+	boxes[x.bin] = g
+	font.set(x.bin, nil)
+	div.onclick = () => {
+		inputchar.value = x.char
+		inputchar.dataset.bin = x.bin
+		grid.reset()
+		grid.import(g.string())
+		window.scrollTo(0,0)
+	}
+	box.append(div)
+}
+
+$('#export').onclick = () => {
+	console.log(JSON.stringify([...font.entries()]))
+}
+
+$('#import').onclick = () => {
+	console.log('import saved font')
+}
+</script>
