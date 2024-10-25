@@ -1,7 +1,10 @@
 # PixSim
 
 > [!WARNING]
-> _work in progress_
+> _work in progress but you are welcome to see what it is_
+
+## Live Demo
+[Launch Demo 🚀](https://henryhale.github.io/pixsim/)
 
 ## The Idea
 - I am planning on working on a led matirx screen simulator/emulator??? 
