@@ -1,5 +1,5 @@
 import { downloadBlob, getGridProps } from "./helpers"
-import { range } from "../shared"
+import { range } from "../../shared"
 
 export function generateSVG(grid) {
 	const { size, collapsed, fillOn, fillOff, stroke, bitmap: bm, pixelMargin: pm } = getGridProps(grid)

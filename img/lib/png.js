@@ -1,5 +1,5 @@
 import { getGridProps, downloadBlob } from "./helpers"
-import { range } from "../shared"
+import { range } from "../../shared"
 
 export async function generatePNG(grid) {
 	const { size, collapsed, fillOn, fillOff, stroke, bitmap: bm, pixelMargin: pm } = getGridProps(grid)

@@ -1,4 +1,4 @@
-<style type="text/css">
+<style>
 	@import url(../styles/index.css);
 
 	body>* {
@@ -13,10 +13,12 @@
 	}
 </style>
 
+<h1>PixSim | Image Generator</h1>
+
 <script type="module">
-	import { $, h, range } from "../shared/index.js"
-	import { createGrid } from "../core/index.js"
-	import { generateSVG, downloadSVG, generatePNG, downloadPNG } from "./index.js"
+	import { h } from "../shared"
+	import { createGrid } from "../core"
+	import { generateSVG, downloadSVG, generatePNG, downloadPNG } from "./lib"
 
 	const grid = createGrid({
 		root: document.body,
@@ -43,5 +45,4 @@
 		const png = await generatePNG(grid)
 		downloadPNG(png)
 	}
-
 </script>

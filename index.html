@@ -1,8 +1,10 @@
 <style type="text/css">
-	@import url(./packages/styles/index.css);
-	body > * {
+	@import url(./styles/index.css);
+
+	body>* {
 		margin: 1rem auto;
 	}
+
 	body {
 		display: flex;
 		justify-content: center;
@@ -11,28 +13,30 @@
 	}
 </style>
 
+<h1>PixSim</h1>
+
 <p>
-	<ol>
-		<li>
-			<a href="./packages/font/index.html">create font</a>
-		</li>
-		<li>
-			<a href="./packages/img/index.html">generate image</a>
-		</li>
-	</ol>
+<ol>
+	<li>
+		<a href="font/index.html">create font</a>
+	</li>
+	<li>
+		<a href="img/index.html">generate image</a>
+	</li>
+</ol>
 </p>
 
 <script type="module">
-import { createGrid } from "./packages/core/index.js"
+	import { createGrid } from "./core/index.js"
 
-const grid = createGrid({
-	root: document.body,
-	rows: 10,
-	cols: 10,
-	size: 16,
-	active: true,
-	collapse: false,
-	controls: true,
-	theme: "green",
-})
+	const grid = createGrid({
+		root: document.body,
+		rows: 10,
+		cols: 10,
+		size: 16,
+		active: true,
+		collapse: false,
+		controls: true,
+		theme: "green",
+	})
 </script>

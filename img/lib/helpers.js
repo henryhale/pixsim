@@ -1,4 +1,4 @@
-import { h } from "../shared"
+import { h } from "../../shared"
 
 export const getCSSVar = (el, p) => {
 	return getComputedStyle(el).getPropertyValue(p).trim()
