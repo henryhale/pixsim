@@ -7,8 +7,8 @@
 [Launch Demo 🚀](https://henryhale.github.io/pixsim/)
 
 ## The Idea
-- I am planning on working on a led matirx screen simulator/emulator??? 
-- I want to learn about the monitor display circuit, chip and logic.
+- I am planning on working on a led matirx screen simulator/emulator. 
+- I want to learn about the monitor display circuit, it's chip and logic.
 - I plan on developing a grid of many tiny coloured pixels (say black and white), character set, font, character display encoder/decoder to draw characters on the screen.
 - Plus a pixel or field shader/filler to fill a group of pixels. Pixels will be tiny bit easily distinguishable with a human eye.
 - I want to finally write a blog post/article about it so that others can see and learn how screens/display systems work at a low level.
