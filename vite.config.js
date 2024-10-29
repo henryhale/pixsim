@@ -7,8 +7,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        font: resolve(__dirname, 'font/index.html'),
-        img: resolve(__dirname, 'img/index.html'),
+        font: resolve(__dirname, 'font.html'),
+        img: resolve(__dirname, 'img.html'),
       },
     },
   },

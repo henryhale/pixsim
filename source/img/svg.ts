@@ -1,8 +1,10 @@
-import { downloadBlob, getGridProps } from "./helpers"
-import { range } from "../../shared"
+import { getDisplayProps } from "./helpers"
+import { downloadBlob, range } from "../common"
+import type { IDisplayUnit } from "../core"
 
-export function generateSVG(grid) {
-	const { size, collapsed, fillOn, fillOff, stroke, bitmap: bm, pixelMargin: pm } = getGridProps(grid)
+export function generateSVG(display: IDisplayUnit) {
+	const { size, collapsed, bitmap: bm } = display
+	const { fillOn, fillOff, stroke, pixelMargin: pm } = getDisplayProps(display)
 	
 	// generate svg
 	let pixels = '', width = 0, height = 0, px = 0, py = 0

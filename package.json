@@ -6,13 +6,18 @@
   "scripts": {
     "dev": "vite",
     "dev:net": "vite --host",
-    "build": "vite build",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Henry Hale",
+    "url": "https://github.com/henryhale"
+  },
   "license": "ISC",
   "devDependencies": {
+    "typescript": "^5.6.3",
     "vite": "^5.4.9"
   }
 }

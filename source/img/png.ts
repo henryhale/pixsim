@@ -1,8 +1,10 @@
-import { getGridProps, downloadBlob } from "./helpers"
-import { range } from "../../shared"
+import { getDisplayProps } from "./helpers"
+import { downloadBlob, range } from "../common"
+import type { IDisplayUnit } from "../core"
 
-export async function generatePNG(grid) {
-	const { size, collapsed, fillOn, fillOff, stroke, bitmap: bm, pixelMargin: pm } = getGridProps(grid)
+export async function generatePNG(display: IDisplayUnit) {
+	const { size, collapsed, bitmap: bm } = display
+	const { fillOn, fillOff, stroke, pixelMargin: pm } = getDisplayProps(display)
 
 	// total canvas width is computed basing on table's border-collapse
 	let width = 0, height = 0, border = 0.1 * size
@@ -23,25 +25,22 @@ export async function generatePNG(grid) {
 			pd += border
 			if (y == 0) width += pd
 			if (x == 0) height += pd
-			console.log(px,py,pd,width,height)
 			renderQueue.push({
 				px,
 				py,
 				pw: pd,
 				ph: pd, 
 				fill: row[x] ? fillOn : fillOff,
-				stroke: collapsed ? false : stroke
+				stroke: collapsed ? '' : stroke
 			})
 		}
 	}
-
-	console.log('width: ', width, 'height: ', height)
 
 	// use offscreen canvas to generate an image
 	const canvas = new OffscreenCanvas(width, height)
 
 	// clear canvas
-	const ctx = canvas.getContext('2d')
+	const ctx = canvas.getContext('2d')!
 	ctx.clearRect(0, 0, width, height)
 	// render pixels
 	for (const p of renderQueue) {
@@ -63,7 +62,7 @@ export async function generatePNG(grid) {
 	return png
 }
 
-export function downloadPNG(blob) {
+export function downloadPNG(blob: Blob) {
 	// document.body.innerHTML += `<img src='${img}' alt='not found' />`
 	downloadBlob('pixsim-bitmap.png', blob)
 }

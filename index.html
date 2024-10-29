@@ -1,8 +1,8 @@
 <style type="text/css">
-	@import url(./styles/index.css);
+	@import url(./source/styles/index.css);
 
 	body>* {
-		margin: 1rem auto;
+		margin: 0.5rem auto 0;
 	}
 
 	body {
@@ -14,29 +14,27 @@
 </style>
 
 <h1>PixSim</h1>
+<h4>A pixel-based led matrix display simulator</h4>
 
 <p>
 <ol>
 	<li>
-		<a href="font/index.html">create font</a>
+		<a href="img.html">generate image</a>
 	</li>
 	<li>
-		<a href="img/index.html">generate image</a>
+		<a href="font.html">create font</a>
 	</li>
 </ol>
 </p>
 
 <script type="module">
-	import { createGrid } from "./core/index.js"
+	import DisplayUnit from "./source/core"
 
-	const grid = createGrid({
-		root: document.body,
-		rows: 10,
-		cols: 10,
-		size: 16,
+	new DisplayUnit(document.body, {
+		rows: 25,
+		cols: 25,
+		size: 15,
 		active: true,
-		collapse: false,
 		controls: true,
-		theme: "green",
 	})
 </script>

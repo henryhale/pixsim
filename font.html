@@ -1,0 +1,74 @@
+<style>
+	@import url(./source/styles/index.css);
+
+	body>* {
+		display: flex;
+		justify-content: center;
+		margin: 0.5rem auto 0;
+	}
+
+	div>*:not(:last-child) {
+		margin-right: 0.5rem;
+	}
+
+	.char {
+		font-size: 24px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	button {
+		padding: 4px 10px;
+	}
+
+	table {
+		border-width: 10px;
+	}
+
+	#charset {
+		display: flex;
+		justify-content: start;
+		flex-wrap: wrap;
+		overflow-x: auto;
+		padding: 10px;
+		text-align: center;
+	}
+
+	#charset div {
+		cursor: pointer;
+		padding: 0 10px;
+		margin: 0 1rem;
+	}
+
+	#charset div:hover {
+		background: #ddd;
+	}
+
+	#charset div>* {
+		margin: 0.125rem auto;
+	}
+</style>
+
+<h1>PixSim</h1>
+<h4>Font Creator</h4>
+
+<div id="root"></div>
+
+<div>
+	<span>
+		Character:
+		<span id="char" class="char"></span>
+	</span>
+	<div>
+		<button id="save">save</button>
+	</div>
+</div>
+
+<div id="charset"></div>
+
+<div>
+	<button id="import">import font</button>
+	<button id="export">export font</button>
+</div>
+
+<script type="module" src="./source/font/index.ts"></script>

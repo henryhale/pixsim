@@ -39,7 +39,7 @@
 	width: var(--pixel-size);
 	height: var(--pixel-size);
 	border: 1px solid var(--pixel-border);
-	background: var(--pixel-off);	
+	background: var(--pixel-off);
 }
 
 .pixsim td.on {
