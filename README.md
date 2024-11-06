@@ -1,3 +1,9 @@
+<div align=center>
+
+![](./public/screenshot.png)
+
+</div>
+
 # PixSim
 
 > [!WARNING]
