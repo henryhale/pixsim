@@ -13,19 +13,23 @@ The goal of this project is to illustrate how monitors/screens work by simulatin
 - [x] Character set - characters for our display unit
 - [x] Font creator/designer - create a font containing all every character in the character set
 - [ ] Character display encoder and decoder - transform binary data into pixel data and the render/draw characters
-- [ ] Instruction set - a standard for which the display unit operates and communicates 
-- [ ] Custom Assembly-like language for graphics or pixel manipulation like drawing lines, shapes, and more
-- [ ] Virtual chip - to simulate a cpu that sends video signals to the display unit
+- [x] Instruction set - a standard for which the display unit operates and communicates 
+- [x] Custom Assembly-like language for graphics or pixel manipulation like drawing lines, shapes, and more
+- [x] Virtual chip - to simulate a cpu that sends video signals to the display unit
 - [x] Image generation - convert the underlying bitmap into an pixelated image
 The scope of this project lies in simulating how the monitor/screen works. More technical details about logic circuits, display chip or wiring are not included. 
 
 ## Live Demo
 
-[Launch Demo 🚀](https://henryhale.github.io/pixsim/)
+- [:tv: Full Demo :rockect:](https://henryhale.github.io/pixsim/)
 
-## Architecture
+## Background
 
 In this section, a description of how all these components relate is discussed. 
+
+<details>
+<summary>Read more</summary>
+
 Suppose that you are typing a command in your terminal/notepad. 
 Every time you press a key this is what happens behind the scenes;
 1. **key detection**: the keyboard registers the physical action and generates a unique electrical signal corresponding to that key.
@@ -43,8 +47,15 @@ Every time you press a key this is what happens behind the scenes;
 
 This entire process occurs in a matter of milliseconds, making it feel instantaneous to you. Each step involves intricate communication between the keyboard, CPU, OS, and application, ensuring that your input is accurately captured and displayed.
 
-<!-- 
-## The Idea
+</details>
+
+### Original README
+
+<details>
+<summary>View contents</summary>
+
+#### The Idea
+
 - I am planning on working on a led matirx screen simulator/emulator. 
 - I want to learn about the monitor display circuit, it's chip and logic.
 - I plan on developing a grid of many tiny coloured pixels (say black and white), character set, font, character display encoder/decoder to draw characters on the screen.
@@ -56,9 +67,11 @@ This entire process occurs in a matter of milliseconds, making it feel instantan
 
 I know my idea is vague or wiggly. I am trying to formulate it in a better way.
 
-## Todo
+#### Todo
 - LED Matrix Simulator(grid of pixels)
 - Character Display(character set, font creator, character renderer)
 - Display Controller(instruction set, assembler, virtual chip)
 - Documentation
 - Other(shareable/downloadable pixelated images, animations, games like maze) -->
+
+</details>
