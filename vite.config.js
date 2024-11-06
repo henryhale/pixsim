@@ -9,6 +9,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         font: resolve(__dirname, 'font.html'),
         img: resolve(__dirname, 'img.html'),
+        lang: resolve(__dirname, 'lang.html'),
       },
     },
   },
