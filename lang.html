@@ -2,8 +2,17 @@
 	main {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	h3 {
+		display: flex;
+		align-items: center;
+	}
+	h3 > *:first-child {
+		flex-grow: 1;
 	}
 	textarea {
+		width: 100%;
 		min-width: 400px;
 		min-height: 200px;
 		resize: vertical;
@@ -13,8 +22,10 @@
 		padding: 10px;
 	}
 	#machinecode {
-		height: 200px;
+		padding: 10px;
+		height: 125px;
 		overflow-y: auto;
+		background-color: lightgray;
 	}
 </style>
 
@@ -39,6 +50,10 @@
 	<div>
 		<h3>Display Unit</h3>
 		<div id="display"></div>
+	</div>
+	<div>
+		<h3>Share</h3>
+		<button id="share">Copy Link to Clipboard</button>
 	</div>
 </main>
 

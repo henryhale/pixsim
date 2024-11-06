@@ -38,9 +38,32 @@ $('#assemble')!.onclick = () => {
 	chip.load(binary)
 }
 
-textarea.value = `
-; demo program
+const sharebtn = $('#share')!
+sharebtn.onclick = async () => {
+	sharebtn.setAttribute('disabled', 'true')
+	const code = textarea.value
+	const link = window.location.origin + window.location.pathname + '?c=' + encodeURI(code)
+	try {
+		console.log(link)
+		await window.navigator.clipboard.writeText(link)
+		sharebtn.textContent = 'Copied!'
+		setTimeout(() => {
+			sharebtn.textContent = 'Copy Link to Clipboard'
+		}, 1000)
+	} catch (error) {
+		console.error(error)		
+	} finally {
+		sharebtn.removeAttribute('disabled')
+	}
+}
+
+const params = new URLSearchParams(window.location.search)
+const code = decodeURI(params.get('c') || '')
+
+textarea.value = code || `; example program
+
 RESET ; clear screen
+
 ; draw character
 SETX 20
 SETY 19
@@ -57,3 +80,8 @@ INVERT
 INVERT
 INVERT
 ; end of program`
+
+if (code) {
+	$('#assemble')!.click()
+	$('#run')!.click()
+} 
