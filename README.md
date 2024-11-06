@@ -1,6 +1,6 @@
 <div align=center>
 
-![](./public/screenshot.png)
+[![](./public/screenshot.png)](https://henryhale.github.io/pixsim/)
 
 </div>
 
