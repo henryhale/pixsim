@@ -3,7 +3,7 @@ import { downloadBlob, range } from "../common"
 import type { IDisplayUnit } from "../core"
 
 export async function generatePNG(display: IDisplayUnit) {
-	const { size, collapsed, bitmap: bm } = display
+	const { size, lines: collapsed, bitmap: bm } = display
 	const { fillOn, fillOff, stroke, pixelMargin: pm } = getDisplayProps(display)
 
 	// total canvas width is computed basing on table's border-collapse

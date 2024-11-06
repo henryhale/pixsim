@@ -3,7 +3,7 @@ import { downloadBlob, range } from "../common"
 import type { IDisplayUnit } from "../core"
 
 export function generateSVG(display: IDisplayUnit) {
-	const { size, collapsed, bitmap: bm } = display
+	const { size, lines: collapsed, bitmap: bm } = display
 	const { fillOn, fillOff, stroke, pixelMargin: pm } = getDisplayProps(display)
 	
 	// generate svg
