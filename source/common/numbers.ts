@@ -19,11 +19,5 @@ export function* range(last: number, first = 0, step = 1) {
 }
 
 export function tobin(d: number, len = 0): string {
-	const bits = []
-	while(d > 0) {
-		let r = d % 2
-		bits.unshift(r)
-		d = Math.floor(d / 2)
-	}
-	return bits.join('').padStart(len, '0')
+	return d.toString(2).padStart(len, '0')
 }

@@ -1,3 +1,4 @@
+export const MIN_SIZE = 1
 export const MAX_SIZE = 50
 export const MAX_ROWS = 255
 export const MAX_COLS = 255
@@ -8,8 +9,11 @@ const defaultOptions = {
 	size: 10,
 	active: false,
 	controls: false,
-	collapse: true,
-	theme: "default"
+	lines: true,
+	theme: "default",
+	maxrows: MAX_ROWS,
+	maxcols: MAX_COLS,
+	maxsize: MAX_SIZE,
 }
 
 export type IConfig = typeof defaultOptions

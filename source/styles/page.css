@@ -1,0 +1,19 @@
+body>* {
+	margin: 0.5rem auto 0;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+button {
+	padding: 4px 10px;
+}
+
+#extras {
+	display: flex;
+	gap: 1rem;
+}

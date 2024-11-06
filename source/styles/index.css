@@ -1,3 +1,5 @@
+@import url(./page.css);
+
 /* color themes */
 @import url(./themes.css);
 
@@ -14,44 +16,54 @@
 
 .pixsim {
 	--pixel-size: 10px;
-	/* overflow-x: auto; */
 	gap: 1rem;
 	flex-direction: column;
 }
 
 .pixsim,
-.pixsim > div {
+.pixsim > .controls {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.pixsim > div > *:not(:last-child) {
+.pixsim .controls > *:not(:last-child) {
 	margin-right: 1rem;
 }
 
-.pixsim table {
-	max-width: auto;
+.pixsim .grid {
 	border: 5px solid var(--grid-border);
+	background-color: var(--grid-bg);
 }
 
-.pixsim td {
+.pixsim .grid > div {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.pixsim .pixel {
 	width: var(--pixel-size);
 	height: var(--pixel-size);
-	border: 1px solid var(--pixel-border);
+	/* border: 1px solid var(--pixel-border); */
 	background: var(--pixel-off);
+	margin-left: var(--pixel-gap);
+	margin-top: var(--pixel-gap);
+	display: inline-block;
 }
 
-.pixsim td.on {
+.pixsim .pixel:last-child {
+	margin-right: var(--pixel-gap);
+}
+
+.pixsim .grid > div:last-child .pixel {
+	margin-bottom: var(--pixel-gap);
+}
+
+.pixsim .pixel.on {
 	background: var(--pixel-on);
 }
 
-.pixsim td.active:focus {
-	outline: 2px solid var(--pixel-outline);
-	outline-offset: 2px;
-}
-
-.pixsim td.active:hover {
+.pixsim .pixel.active:hover {
 	background: var(--pixel-hover);
 }
 
@@ -65,7 +77,7 @@
 }
 
 .pixsim button {
-	padding: 6px 12px;
+	padding: 8px 14px;
 }
 
 .pixsim .error {

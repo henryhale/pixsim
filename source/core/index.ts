@@ -1,15 +1,17 @@
+import "../styles/index.css"
+
 import { $, THEMES, createUUID, h, inBound, int, limit, range } from "../common/index"
-import { MAX_COLS, MAX_ROWS, MAX_SIZE, defineConfig, type IConfig, type IOptions } from "./config"
+import { MIN_SIZE, defineConfig, type IConfig, type IOptions } from "./config"
 
 export interface IDisplayUnit {
 	bitmap: number[][]
 	rows: number
 	cols: number
 	size: number
-	collapsed: boolean
+	lines: boolean
 	container: HTMLElement
 	set(x: number, y: number, value: boolean): void
-	reset(value: boolean): void
+	reset(value?: boolean): void
 	invert(): void
 	export(): string
 	import(json: string): void
@@ -60,10 +62,13 @@ export default class DisplayUnit implements IDisplayUnit {
 	private state: IConfig
 	private pixels: PixelGrid
 	public container!: HTMLElement
-	private table!: HTMLTableElement
+	private grid!: HTMLDivElement
 	constructor(target: HTMLElement, options: IOptions) {
 		this.tid = createUUID()
 		this.state = defineConfig(options)
+		this.state.rows = limit(this.state.rows, 0, this.state.maxrows)
+		this.state.cols = limit(this.state.cols, 0, this.state.maxcols)
+		this.state.size = limit(this.state.size, MIN_SIZE, this.state.maxsize)
 		this.pixels = initGrid(this.state.rows, this.state.cols)
 		this.render(target)
 	}
@@ -71,16 +76,17 @@ export default class DisplayUnit implements IDisplayUnit {
 		const root = target instanceof HTMLElement ? target : document.body
 
 		const container = h('div')
-		const table = h<HTMLTableElement>('table')
+		const grid = h<HTMLDivElement>('div')
 		const controls = h('div')
 
+		grid.classList.add('grid')
 		controls.classList.add('controls')
 		container.classList.add('pixsim', this.state.theme)
-		container.append(table, controls)
+		container.append(grid, controls)
 		root.append(container)
 
 		this.container = container
-		this.table = table
+		this.grid = grid
 
 		this.renderPixels()
 		if (this.state.controls) {
@@ -121,11 +127,11 @@ export default class DisplayUnit implements IDisplayUnit {
 		inputtheme.value = this.state.theme
 		labeltheme.append(inputtheme)
 
-		const labelcollapse = h('label', '<span>Collapse&nbsp;</span>')
-		const inputcollapse = h<HTMLInputElement>('input')
-		inputcollapse.type = 'checkbox'
-		if (this.state.collapse) inputcollapse.checked = this.state.collapse
-		labelcollapse.append(inputcollapse)
+		const labellines = h('label', '<span>Lines&nbsp;</span>')
+		const inputlines = h<HTMLInputElement>('input')
+		inputlines.type = 'checkbox'
+		if (this.state.lines) inputlines.checked = this.state.lines
+		labellines.append(inputlines)
 
 		const btns = h('label')
 		const invert = h('button', 'invert')
@@ -135,8 +141,8 @@ export default class DisplayUnit implements IDisplayUnit {
 		btns.append(invert, h('span', '&nbsp;&nbsp;'), clrscr)
 
 		// events
-		inputcol.oninput = () => inputcol.value = limit(int(inputcol.value, this.state.cols), 1, MAX_COLS).toString()
-		inputrow.oninput = () => inputrow.value = limit(int(inputrow.value, this.state.rows), 1, MAX_ROWS).toString()
+		inputcol.oninput = () => inputcol.value = limit(int(inputcol.value, this.state.cols), 1, this.state.maxcols).toString()
+		inputrow.oninput = () => inputrow.value = limit(int(inputrow.value, this.state.rows), 1, this.state.maxrows).toString()
 
 		let refreshID: number | undefined
 		const redrawGrid = () => {
@@ -154,7 +160,7 @@ export default class DisplayUnit implements IDisplayUnit {
 			redrawGrid()
 		}
 
-		inputsize.oninput = () => inputsize.value = limit(int(inputsize.value, this.state.size), 1, MAX_SIZE).toString()
+		inputsize.oninput = () => inputsize.value = limit(int(inputsize.value, this.state.size), MIN_SIZE, this.state.maxsize).toString()
 		inputsize.onchange = () => {
 			const size = int(inputsize.value)
 			this.container.style.setProperty('--pixel-size', size + 'px')
@@ -166,45 +172,46 @@ export default class DisplayUnit implements IDisplayUnit {
 			this.state.theme = inputtheme.value
 		}
 
-		inputcollapse.onchange = () => {
-			this.table.style.borderCollapse = inputcollapse.checked ? "collapse" : "separate"
-			this.state.collapse = inputcollapse.checked
+		inputlines.onchange = () => {
+			this.grid.style.setProperty('--pixel-gap', inputlines.checked ? '1px' : '0px')
+			this.state.lines = inputlines.checked
 		}
 
 		clrscr.onclick = () => this.reset()
 		invert.onclick = () => this.invert()
 
-		return [labelcol, labelrow, labeltheme, labelsize, labelcollapse, btns]
+		return [labelcol, labelrow, labeltheme, labelsize, labellines, btns]
 	}
 	private renderPixels() {
-		this.table.innerHTML = ''
-		this.table.style.borderCollapse = this.state.collapse ? "collapse" : "separate"
+		this.grid.innerHTML = ''
+		this.grid.style.setProperty('--pixel-gap', this.state.lines ? '1px' : '0px')
 		this.container.style.setProperty('--pixel-size', this.state.size + 'px')
 		
 		const rows = this.state.rows
 		const cols = this.state.cols
 		
 		for (const y of range(rows)) {
-			const tr = h('tr')
+			const row = h('div')
 			for (const x of range(cols)) {
-				const td = h('td', '&nbsp;')
-				td.id = `${this.tid}-${y}-${x}`
-				tr.append(td)
-				this.update(td, this.pixels[y][x])
+				const pixel = h('div')
+				pixel.classList.add('pixel')
+				pixel.id = `${this.tid}-${y}-${x}`
+				row.append(pixel)
+				this.update(pixel, this.pixels[y][x])
 				if (!this.state.active) continue
-				td.setAttribute('tabindex', '0')
-				td.setAttribute('role', 'button')
-				td.classList.add('active')
-				td.onclick = () => {
+				pixel.setAttribute('tabindex', '0')
+				pixel.setAttribute('role', 'button')
+				pixel.classList.add('active')
+				pixel.onclick = () => {
 					setTimeout(() => {
 						this.set(x, y, !this.pixels[y][x])
 					})
 				}
-				td.onkeydown = (ev) => {
+				pixel.onkeydown = (ev) => {
 					const key = ev.key
 					if (key === 'Enter' || key === ' ') {
 						ev.preventDefault()
-						td.click()
+						pixel.click()
 					}
 					const elid = findNextElement(key, x, y, rows, cols)
 					const el = $(`#${this.tid}-${elid}`)
@@ -214,7 +221,7 @@ export default class DisplayUnit implements IDisplayUnit {
 					}
 				}
 			}
-			this.table.append(tr)
+			this.grid.append(row)
 		}
 	}
 	private update(pixel: Element, value: boolean) {
@@ -229,7 +236,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		if (!inBound(y, 0, this.state.rows)) return
 		value = !!value
 		this.pixels[y][x] = value
-		const pel = this.table.children[y].children[x]
+		const pel = this.grid.children[y].children[x]
 		if (pel) this.update(pel, value)
 	}
 	reset(value = false) {
@@ -267,8 +274,8 @@ export default class DisplayUnit implements IDisplayUnit {
 	get size() {
 		return this.state.size
 	}
-	get collapsed() {
-		return this.state.collapse
+	get lines() {
+		return this.state.lines
 	}
 }
 

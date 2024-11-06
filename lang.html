@@ -1,0 +1,45 @@
+<style>
+	main {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	textarea {
+		min-width: 400px;
+		min-height: 200px;
+		resize: vertical;
+		margin-bottom: 1rem;
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 20px;
+		padding: 10px;
+	}
+	#machinecode {
+		height: 200px;
+		overflow-y: auto;
+	}
+</style>
+
+<h1>PixSim</h1>
+<h3>ASM-like Language</h3>
+
+<main>
+	<div>
+		<h3>Assembly Code</h3>
+		<textarea></textarea>
+		<div>
+			<button type="button" id="assemble">Assemble</button>
+			<button type="button" id="run">Run</button>
+			<button type="button" id="step">Step</button>
+			<button type="button" id="reset">Reset</button>
+		</div>
+		<h3>Machine Code</h3>
+		<div id="machinecode">
+			<i>assemble to view machine code</i>
+		</div>
+	</div>
+	<div>
+		<h3>Display Unit</h3>
+		<div id="display"></div>
+	</div>
+</main>
+
+<script type="module" src="./source/lang/index.ts"></script>
