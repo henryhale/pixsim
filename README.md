@@ -12,16 +12,16 @@ The goal of this project is to illustrate how monitors/screens work by simulatin
 - [x] Display unit - A grid of tiny monochromatic pixels (say black and white) - bitmap
 - [x] Character set - characters for our display unit
 - [x] Font creator/designer - create a font containing all every character in the character set
-- [ ] Character display encoder and decoder - transform binary data into pixel data and the render/draw characters
-- [x] Instruction set - a standard for which the display unit operates and communicates 
-- [x] Custom Assembly-like language for graphics or pixel manipulation like drawing lines, shapes, and more
-- [x] Virtual chip - to simulate a cpu that sends video signals to the display unit
 - [x] Image generation - convert the underlying bitmap into an pixelated image
+- [x] [Custom Assembly-like language](./source/lang/README.md) for graphics or pixel manipulation like drawing lines, shapes, and more
+	- [x] Instruction set - a standard for which the display unit operates and communicates 
+	- [x] Virtual chip - to simulate a cpu that sends video signals to the display unit
 The scope of this project lies in simulating how the monitor/screen works. More technical details about logic circuits, display chip or wiring are not included. 
+- [ ] Character display encoder and decoder - transform binary data into pixel data and the render/draw characters
 
 ## Live Demo
 
-- [:tv: Full Demo :rockect:](https://henryhale.github.io/pixsim/)
+- [Full Demo :rocket:](https://henryhale.github.io/pixsim/)
 
 ## Background
 
@@ -49,7 +49,7 @@ This entire process occurs in a matter of milliseconds, making it feel instantan
 
 </details>
 
-### Original README
+## Original README
 
 <details>
 <summary>View contents</summary>
