@@ -1,7 +1,6 @@
 import { tobin } from "../common"
 
-const characters = ' 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.:,;()*!?<>/|[]=+-_{}#$^"`\''
-// const characters = ' 0123456789'
+const characters = ' 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.:,;()*!?<>/|[]=+-_{}#$^"\'`'
 
 export type ICharset = {
 	bin: string

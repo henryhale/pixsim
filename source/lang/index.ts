@@ -1,4 +1,4 @@
-import { VirtualChip } from "./chip"
+import { VirtualChip } from "../chip"
 import { $ } from "../common"
 import DisplayUnit from "../core"
 import { assemble } from "./assembler"

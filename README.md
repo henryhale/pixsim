@@ -14,24 +14,35 @@
 PixSim, _**pix**el **sim**ulator_ is an educational LED Matrix simulation project that tends to explore
 how display systems like monitors/screens work.
 A monitor or the screen on my digital watch is composed of a grid of small LEDs representing pixels.
-The goal of this project is to illustrate how monitors/screens work by simulating their display mechanism, chip, and logic. The objectives for this simulation are; To implement 
-- [x] Display unit - A grid of tiny monochromatic pixels (say black and white) - bitmap
-- [x] Character set - characters for our display unit
-- [x] Font creator/designer - create a font containing all every character in the character set
-- [x] Image generation - convert the underlying bitmap into an pixelated image
-- [x] [Custom Assembly-like language](./source/lang/README.md) for graphics or pixel manipulation like drawing lines, shapes, and more
-	- [x] Instruction set - a standard for which the display unit operates and communicates 
-	- [x] Virtual chip - to simulate a cpu that sends video signals to the display unit
-The scope of this project lies in simulating how the monitor/screen works. More technical details about logic circuits, display chip or wiring are not included. 
+
+### Objectives
+
+The main objective of this project is to illustrate how monitors/screens work by simulating their display mechanism, chip, and logic. 
+
+Specifically, the objectives for this simulation are;
+
+To implement
+- [x] [Display Unit](./docs/display-unit.md) - A grid of tiny monochromatic pixels (say black and white) - bitmap
+- [x] [Custom Assembly-like Language](./docs/language.md) for graphics or pixel manipulation like drawing lines, shapes, and more
+	- [x] [Instruction Set](./docs/isa.md) - a standard for which the display unit operates and communicates 
+	- [x] [Virtual Chip](./docs/virtual-chip.md) - to simulate a cpu that sends video signals to the display unit
+- [x] [Character Encoding](./docs/character-set.md) - characters for our display unit
+- [x] [Font Editor](./docs/font-editor.md) - create a font containing all every character in the character set
+- [x] [Image Generator](./docs/image-generator.md) - convert the underlying bitmap into an pixelated image
+The scope of this project lies in simulating how the monitor/screen works. More technical details about logic circuits, display chip or wiring are not included.
 - [ ] Character display encoder and decoder - transform binary data into pixel data and the render/draw characters
 
 ## Live Demo
 
 - [Full Demo :rocket:](https://henryhale.github.io/pixsim/)
 
+## Documentation
+
+To learn more about the implementation details, check out the [docummentation](./docs/index.md).
+
 ## Background
 
-In this section, a description of how all these components relate is discussed. 
+In this section, a description of the relationship of all the components involved is discussed. 
 
 <details>
 <summary>Read more</summary>
