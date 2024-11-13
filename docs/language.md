@@ -17,7 +17,7 @@ What you should know:
 
 | Instruction				| Description					|
 |:--------------------------|:------------------------------|
-| `NOP`						| Performs no operations, useful for delays/timing|
+| `NOOP`						| Performs no operations, useful for delays/timing|
 | `RESET`					| Resets all pixels in the grid to `0`|
 | `IRESET`					| Sets all pixels in the grid to `1`|
 | `INVERT` 					| Inverts all pixels in the grid switching every `1` to `0` and vice versa|

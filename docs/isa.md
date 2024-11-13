@@ -2,7 +2,7 @@
 
 ## Overview
 
-This module specifies the instruction set architecture of the [virtual chip](./virtual-chip.md)
+This module specifies the instruction set architecture of the [virtual chip](./virtual-chip.md) that comprises of a minimal set of simple instructions.
 
 ## Instruction Format
 
@@ -12,7 +12,7 @@ The [low-level language](./pml.md) will be compiled into binary (machine) code. 
 |-----------|-------------------|
 | 0000		| 00000000			|
 
-This implies that the maximum number of instructions that can be supported are `2<sup>4</sup> = 16` and `2<sup>8<sup> = 256` for arguments. Consquently, the display unit must have pixel positions ranging from `0` to `255` in both dimenstions (256x256 screen resolution).
+This implies that the maximum number of instructions that can be supported are 2<sup>4</sup> = `16` and 2<sup>8<sup> = `256` for arguments. Consquently, the display unit must have pixel positions ranging from `0` to `255` in both dimenstions (256x256 screen resolution).
 
 ## Instructions
 

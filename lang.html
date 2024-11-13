@@ -1,60 +1,93 @@
-<style>
-	main {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 1rem;
-	}
-	h3 {
-		display: flex;
-		align-items: center;
-	}
-	h3 > *:first-child {
-		flex-grow: 1;
-	}
-	textarea {
-		width: 100%;
-		min-width: 400px;
-		min-height: 200px;
-		resize: vertical;
-		margin-bottom: 1rem;
-		font-family: 'Courier New', Courier, monospace;
-		font-size: 20px;
-		padding: 10px;
-	}
-	#machinecode {
-		padding: 10px;
-		height: 125px;
-		overflow-y: auto;
-		background-color: lightgray;
-	}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PixSim | Language</title>
+	</head>
 
-<h1>PixSim</h1>
-<h3>ASM-like Language</h3>
+	<body>
+		<style>
+			main {
+				display: grid;
+				grid-template-columns: repeat(1, minmax(0, 1fr));
+				gap: 2rem;
+			}
 
-<main>
-	<div>
-		<h3>Assembly Code</h3>
-		<textarea></textarea>
-		<div>
-			<button type="button" id="assemble">Assemble</button>
-			<button type="button" id="run">Run</button>
-			<button type="button" id="step">Step</button>
-			<button type="button" id="reset">Reset</button>
+			@media screen and (min-width: 900px) {
+				main {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+
+			h3 {
+				display: flex;
+				align-items: center;
+			}
+
+			h3 > *:first-child {
+				flex-grow: 1;
+			}
+
+			textarea {
+				width: 100%;
+				min-width: 400px;
+				min-height: 200px;
+				resize: vertical;
+				margin-bottom: 1rem;
+				font-family: "Courier New", Courier, monospace;
+				font-size: 20px;
+				padding: 10px;
+			}
+
+			#machinecode {
+				padding: 10px;
+				height: 125px;
+				overflow-y: auto;
+				background-color: lightgray;
+			}
+
+			#display {
+				outline: none;
+			}
+		</style>
+		<div id="app">
+			<nav>
+				<h2>
+					<a href="/pixsim/">PixSim</a>
+					/ Language
+				</h2>
+				<a
+					href="https://github.com/henryhale/pixsim/blob/master/docs/language.md"
+					>Docs</a
+				>
+			</nav>
+
+			<main>
+				<div>
+					<h3>Assembly Code</h3>
+					<textarea></textarea>
+					<div>
+						<button type="button" id="assemble">Assemble</button>
+						<button type="button" id="run">Run</button>
+						<button type="button" id="step">Step</button>
+						<button type="button" id="reset">Reset</button>
+					</div>
+					<h3>Machine Code</h3>
+					<div id="machinecode">
+						<i>assemble to view machine code</i>
+					</div>
+				</div>
+				<div>
+					<h3>Display Unit</h3>
+					<div id="display" tabindex="0"></div>
+				</div>
+				<div>
+					<h3>Share</h3>
+					<button id="share">Copy Link to Clipboard</button>
+				</div>
+			</main>
 		</div>
-		<h3>Machine Code</h3>
-		<div id="machinecode">
-			<i>assemble to view machine code</i>
-		</div>
-	</div>
-	<div>
-		<h3>Display Unit</h3>
-		<div id="display"></div>
-	</div>
-	<div>
-		<h3>Share</h3>
-		<button id="share">Copy Link to Clipboard</button>
-	</div>
-</main>
-
-<script type="module" src="./source/lang/index.ts"></script>
+		<script type="module" src="./source/lang/index.ts"></script>
+	</body>
+</html>

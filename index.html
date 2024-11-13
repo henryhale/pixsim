@@ -1,28 +1,47 @@
-<h1>PixSim</h1>
-<h3>A pixel-based led matrix display simulator</h3>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PixSim</title>
+	</head>
 
-<p>
-<ol>
-	<li>
-		<a href="img.html">generate image</a>
-	</li>
-	<li>
-		<a href="font.html">create font</a>
-	</li>
-	<li>
-		<a href="lang.html">use asm-like language</a>
-	</li>
-</ol>
-</p>
+	<body>
+		<nav>
+			<h2>PixSim</h2>
+			<a href="https://github.com/henryhale/pixsim/">GitHub</a>
+			<span>|</span>
+			<a href="https://github.com/henryhale/pixsim/blob/master/docs/readme.md">Docs</a>
+		</nav>
 
-<script type="module">
-	import DisplayUnit from "./source/core"
+		<p>
+			<h3>👾 A pixel-based led matrix display simulator</h3>
+		</p>
 
-	new DisplayUnit(document.body, {
-		rows: 25,
-		cols: 25,
-		size: 15,
-		active: true,
-		controls: true,
-	})
-</script>
+		<p>
+			<ul>
+				<li>
+					<a href="img.html">generate image</a>
+				</li>
+				<li>
+					<a href="font.html">create font</a>
+				</li>
+				<li>
+					<a href="lang.html">use asm-like language</a>
+				</li>
+			</ul>
+		</p>
+
+		<script type="module">
+			import DisplayUnit from "./source/core";
+
+			new DisplayUnit(document.body, {
+				rows: 25,
+				cols: 25,
+				size: 15,
+				active: true,
+				controls: true,
+			});
+		</script>
+	</body>
+</html>

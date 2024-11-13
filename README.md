@@ -26,7 +26,7 @@ To implement
 - [x] [Custom Assembly-like Language](./docs/language.md) for graphics or pixel manipulation like drawing lines, shapes, and more
 	- [x] [Instruction Set](./docs/isa.md) - a standard for which the display unit operates and communicates 
 	- [x] [Virtual Chip](./docs/virtual-chip.md) - to simulate a cpu that sends video signals to the display unit
-- [x] [Character Encoding](./docs/character-set.md) - characters for our display unit
+- [x] [Character Encoding](./docs/character-encoding.md) - characters for our display unit
 - [x] [Font Editor](./docs/font-editor.md) - create a font containing all every character in the character set
 - [x] [Image Generator](./docs/image-generator.md) - convert the underlying bitmap into an pixelated image
 The scope of this project lies in simulating how the monitor/screen works. More technical details about logic circuits, display chip or wiring are not included.

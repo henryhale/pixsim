@@ -1,62 +1,87 @@
-<style>
-	body > div>*:not(:last-child) {
-		margin-right: 0.5rem;
-	}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PixSim | Font Editor</title>
+	</head>
 
-	.char {
-		display: inline-block;
-		background-color: #ddd;
-		border-radius: 10px;
-		padding: 1px 5px;
-		font-size: 24px;
-		font-weight: bold;
-		text-transform: uppercase;
-	}
+	<body>
+		<style>
+			.char {
+				display: inline-block;
+				background-color: #ddd;
+				border-radius: 10px;
+				padding: 1px 5px;
+				font-size: 24px;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
 
-	table {
-		border-width: 10px;
-	}
+			table {
+				border-width: 10px;
+			}
 
-	#charset {
-		display: flex;
-		justify-content: start;
-		flex-wrap: wrap;
-		overflow-x: auto;
-		padding: 10px;
-		text-align: center;
-	}
+			#charset {
+				display: flex;
+				justify-content: start;
+				flex-wrap: wrap;
+				overflow-x: auto;
+				padding: 10px;
+				text-align: center;
+			}
 
-	#charset > div {
-		cursor: pointer;
-		padding: 0 10px;
-		margin: 0 1rem;
-	}
+			#charset > div {
+				cursor: pointer;
+				padding: 0 10px;
+				margin: 0 1rem;
+			}
 
-	#charset > div:hover {
-		background: #ddd;
-	}
+			#charset > div:hover {
+				background: #ddd;
+			}
 
-	#charset > div>* {
-		margin: 0.125rem auto;
-	}
-</style>
+			#charset > div > * {
+				margin: 0.125rem auto;
+			}
 
-<h1>PixSim</h1>
-<h3>Font Creator</h3>
+			.box {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+			}
+		</style>
 
-<div id="root"></div>
+		<div id="app">
+			<nav>
+				<h2>
+					<a href="/pixsim/">PixSim</a>
+					/ Font Editor
+				</h2>
+				<a
+					href="https://github.com/henryhale/pixsim/blob/master/docs/font-editor.md"
+					>Docs</a
+				>
+			</nav>
 
-<div>
-	Character:
-	<span id="char" class="char"></span>
-	<button id="save">save</button>
-</div>
+			<div class="box">
+				<div id="root"></div>
+				<div>
+					<div>Character:</div>
+					<span id="char" class="char"></span>
+					<br />
+					<br />
+					<button id="save">save</button>
+				</div>
+			</div>
 
-<div id="charset"></div>
+			<div id="charset"></div>
 
-<div>
-	<button id="import">import font</button>
-	<button id="export">export font</button>
-</div>
-
-<script type="module" src="./source/font/index.ts"></script>
+			<div id="extras">
+				<button id="import">import font</button>
+				<button id="export">export font</button>
+			</div>
+		</div>
+		<script type="module" src="./source/font/index.ts"></script>
+	</body>
+</html>

@@ -65,38 +65,46 @@ export class VirtualChip implements Chip {
 	}
 
 	private execute(opcode: string, arg: number): void {
-		console.log(opcode, arg)
+		console.log('execute:', opcode, arg)
 		switch (opcode) {
-			case '0000':
+			case '0001':
 				this.display.reset(false)
 				break;
 			
-			case '0001':
+			case '0010':
 				this.display.reset(true)
 				break;
 			
-			case '0010':
+			case '0011':
 				this.display.invert()
 				break;
-			
-			case '0011':
+				
+			case '0100':
+				this.display.set(this.registers.cx, this.registers.cy, arg > 0)
+				break;
+				
+			case '0101':
 				this.registers.cx = arg
 				break;
-			
-			case '0100':
+				
+			case '0110':
 				this.registers.cy = arg
 				break;
-			
-			case '0101':
+				
+			case '0111':
 				this.registers.cx += arg
 				break;
-			
-			case '0110':
+				
+			case '1000':
 				this.registers.cy += arg
 				break;
-			
-			case '0111':
-				this.display.set(this.registers.cx, this.registers.cy, arg > 0)
+				
+			case '1001':
+				this.registers.cx -= arg
+				break;
+				
+			case '1010':
+				this.registers.cy -= arg
 				break;
 	
 			default:

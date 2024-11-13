@@ -7,14 +7,17 @@ const display = new DisplayUnit($('#display')!, {
 	rows: 64,
 	cols: 64,
 	size: 6,
-	theme: 'dracula'
-	// controls: true
+	controls: true,
+	lines: false
 })
 
 const chip = new VirtualChip(display, 100)
 
 // activate controls
-$('#run')!.onclick = () => chip.run()
+$('#run')!.onclick = () => {
+	$('#display')!.focus()
+	chip.run()
+}
 
 $('#step')!.onclick = () => chip.step()
 
@@ -65,24 +68,32 @@ textarea.value = code || `; example program
 RESET ; clear screen
 
 ; draw character
-SETX 20
-SETY 19
-COLOR 1
-SETY 20
-COLOR 1
-SETX 21
-COLOR 1
-SETX 19
-COLOR 1
-SETY 21
-COLOR 1
-SETX 21
-COLOR 1
+MOVX 30
+MOVY 30
+SET 1
+
+ADDY 1
+SET 1
+
+ADDX 1
+SET 1
+
+ADDY 1
+SET 1
+
+SUBX 2
+SET 1
+
+SUBY 1
+SET 1
 ; end character
 
+NOOP
+NOOP
 INVERT
-INVERT
-INVERT
+NOOP
+NOOP
+
 ; end of program`
 
 if (code) {
