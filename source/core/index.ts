@@ -133,13 +133,16 @@ export default class DisplayUnit implements IDisplayUnit {
 		if (this.state.lines) inputlines.checked = this.state.lines
 		labellines.append(inputlines)
 
-		const btns = h('label')
 		const invert = h('button', 'invert')
 		invert.setAttribute('type', 'button')
+		const labelinvert = h('label')
+		labelinvert.append(invert)
+
 		const clrscr = h('button', 'reset')
 		clrscr.setAttribute('type', 'button')
-		btns.append(invert, h('span', '&nbsp;&nbsp;'), clrscr)
-
+		const labelclrscr = h('label')
+		labelclrscr.append(clrscr)
+		
 		// events
 		inputcol.oninput = () => inputcol.value = limit(int(inputcol.value, this.state.cols), 1, this.state.maxcols).toString()
 		inputrow.oninput = () => inputrow.value = limit(int(inputrow.value, this.state.rows), 1, this.state.maxrows).toString()
@@ -180,7 +183,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		clrscr.onclick = () => this.reset()
 		invert.onclick = () => this.invert()
 
-		return [labelcol, labelrow, labeltheme, labelsize, labellines, btns]
+		return [labelcol, labelrow, labelsize, labeltheme, labelinvert, labelclrscr, labellines]
 	}
 	private renderPixels() {
 		this.grid.innerHTML = ''

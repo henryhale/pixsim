@@ -27,6 +27,11 @@ $('#reset')!.onclick = () => {
 }
 
 const textarea = $<HTMLTextAreaElement>('textarea')!
+textarea.onkeydown = (ev) => {
+	if (ev.key.toLowerCase() === 's' && ev.ctrlKey) {
+		ev.preventDefault()
+	}
+}
 
 $('#assemble')!.onclick = () => {
 	const code = textarea.value

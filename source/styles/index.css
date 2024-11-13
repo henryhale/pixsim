@@ -77,7 +77,8 @@
 }
 
 .pixsim button {
-	padding: 8px 14px;
+	padding: 0.65rem;
+	width: 100%;
 }
 
 .pixsim .error {
@@ -90,12 +91,12 @@
 .pixsim .controls {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 5px;
-	max-width: 350px;
+	gap: 1rem 5px;
+	max-width: 450px;
 }
 
 .pixsim .controls * {
 	display: flex;
 	align-items: center;
-	justify-content: start;
+	justify-content: center;
 }
