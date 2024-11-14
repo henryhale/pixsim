@@ -1,12 +1,14 @@
 <div align=center>
 
-[![](./public/screenshot.png)](https://henryhale.github.io/pixsim/)
+# PixSim
+
+A pixel-based led matrix display simulator
+
+![](./public/media/showcase.png)
 
 </div>
 
-# PixSim
-
-> [!WARNING]
+> [!INFO]
 > _work in progress but you are welcome to see what it is_
 
 ## Overview
@@ -92,3 +94,9 @@ I know my idea is vague or wiggly. I am trying to formulate it in a better way.
 - Other(shareable/downloadable pixelated images, animations, games like maze) -->
 
 </details>
+
+## License
+
+&copy; 2024-present [Henry Hale](https://github.com/henryhale).
+
+Release under [MIT License](https://github.com/henryhale/pixsim/blob/master/LICENSE.txt)
