@@ -8,7 +8,7 @@ A pixel-based led matrix display simulator
 
 </div>
 
-> [!INFO]
+> [!NOTE]
 > _work in progress but you are welcome to see what it is_
 
 ## Overview
