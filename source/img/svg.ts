@@ -16,13 +16,16 @@ export function generateSVG(display: IDisplayUnit) {
 			const q = pm * size
 			px = collapsed ? px : (px + q)
 			py = collapsed ? py : (py + q)
-			if (y == 0) width += px
-			if (x == 0) height += py
+			width = px
+			height = py
 			const fill = row[x] ? fillOn : fillOff
 			const sborder = `stroke="${stroke}" stroke-width="0.5"`
 			pixels += `<rect x="${px}" y="${py}" fill="${fill}" width="${size * (collapsed ? 1 : (1 - pm))}" height="${size * (collapsed ? 1 : (1 - pm))}" ${collapsed ? '' : sborder} />`
 		}
 	}
+
+	width += size
+	height += size
 
  return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">${pixels}</svg>`
 }
