@@ -1,12 +1,31 @@
 import { VirtualChip } from "../chip"
-import { $ } from "../common"
+import { $, int } from "../common"
 import DisplayUnit from "../core"
 import { assemble } from "./assembler"
 
-const display = new DisplayUnit($('#display')!, {
+const config = {
+	code: '',
 	rows: 64,
 	cols: 64,
 	size: 6,
+}
+
+try {
+	const params = new URLSearchParams(window.location.search)
+	const str = decodeURI(params.get('c') || '')
+	const c = JSON.parse(str)
+	config.code = c.code
+	config.rows = int(c.rows, config.rows)
+	config.cols = int(c.cols, config.cols)
+	config.size = int(c.size, config.size)
+} catch (error) {
+	// never throw
+}
+
+const display = new DisplayUnit($('#display')!, {
+	rows: config.rows,
+	cols: config.cols,
+	size: config.size,
 	controls: true,
 	lines: false
 })
@@ -49,10 +68,14 @@ $('#assemble')!.onclick = () => {
 const sharebtn = $('#share')!
 sharebtn.onclick = async () => {
 	sharebtn.setAttribute('disabled', 'true')
-	const code = textarea.value
-	const link = window.location.origin + window.location.pathname + '?c=' + encodeURI(code)
+	const sharedConfig = JSON.stringify({
+		code: textarea.value,
+		rows: display.rows,
+		cols: display.cols,
+		size: display.size
+	})
+	const link = window.location.origin + window.location.pathname + '?c=' + encodeURI(sharedConfig)
 	try {
-		console.log(link)
 		await window.navigator.clipboard.writeText(link)
 		sharebtn.textContent = 'Copied!'
 		setTimeout(() => {
@@ -65,10 +88,7 @@ sharebtn.onclick = async () => {
 	}
 }
 
-const params = new URLSearchParams(window.location.search)
-const code = decodeURI(params.get('c') || '')
-
-textarea.value = code || `; example program
+config.code = config.code || `; example program
 
 RESET ; clear screen
 
@@ -101,7 +121,11 @@ NOOP
 
 ; end of program`
 
-if (code) {
+// set default code
+textarea.value = config.code
+
+// auto run after 1s
+setTimeout(() => {
 	$('#assemble')!.click()
 	$('#run')!.click()
-} 
+}, 1000);

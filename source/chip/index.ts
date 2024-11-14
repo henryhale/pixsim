@@ -65,7 +65,7 @@ export class VirtualChip implements Chip {
 	}
 
 	private execute(opcode: string, arg: number): void {
-		console.log('execute:', opcode, arg)
+		// console.log('execute:', opcode, arg)
 		switch (opcode) {
 			case '0001':
 				this.display.reset(false)
