@@ -1,5 +1,7 @@
 <div align=center>
 
+<img width=45 src='./public/favicon.svg'>
+
 # PixSim
 
 A pixel-based led matrix display simulator
