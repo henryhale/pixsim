@@ -3,22 +3,23 @@ import { downloadBlob, range } from "../common"
 import type { IDisplayUnit } from "../core"
 
 export function generateSVG(display: IDisplayUnit) {
-	const { size, lines: collapsed, bitmap: bm } = display
-	const { fillOn, fillOff, stroke, pixelMargin: pm } = getDisplayProps(display)
+	const  { fillOn, fillOff, stroke, pixelMargin, size, collapsed, bitmap } = getDisplayProps(display)
 	
 	// generate svg
 	let pixels = '', px = 0, py = 0
-	for (const y of range(bm.length)) {
-		const row = bm[y]
+	const q = pixelMargin * size
+	for (const y of range(bitmap.length)) {
+		const row = bitmap[y]
 		for (const x of range(row.length)) {
 			px = x * size
 			py = y * size
-			const q = pm * size
-			px = collapsed ? px : (px + q)
-			py = collapsed ? py : (py + q)
+			if (collapsed) {
+				px += q
+				py += q
+			}
 			const fill = row[x] ? fillOn : fillOff
-			const sborder = `stroke="${stroke}" stroke-width="0.5"`
-			pixels += `<rect x="${px}" y="${py}" fill="${fill}" width="${size * (collapsed ? 1 : (1 - pm))}" height="${size * (collapsed ? 1 : (1 - pm))}" ${collapsed ? '' : sborder} />`
+			const sborder = `stroke="${stroke}" stroke-width="1"`
+			pixels += `<rect x="${px}" y="${py}" fill="${fill}" width="${size * (collapsed ? (1 - pixelMargin) : 1)}" height="${size * (collapsed ? (1 - pixelMargin) : 1)}" ${collapsed ? sborder : ''} />`
 		}
 	}
 

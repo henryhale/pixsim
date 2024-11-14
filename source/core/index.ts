@@ -130,7 +130,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		const labellines = h('label', '<span>Lines&nbsp;</span>')
 		const inputlines = h<HTMLInputElement>('input')
 		inputlines.type = 'checkbox'
-		if (this.state.lines) inputlines.checked = this.state.lines
+		if (this.state.lines) inputlines.setAttribute('checked', 'true')
 		labellines.append(inputlines)
 
 		const invert = h('button', 'invert')
@@ -177,7 +177,7 @@ export default class DisplayUnit implements IDisplayUnit {
 
 		inputlines.onchange = () => {
 			this.grid.style.setProperty('--pixel-gap', inputlines.checked ? '1px' : '0px')
-			this.state.lines = inputlines.checked
+			this.state.lines = !!inputlines.checked
 		}
 
 		clrscr.onclick = () => this.reset()

@@ -10,7 +10,11 @@ export function getDisplayProps(display: IDisplayUnit) {
 	const fillOff = getCSSVar(display.container, '--pixel-off')
 	const stroke = getCSSVar(display.container, '--pixel-border')
 
-	const pixelMargin = 0.15
+	const pixelMargin = 0.1
 
-	return { fillOn, fillOff, stroke, pixelMargin }
+	const size = display.size
+	const collapsed = display.lines
+	const bitmap = display.bitmap
+
+	return { fillOn, fillOff, stroke, pixelMargin, size, collapsed, bitmap }
 }
