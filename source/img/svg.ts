@@ -7,7 +7,7 @@ export function generateSVG(display: IDisplayUnit) {
 	const { fillOn, fillOff, stroke, pixelMargin: pm } = getDisplayProps(display)
 	
 	// generate svg
-	let pixels = '', width = 0, height = 0, px = 0, py = 0
+	let pixels = '', px = 0, py = 0
 	for (const y of range(bm.length)) {
 		const row = bm[y]
 		for (const x of range(row.length)) {
@@ -16,18 +16,13 @@ export function generateSVG(display: IDisplayUnit) {
 			const q = pm * size
 			px = collapsed ? px : (px + q)
 			py = collapsed ? py : (py + q)
-			width = px
-			height = py
 			const fill = row[x] ? fillOn : fillOff
 			const sborder = `stroke="${stroke}" stroke-width="0.5"`
 			pixels += `<rect x="${px}" y="${py}" fill="${fill}" width="${size * (collapsed ? 1 : (1 - pm))}" height="${size * (collapsed ? 1 : (1 - pm))}" ${collapsed ? '' : sborder} />`
 		}
 	}
 
-	width += size
-	height += size
-
- return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">${pixels}</svg>`
+ return `<svg width="${px + size}" height="${py + size}" xmlns="http://www.w3.org/2000/svg">${pixels}</svg>`
 }
 
 export function downloadSVG(svg = "") {
