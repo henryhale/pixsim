@@ -10,9 +10,6 @@ A pixel-based led matrix display simulator
 
 </div>
 
-> [!NOTE]
-> _work in progress but you are welcome to see what it is_
-
 ## Overview
 
 PixSim, _**pix**el **sim**ulator_ is an educational LED Matrix simulation project that tends to explore
