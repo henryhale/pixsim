@@ -95,6 +95,12 @@
 	max-width: 450px;
 }
 
+@media screen and (max-width: 600px) {
+	.pixsim .controls {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
 .pixsim .controls * {
 	display: flex;
 	align-items: center;

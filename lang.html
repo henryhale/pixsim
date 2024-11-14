@@ -14,9 +14,16 @@
 				gap: 2rem;
 			}
 
+			main > div:last-child {
+				column-span: 2;
+			}
+
 			@media screen and (min-width: 900px) {
 				main {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+				main > div:last-child {
+					column-span: 1;
 				}
 			}
 
@@ -30,7 +37,6 @@
 			}
 
 			textarea {
-				width: 100%;
 				min-width: 400px;
 				min-height: 200px;
 				resize: vertical;
@@ -42,7 +48,7 @@
 
 			#machinecode {
 				padding: 10px;
-				height: 125px;
+				max-height: 200px;
 				overflow-y: auto;
 				background-color: lightgray;
 			}
