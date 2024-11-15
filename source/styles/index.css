@@ -91,8 +91,9 @@
 .pixsim .controls {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 1rem 5px;
+	gap: 5px;
 	max-width: 450px;
+	padding-bottom: 10px;
 }
 
 @media screen and (max-width: 600px) {

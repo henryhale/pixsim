@@ -9,33 +9,7 @@
 
 	<body>
 		<style>
-			main {
-				display: grid;
-				grid-template-columns: repeat(1, minmax(0, 1fr));
-				gap: 2rem;
-			}
-
-			main > div:last-child {
-				column-span: 2;
-			}
-
-			@media screen and (min-width: 900px) {
-				main {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-				}
-				main > div:last-child {
-					column-span: 1;
-				}
-			}
-
-			h3 {
-				display: flex;
-				align-items: center;
-			}
-
-			h3 > *:first-child {
-				flex-grow: 1;
-			}
+			
 
 			textarea {
 				min-width: 400px;
@@ -51,7 +25,7 @@
 				padding: 10px;
 				max-height: 200px;
 				overflow-y: auto;
-				background-color: lightgray;
+				border: 1px solid;
 			}
 
 			#display {
@@ -70,7 +44,7 @@
 				>
 			</nav>
 
-			<main>
+			<div class="layout">
 				<div>
 					<h3>Assembly Code</h3>
 					<textarea></textarea>
@@ -84,14 +58,14 @@
 					<div id="machinecode">
 						<i>assemble to view machine code</i>
 					</div>
+					<div>
+						<h3>Share</h3>
+						<button id="share">Copy Link to Clipboard</button>
+					</div>
 				</div>
 				<div>
 					<h3>Display Unit</h3>
 					<div id="display" tabindex="0"></div>
-				</div>
-				<div>
-					<h3>Share</h3>
-					<button id="share">Copy Link to Clipboard</button>
 				</div>
 			</main>
 		</div>

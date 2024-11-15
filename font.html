@@ -11,11 +11,9 @@
 		<style>
 			.char {
 				display: inline-block;
-				background-color: #ddd;
 				border-radius: 10px;
-				padding: 1px 5px;
-				font-size: 24px;
-				font-weight: bold;
+				border: 1px solid;
+				padding: 0 6px;
 				text-transform: uppercase;
 			}
 
@@ -24,34 +22,22 @@
 			}
 
 			#charset {
-				display: flex;
-				justify-content: start;
-				flex-wrap: wrap;
-				overflow-x: auto;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+				gap: 2px;
 				padding: 10px;
 				text-align: center;
 			}
 
-			#charset > div {
-				cursor: pointer;
-				padding: 0 10px;
-				margin: 0 1rem;
+			#charset > * {
+				font-weight: bold;
 			}
 
-			#charset > div:hover {
-				background: #ddd;
+			input {
+				padding: 4px 8px;
+				margin-bottom: 1rem;
 			}
-
-			#charset > div > * {
-				margin: 0.125rem auto;
-			}
-
-			.box {
-				display: flex;
-				justify-content: space-evenly;
-				align-items: center;
-			}
-		</style>
+			</style>
 
 		<div id="app">
 			<nav>
@@ -65,22 +51,35 @@
 				>
 			</nav>
 
-			<div class="box">
-				<div id="root"></div>
+			<div class="layout">
 				<div>
-					<div>Character:</div>
-					<span id="char" class="char"></span>
-					<br />
-					<br />
-					<button id="save">save</button>
+					<h3>
+						<span>Edit Character</span>
+						<span id="char" class="char"></span>
+					</h3>
+					<div id="root"></div>
+					<div>
+						<h3>Metadata</h3>
+						<div>Font Name: <input type="text" id="fontname"></div>
+						<div>Font Author: <input type="text" id="fontauthor"></div>
+					</div>
 				</div>
-			</div>
+				<div>
+					<div class="box">
+						<h3>Menu</h3>
+						<div id="extras">
+							<button id="save">Save Character</button>
+							<button id="import">Load Font</button>
+							<button id="export">Export Font</button>
+						</div>
+					</div>
 
-			<div id="charset"></div>
-
-			<div id="extras">
-				<button id="import">import font</button>
-				<button id="export">export font</button>
+					<div>
+						<h3>Character Set</h3>
+						<small>Select a character to edit</small>
+					</div>
+					<div id="charset"></div>
+				</div>
 			</div>
 		</div>
 		<script type="module" src="./source/font/index.ts"></script>
