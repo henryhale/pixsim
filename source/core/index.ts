@@ -63,6 +63,7 @@ export default class DisplayUnit implements IDisplayUnit {
 	private pixels: PixelGrid
 	public container!: HTMLElement
 	private grid!: HTMLDivElement
+	private inputs: Record<string, HTMLInputElement> = {}
 	constructor(target: HTMLElement, options: IOptions) {
 		this.tid = createUUID()
 		this.state = defineConfig(options)
@@ -89,6 +90,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		this.grid = grid
 
 		this.renderPixels()
+
 		if (this.state.controls) {
 			controls.append(...this.initControls())
 		}
@@ -127,7 +129,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		inputtheme.value = this.state.theme
 		labeltheme.append(inputtheme)
 
-		const labellines = h('label', '<span>Lines&nbsp;</span>')
+		const labellines = h('label', '<span>Show Grid&nbsp;</span>')
 		const inputlines = h<HTMLInputElement>('input')
 		inputlines.type = 'checkbox'
 		if (this.state.lines) inputlines.setAttribute('checked', 'true')
@@ -182,6 +184,9 @@ export default class DisplayUnit implements IDisplayUnit {
 
 		clrscr.onclick = () => this.reset()
 		invert.onclick = () => this.invert()
+
+		this.inputs.row = inputrow
+		this.inputs.col = inputcol
 
 		return [labelcol, labelrow, labelsize, labeltheme, labelinvert, labelclrscr, labellines]
 	}
@@ -263,10 +268,20 @@ export default class DisplayUnit implements IDisplayUnit {
 		return JSON.stringify(this.bitmap)
 	}
 	import(json: string) {
-		this.pixels = JSON.parse(json)
-		this.state.rows = this.pixels.length
-		this.state.cols = this.pixels[0].length
+		const pixels = JSON.parse(json)
+		const rows = pixels.length
+		const cols = pixels[0].length
+
+		this.pixels = pixels
+		this.state.rows = rows
+		this.state.cols = cols
 		this.renderPixels()
+		if (this.inputs.row) {
+			this.inputs.row.value = rows
+		}
+		if (this.inputs.col) {
+			this.inputs.col.value = cols
+		}
 	}
 	get rows() {
 		return this.state.rows
