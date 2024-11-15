@@ -15,7 +15,7 @@ Table of Contents
 2. [Pixel Manipulation Language](./language.md)
 3. [Instruction Set Architecture](./isa.md)
 4. [Virtual Chip](./virtual-chip.md)
-5. [Character Encoding](./character-encoding.md)
+5. [Character Encoding](./charset.md)
 6. [Application: Font Editor](./font-editor.md)
 7. [Application: Image Generator](./image-generator.md)
 8. Character Encoder & Decoder

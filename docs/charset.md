@@ -1,4 +1,4 @@
-# PixSim | Character Encoding
+# PixSim | Charset
 
 ## Overview
 
@@ -7,7 +7,7 @@ This module defines the characters that will be supported on our display. For th
 Suppose that we want to display text on the display;
 - how do we uniquely identify each character signal and then manipulate pixels to create a visual illustration of the character itself?
 
-Well, this is where fonts come into play. We need to list all characters we expect and tag them.
+Well, this is where fonts come into play. But first, we need to list all characters we expect and tag them.
 
 ## Charset
 
@@ -23,7 +23,7 @@ Because;
 - all essential characters included
 - all 64 slots occupied
 
-## Encoding
+## Character Codes
 
 Each character in the charset is assigned a unique number so that it can be identified and the correct graphical representation renderer.
 
