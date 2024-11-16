@@ -13,12 +13,24 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-*,*::after,*::before {
+*,
+*::after,
+*::before {
 	box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5,h6,p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
 	margin: 0;
+}
+
+h2 > a {
+	font-weight: bold;
 }
 
 h3 {
@@ -53,7 +65,9 @@ button {
 	padding: 6px 12px;
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
 	border-color: 1px solid currentColor;
 }
 
@@ -96,12 +110,12 @@ nav > *:not(:last-child) {
 
 @media screen and (min-width: 900px) {
 	.layout {
-		grid-template-columns: repeat(2, minmax(0,1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
 
 .layout > div {
-	padding: 10px; 
+	padding: 10px;
 }
 
 .layout > div > *:not(:last-child) {
@@ -117,4 +131,15 @@ nav > *:not(:last-child) {
 	justify-content: center;
 	gap: 1rem;
 	padding: 10px 0;
+}
+
+.highlight {
+	display: inline-block;
+	border-radius: 10px;
+	border: 1px solid;
+	padding: 0 6px 1.5px;
+	margin: 2px;
+	font-size: small;
+	user-select: none;
+	text-transform: uppercase;
 }
