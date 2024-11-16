@@ -1,4 +1,4 @@
-import DisplayUnit, { type IDisplayUnit } from "../core"
+import DisplayUnit from "../core"
 import { $, createUUID, downloadBlob, h } from "../common"
 import { ICharset, charset } from "./charset"
 
