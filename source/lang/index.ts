@@ -22,6 +22,18 @@ try {
 	// never throw
 }
 
+const el = {
+	display: $('#display')!,
+	run: $('#run')!,
+	step: $('#step')!,
+	reset: $('#reset')!,
+	machinecode: $('#machinecode')!,
+	assemble: $('#assemble')!,
+	sharebtn: $('#share')!,
+	textarea: $<HTMLTextAreaElement>('textarea')!,
+
+}
+
 const display = new DisplayUnit($('#display')!, {
 	rows: config.rows,
 	cols: config.cols,
@@ -33,43 +45,41 @@ const display = new DisplayUnit($('#display')!, {
 const chip = new VirtualChip(display, 100)
 
 // activate controls
-$('#run')!.onclick = () => {
-	$('#display')!.focus()
+el.run.onclick = () => {
+	el.display.focus()
 	chip.run()
 }
 
-$('#step')!.onclick = () => chip.step()
+el.step.onclick = () => chip.step()
 
-$('#reset')!.onclick = () => {
+el.reset.onclick = () => {
 	chip.reset()
 	display.reset()
+	el.machinecode.innerHTML = '<i>assemble to view machine code</i>'
 }
 
-const textarea = $<HTMLTextAreaElement>('textarea')!
-textarea.onkeydown = (ev) => {
+el.textarea.onkeydown = (ev) => {
 	if (ev.key.toLowerCase() === 's' && ev.ctrlKey) {
 		ev.preventDefault()
 	}
 }
 
-$('#assemble')!.onclick = () => {
-	const code = textarea.value
+el.assemble.onclick = () => {
+	const code = el.textarea.value
 	const [binary, err] = assemble(code)
-	const box = $('#machinecode')! 
 	if (err) {
-		box.innerHTML = `error: ${err}` 
+		el.machinecode.innerHTML = `error: ${err}` 
 		return
 	}
 	if (!binary) return
-	box!.innerHTML = binary.map(line => line.slice(0,4) + '&nbsp;&nbsp;' + line.slice(4) + '<br>').join('')
+	el.machinecode.innerHTML = binary.map(line => line.slice(0,4) + '&nbsp;&nbsp;' + line.slice(4) + '<br>').join('')
 	chip.load(binary)
 }
 
-const sharebtn = $('#share')!
-sharebtn.onclick = async () => {
-	sharebtn.setAttribute('disabled', 'true')
+el.sharebtn.onclick = async () => {
+	el.sharebtn.setAttribute('disabled', 'true')
 	const sharedConfig = JSON.stringify({
-		code: textarea.value,
+		code: el.textarea.value,
 		rows: display.rows,
 		cols: display.cols,
 		size: display.size
@@ -77,14 +87,14 @@ sharebtn.onclick = async () => {
 	const link = window.location.origin + window.location.pathname + '?c=' + encodeURI(sharedConfig)
 	try {
 		await window.navigator.clipboard.writeText(link)
-		sharebtn.textContent = 'Copied!'
+		el.sharebtn.textContent = 'Copied!'
 		setTimeout(() => {
-			sharebtn.textContent = 'Copy Link to Clipboard'
+			el.sharebtn.textContent = 'Copy Link to Clipboard'
 		}, 1000)
 	} catch (error) {
 		console.error(error)		
 	} finally {
-		sharebtn.removeAttribute('disabled')
+		el.sharebtn.removeAttribute('disabled')
 	}
 }
 
@@ -122,10 +132,10 @@ NOOP
 ; end of program`
 
 // set default code
-textarea.value = config.code
+el.textarea.value = config.code
 
 // auto run after 1s
 setTimeout(() => {
-	$('#assemble')!.click()
-	$('#run')!.click()
+	el.assemble.click()
+	el.run.click()
 }, 1000);
