@@ -10,6 +10,7 @@
 	<body>
 		<style>
 			textarea {
+				width: 100%;
 				min-width: 400px;
 				min-height: 200px;
 				resize: vertical;
@@ -28,6 +29,10 @@
 
 			#display {
 				outline: none;
+			}
+
+			select {
+				padding: 5px;
 			}
 		</style>
 		<div id="app">
@@ -67,7 +72,7 @@
 					<h3>
 						<span>Display Unit</span>
 						<span>
-							<span>clock speed</span>
+							<span>Clock Speed</span>
 							<select id="speed">
 								<option value="-1">MAX-2</option>
 								<option value="0">MAX-1</option>
