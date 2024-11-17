@@ -21,6 +21,16 @@ export function expandMacros(line: string): string[] {
 }
 
 export const macros: IMacros = {
+	CLEARRECT: (x, y, w, h) => {
+		const result: string[] = []
+		for (const j of range(h)) {
+			result.push(`MOVY ${y+j}`)
+			for(const i of range(w)) {
+				result.push(`MOVX ${x+i}`, 'SET 0')
+			}
+		}
+		return result
+	},
 	FILLRECT: (x, y, w, h) => {
 		const result: string[] = []
 		for (const j of range(h)) {

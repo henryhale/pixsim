@@ -63,7 +63,8 @@ To distinguish builtin macros from instructions, the `@` sign is prefix as an id
 | - [ ] &nbsp; | @DRAWCHAR <code>				| Renders a single character starting from the cursor's current position|
 | - [x] &nbsp; | @DRAWLINE <x1> <y1> <x2> <y2>	| Draws a line from (`<x0>`, `<y0>`) to (`<x1>`, `<y1>`) using Bresenham's line algorithm|
 | - [x] &nbsp; | @FILLRECT <x> <y> <w> <h>		| Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
-| - [x] &nbsp; | @STROKERECT <x> <y> <w> <h>		| Draws a outlined rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
+| - [x] &nbsp; | @STROKERECT <x> <y> <w> <h>	| Resets/clears the area in the rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
+| - [x] &nbsp; | @CLEARRECT <x> <y> <w> <h>		| Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
 | - [ ] &nbsp; | @FILLARC <x> <y> <r> <angle>	| Draws a filled circle centered at (`<x>`, `<y>`) with the given radius `<r>` from `0` deg to `<angle>` deg|
 | - [ ] &nbsp; | @STROKEARC <x> <y> <r> <angle>	| Draws an outlined circle centered at (`<x>`, `<y>`) with the given radius `<r>` from `0` deg to `<angle>` deg|
 | - [ ] &nbsp; | @ROTATE <value>					| Rotates the bitmap grid by the specified number of degrees (e.g., 90, 180, 270)|
