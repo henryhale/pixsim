@@ -1,5 +1,5 @@
 import { getDisplayProps } from "./helpers"
-import { downloadBlob, range } from "../common"
+import { createUUID, downloadBlob, range } from "../common"
 import type { IDisplayUnit } from "../core"
 
 export function generateSVG(display: IDisplayUnit) {
@@ -28,5 +28,5 @@ export function generateSVG(display: IDisplayUnit) {
 
 export function downloadSVG(svg = "") {
 	const blob = new Blob([svg], { type: "image/svg+xml" })
-	downloadBlob('pixsim-bitmap.svg', blob)
+	downloadBlob(`pixsim-${createUUID()}.svg`, blob)
 }

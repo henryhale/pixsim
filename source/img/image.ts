@@ -2,7 +2,7 @@ import { getDisplayProps } from "./helpers"
 import { downloadBlob, range } from "../common"
 import type { IDisplayUnit } from "../core"
 
-export async function generatePNG(display: IDisplayUnit) {
+export async function generateImageBlob(display: IDisplayUnit, imageType: string) {
 	const { fillOn, fillOff, stroke, pixelMargin, size, collapsed, bitmap } = getDisplayProps(display)
 
 	// total canvas width is computed basing on table's border-collapse
@@ -55,14 +55,13 @@ export async function generatePNG(display: IDisplayUnit) {
 		ctx.restore()
 	}
 
-	// generate an image: png, jpg
-	const png = await canvas.convertToBlob({ type: 'image/png' })
-	// const jpg = canvas.toDataURL('image/jpg')
+	// generate an image: png, jpg, webp
+	const image = await canvas.convertToBlob({ type: `image/${imageType}` })
 	
-	return png
+	return image
 }
 
-export function downloadPNG(blob: Blob) {
+export function downloadImage(filename: string, blob: Blob) {
 	// document.body.innerHTML += `<img src='${img}' alt='not found' />`
-	downloadBlob('pixsim-bitmap.png', blob)
+	downloadBlob(filename, blob)
 }

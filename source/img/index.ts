@@ -1,7 +1,7 @@
-import { $, h } from "../common"
+import { $, createUUID, h } from "../common"
 import DisplayUnit from "../core"
 import { generateSVG, downloadSVG } from "./svg"
-import { generatePNG, downloadPNG } from "./png"
+import { downloadImage, generateImageBlob } from "./image"
 
 const display = new DisplayUnit($('#img-gen')!, {
 	cols: 5,
@@ -11,19 +11,22 @@ const display = new DisplayUnit($('#img-gen')!, {
 	controls: true
 })
 
-// extra
-const btnsvg = h('button', 'download svg')
+// extras
+const btnsvg = h('button', 'SVG')
 btnsvg.setAttribute('type', 'button')
 btnsvg.onclick = () => {
 	const svg = generateSVG(display)
 	downloadSVG(svg)
 }
 
-const btnpng = h('button', 'download png')
-btnpng.setAttribute('type', 'button')
-btnpng.onclick = async () => {
-	const png = await generatePNG(display)
-	downloadPNG(png)
-}
+const btns = ["png","jpeg","webp"].map(x => {
+	const btn = h('button', x.toUpperCase())
+	btn.setAttribute('type', 'button')
+	btn.onclick = async () => {
+		const blob = await generateImageBlob(display, x)
+		downloadImage(`pixsim-${createUUID()}.${x}`, blob)
+	}
+	return btn
+})
 
-$('#extras')!.append(btnsvg, btnpng)
+$('#extras')!.append(btnsvg, ...btns)
