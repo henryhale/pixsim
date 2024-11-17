@@ -7,93 +7,94 @@ This module defines the characters that will be supported on our display. For th
 Suppose that we want to display text on the display;
 - how do we uniquely identify each character signal and then manipulate pixels to create a visual illustration of the character itself?
 
-Well, this is where fonts come into play. But first, we need to list all characters we expect and tag them.
+Well, this is where fonts come into play. But first, we need to list all characters to support and tag them.
 
 ## Charset
 
 The character set will contain the following characters;
-- Space ( )
-- Numbers (0-9)
-- Letters (A-Z)
-- Special symbols (.:,;()*!?<>/|[]=+-_{}#$^"'`)
+- Space
+- Letters - uppercase (A-Z)
+- Digits (0-9)
+- Special Symbols (.:,;()*!?<>/|[]=+-_{}#$^"'`)
 
 The size of this character set is 64. This is small but perfect.
 Because;
 - it takes 6 bits for values ranging between 0 - 63
-- all essential characters included
+- all essential characters included: alphabetic, numeric, and punctuation marks
 - all 64 slots occupied
 
 ## Character Codes
 
 Each character in the charset is assigned a unique number so that it can be identified and the correct graphical representation renderer.
 
-| Decimal	| Binary	| Character |
-|-----------|-----------|-----------|
-| 0			| 000000	| SPACE		|
-| 1			| 000001	| 0			|
-| 2			| 000010	| 1			|
-| 3			| 000011	| 2			|
-| 4			| 000100	| 3			|
-| 5			| 000101	| 4			|
-| 6			| 000110	| 5			|
-| 7			| 000111	| 6			|
-| 8			| 001000	| 7			|
-| 9			| 001001	| 8			|
-| 10		| 001010	| 9			|
-| 11		| 001011	| A			|
-| 12		| 001100	| B			|
-| 13		| 001101	| C			|
-| 14		| 001110	| D			|
-| 15		| 001111	| E			|
-| 16		| 010000	| F			|
-| 17		| 010001	| G			|
-| 18		| 010010	| H			|
-| 19		| 010011	| I			|
-| 20		| 010100	| J			|
-| 21		| 010101	| K			|
-| 22		| 010110	| L			|
-| 23		| 010111	| M			|
-| 24		| 011000	| N			|
-| 25		| 011001	| O			|
-| 26		| 011010	| P			|
-| 27		| 011011	| Q			|
-| 28		| 011100	| R			|
-| 29		| 011101	| S			|
-| 30		| 011110	| T			|
-| 31		| 011111	| U			|
-| 32		| 100000	| V			|
-| 33		| 100001	| W			|
-| 34		| 100010	| X			|
-| 35		| 100011	| Y			|
-| 36		| 100100	| Z			|
-| 37		| 100101	| .			|
-| 38		| 100110	| :			|
-| 39		| 100111	| ,			|
-| 40		| 101000	| ;			|
-| 41		| 101001	| (			|
-| 42		| 101010	| )			|
-| 43		| 101011	| *			|
-| 44		| 101100	| !			|
-| 45		| 101101	| ?			|
-| 46		| 101110	| <			|
-| 47		| 101111	| >			|
-| 48		| 110000	| /			|
-| 49		| 110001	| |			|
-| 50		| 110010	| [			|
-| 51		| 110011	| ]			|
-| 52		| 110100	| =			|
-| 53		| 110101	| +			|
-| 54		| 110110	| -			|
-| 55		| 110111	| _			|
-| 56		| 111000	| {			|
-| 57		| 111001	| }			|
-| 58		| 111010	| #			|
-| 59		| 111011	| $			|
-| 60		| 111100	| ^			|
-| 61		| 111101	| "			|
-| 62		| 111110	| '			|
-| 63		| 111111	| `			|
+| **Code (Decimal)** | **Code (Hex)** | **Code (Binary)** | **Character**   | **Description**     |
+|--------------------|----------------|-------------------|-----------------|---------------------|
+| 0                  | 0x00           | 000000            | Space           | Whitespace (space)  |
+| 1                  | 0x01           | 000001            | A               | Uppercase A         |
+| 2                  | 0x02           | 000010            | B               | Uppercase B         |
+| 3                  | 0x03           | 000011            | C               | Uppercase C         |
+| 4                  | 0x04           | 000100            | D               | Uppercase D         |
+| 5                  | 0x05           | 000101            | E               | Uppercase E         |
+| 6                  | 0x06           | 000110            | F               | Uppercase F         |
+| 7                  | 0x07           | 000111            | G               | Uppercase G         |
+| 8                  | 0x08           | 001000            | H               | Uppercase H         |
+| 9                  | 0x09           | 001001            | I               | Uppercase I         |
+| 10                 | 0x0A           | 001010            | J               | Uppercase J         |
+| 11                 | 0x0B           | 001011            | K               | Uppercase K         |
+| 12                 | 0x0C           | 001100            | L               | Uppercase L         |
+| 13                 | 0x0D           | 001101            | M               | Uppercase M         |
+| 14                 | 0x0E           | 001110            | N               | Uppercase N         |
+| 15                 | 0x0F           | 001111            | O               | Uppercase O         |
+| 16                 | 0x10           | 010000            | P               | Uppercase P         |
+| 17                 | 0x11           | 010001            | Q               | Uppercase Q         |
+| 18                 | 0x12           | 010010            | R               | Uppercase R         |
+| 19                 | 0x13           | 010011            | S               | Uppercase S         |
+| 20                 | 0x14           | 010100            | T               | Uppercase T         |
+| 21                 | 0x15           | 010101            | U               | Uppercase U         |
+| 22                 | 0x16           | 010110            | V               | Uppercase V         |
+| 23                 | 0x17           | 010111            | W               | Uppercase W         |
+| 24                 | 0x18           | 011000            | X               | Uppercase X         |
+| 25                 | 0x19           | 011001            | Y               | Uppercase Y         |
+| 26                 | 0x1A           | 011010            | Z               | Uppercase Z         |
+| 27                 | 0x1B           | 011011            | 0               | Digit 0             |
+| 28                 | 0x1C           | 011100            | 1               | Digit 1             |
+| 29                 | 0x1D           | 011101            | 2               | Digit 2             |
+| 30                 | 0x1E           | 011110            | 3               | Digit 3             |
+| 31                 | 0x1F           | 011111            | 4               | Digit 4             |
+| 32                 | 0x20           | 100000            | 5               | Digit 5             |
+| 33                 | 0x21           | 100001            | 6               | Digit 6             |
+| 34                 | 0x22           | 100010            | 7               | Digit 7             |
+| 35                 | 0x23           | 100011            | 8               | Digit 8             |
+| 36                 | 0x24           | 100100            | 9               | Digit 9             |
+| 37                 | 0x25           | 100101            | .               | Period              |
+| 38                 | 0x26           | 100110            | :               | Colon               |
+| 39                 | 0x27           | 100111            | ,               | Comma               |
+| 40                 | 0x28           | 101000            | ;               | Semicolon           |
+| 41                 | 0x29           | 101001            | (               | Left parenthesis    |
+| 42                 | 0x2A           | 101010            | )               | Right parenthesis   |
+| 43                 | 0x2B           | 101011            | *               | Asterisk            |
+| 44                 | 0x2C           | 101100            | !               | Exclamation mark    |
+| 45                 | 0x2D           | 101101            | ?               | Question mark       |
+| 46                 | 0x2E           | 101110            | <               | Less-than sign      |
+| 47                 | 0x2F           | 101111            | >               | Greater-than sign   |
+| 48                 | 0x30           | 110000            | /               | Slash/Forward Slash |
+| 49                 | 0x31           | 110001            | |               | Pipe (vertical bar) |
+| 50                 | 0x32           | 110010            | [               | Left square bracket |
+| 51                 | 0x33           | 110011            | ]               | Right square bracket|
+| 52                 | 0x34           | 110100            | =               | Equals sign         |
+| 53                 | 0x35           | 110101            | +               | Plus sign           |
+| 54                 | 0x36           | 110110            | -               | Hyphen/Minus sign   |
+| 55                 | 0x37           | 110111            | _               | Underscore          |
+| 56                 | 0x38           | 111000            | {               | Left brace          |
+| 57                 | 0x39           | 111001            | }               | Right brace         |
+| 58                 | 0x3A           | 111010            | #               | Hash/Pound sign     |
+| 59                 | 0x3B           | 111011            | $               | Dollar sign         |
+| 60                 | 0x3C           | 111100            | ^               | Caret (circumflex)  |
+| 61                 | 0x3D           | 111101            | "               | Double quote        |
+| 62                 | 0x3E           | 111110            | '               | Single quote        |
+| 63                 | 0x3F           | 111111            | `               | Backtick (grave accent) |
 
 ## References
 
 - [Character Encoding - Wikipedia](https://wikipedia.org/wiki/Character_encoding)
+- [ASCII - Wikipedia](https://wikipedia.org/wiki/ASCII)

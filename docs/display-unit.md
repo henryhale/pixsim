@@ -10,6 +10,10 @@ Fundamentally, screens are made up of a grid of thousands of tiny _Light Emittin
 
 This module basically simulates a simple screen providing a customizable interface with a grid of pixels.
 
+The following conventions will be utilized:
+- the top-left is (0,0) such that pixel coordinates increase in the right and down directions (e.g. that the pixel at (7,4) is directly above the pixel at (7,5))
+- the pixel centers have integer coordinates.
+
 ### Static Elements
 
 The display's interface consists of the following;
