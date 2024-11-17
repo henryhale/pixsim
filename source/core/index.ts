@@ -188,7 +188,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		this.inputs.row = inputrow
 		this.inputs.col = inputcol
 
-		return [labelcol, labelrow, labelsize, labeltheme, labelinvert, labelclrscr, labellines]
+		return [labelcol, labelrow, labelsize, labellines, labeltheme, labelinvert, labelclrscr]
 	}
 	private renderPixels() {
 		this.grid.innerHTML = ''
