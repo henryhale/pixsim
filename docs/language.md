@@ -15,9 +15,9 @@ What you should know:
 	- `off` -> `0`
 - Manipulation of the pixels uses an abstract cursor consisting of two coordinates, _x_ and _y_ stored in [internal registers](./virtual-chip.md#internal-registers) of the chip.
 
-| Instruction				| Description					|
+| **Instruction**			| **Description**				|
 |:--------------------------|:------------------------------|
-| `NOOP`						| Performs no operations, useful for delays/timing|
+| `NOOP`					| Performs no operations, useful for delays/timing|
 | `RESET`					| Resets all pixels in the grid to `0`|
 | `IRESET`					| Sets all pixels in the grid to `1`|
 | `INVERT` 					| Inverts all pixels in the grid switching every `1` to `0` and vice versa|
@@ -48,25 +48,27 @@ RESET ; inline comment
 
 There exists several instructions whose functionality can be referenced by another name or at least easy to understand. Below is a list of aliases;
 
-| Instruction	| Aliases		|
-|---------------|---------------|
-| `RESET`		| `CLEAR`, `CLR`|
+| **Instruction**	| **Aliases**	|
+|-------------------|---------------|
+| `RESET`			| `CLEAR`, `CLR`|
 
 ## Macros
 
-Some features such as rendering a character, line or any graphic element requires a bit of sophisticated implementation. Therefore, these have been abstracted using built-in macros that is preprocessed before assembling (the instruction is substituted by a series of small [primitive instructions](#instructions) listed above). Think of them as already implemented, reusable functions that do the ~hard~ stuff. 
+Some features such as rendering a character, line or any graphic element requires a bit of sophisticated implementation. Therefore, these have been abstracted using built-in macros that is preprocessed before assembling: so the instruction is substituted by a series of small [primitive instructions](#instructions) listed above. Think of them as already implemented, reusable functions that do the ~hard~ stuff built on top of [supported instructions](#instructions). 
 
-| Macro						| Description					|
-|:--------------------------|:------------------------------|
-| FILLRECT <x> <y> <w> <h>	| Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
-| STROKERECT <x> <y> <w> <h>| Draws a outlined rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
-| ROTATE <value>			| Rotates the bitmap grid by the specified number of degrees (e.g., 90, 180, 270)|
+To distinguish builtin macros from instructions, the `@` sign is prefix as an identifier of every macro statement.
 
-<!-- `FILLRECT` is complex since turns on a group of pixels using loops.  -->
+| 	  		   | **Macro**						| **Description**					|
+|:------------:|:-------------------------------|:------------------------------|
+| - [ ] &nbsp; | @DRAWCHAR <code>				| Renders a single character starting from the cursor's current position|
+| - [x] &nbsp; | @DRAWLINE <x1> <y1> <x2> <y2>	| Draws a line from (`<x0>`, `<y0>`) to (`<x1>`, `<y1>`) using Bresenham's line algorithm|
+| - [x] &nbsp; | @FILLRECT <x> <y> <w> <h>		| Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
+| - [x] &nbsp; | @STROKERECT <x> <y> <w> <h>		| Draws a outlined rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)|
+| - [ ] &nbsp; | @FILLARC <x> <y> <r> <angle>	| Draws a filled circle centered at (`<x>`, `<y>`) with the given radius `<r>` from `0` deg to `<angle>` deg|
+| - [ ] &nbsp; | @STROKEARC <x> <y> <r> <angle>	| Draws an outlined circle centered at (`<x>`, `<y>`) with the given radius `<r>` from `0` deg to `<angle>` deg|
+| - [ ] &nbsp; | @ROTATE <value>					| Rotates the bitmap grid by the specified number of degrees (e.g., 90, 180, 270)|
 
 <!-- - `GETQ`: Retrives and stores the state of the current pixel to the accumulator -->
-<!-- - `DRAWLINE <x1> <y1> <x2> <y2>`: Draws a line from (`<x1>`, `<y1>`) to (`<x2>`, `<y2>`) using Bresenham's line algorithm. -->
-<!-- - `FILLCIRCLE <x> <y> <r>`: Draws a filled circle centered at (`<x>`, `<y>`) with the given radius `<r>`. -->
 
 ## Implementation
 
@@ -74,9 +76,11 @@ The source code for the assembler is defined in the [source/lang folder](../sour
 
 ## Live Demo
 
-- [Assembler :rocket:](https://henryhale.github.io/pixsim/lang.html)
+- [Playground :rocket:](https://henryhale.github.io/pixsim/lang.html)
 
 ## References
 
 - [Assembly Language - Wikipedia](https://wikipedia.org/wiki/Assembly_language)
 - [Instruction Set Architecture - Wikipedia](https://wikipedia.org/wiki/Instruction_set_architecture)
+- [Macro (computer science) - Wikipedia](https://wikipedia.org/wiki/Macro_(computer_science))
+- [Bresenham's Line Algorithm](https://wikipedia.org/wiki/Bresenham%27s_line_algorithm)

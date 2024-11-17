@@ -1,7 +1,6 @@
 export enum IFormat {
 	SIMPLE,
-	VALUE,
-	ARRAY
+	VALUE
 }
 
 export type Instruction = {
@@ -29,5 +28,3 @@ export const ALIAS: Record<string, string> = {
 }
 
 export const COMMENT_ID = ';'
-
-// TODO: add macros support

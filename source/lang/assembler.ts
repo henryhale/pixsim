@@ -1,5 +1,7 @@
 import { int, tobin } from "../common";
 import { ALIAS, COMMENT_ID, IFormat, INSTRUCTIONS } from "./lang";
+import { expandMacros, isMacro } from "./macros";
+import { tokenize } from "./tokenize";
 
 function parse(line: string = ""): (string | null)[] {
 	// ignore comments
@@ -7,13 +9,13 @@ function parse(line: string = ""): (string | null)[] {
 	if (!line) return [null, null];
 
 	// split into tokens(words)
-	const tokens = line.split(/[\s]+/);
+	const tokens = tokenize(line);
 	let instruction = tokens[0].toUpperCase();
 	const args = tokens.slice(1);
 	
 	// check for alias
 	if (ALIAS[instruction]) {
-		const [i, ...list] = ALIAS[instruction].split(/[\s]+/)
+		const [i, ...list] = tokenize(ALIAS[instruction])
 		args.unshift(...list)
 		instruction = i
 	}
@@ -51,7 +53,13 @@ export function assemble(code: string): AResult {
 	const lines = code.split("\n");
 
 	// parse line by line, break on error
-	for (const line of lines) {
+	for (const [pos, line] of lines.entries()) {
+		// macros check & expansion
+		if (isMacro(line)) {
+			lines.splice(pos + 1, 0, ...expandMacros(line))
+			continue
+		}
+
 		const [bin, err] = parse(line);
 		if (err) {
 			error = err;
