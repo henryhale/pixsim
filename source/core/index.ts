@@ -250,14 +250,14 @@ export default class DisplayUnit implements IDisplayUnit {
 	reset(value = false) {
 		this.pixels.forEach((row, y) => {
 			row.forEach((_, x) => {
-				setTimeout(() => this.set(x, y, !!value))
+				this.set(x, y, !!value)
 			})
 		})
 	}
 	invert() {
 		this.pixels.forEach((row, y) => {
 			row.forEach((value, x) => {
-				setTimeout(() => this.set(x, y, !value))
+				this.set(x, y, !value)
 			})
 		})
 	}

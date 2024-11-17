@@ -9,6 +9,11 @@ Then we design an assembly-like language (including syntax & semantics, mnemonic
 Based on the assembly language, the instruction set architecture(ISA) is designed to specify which instructions will be supported, how operands will be formatted, and how control flow will be managed.
 Finally, the display unit's chip, that will execute each instruction in the ISA, is designed and tested using test programs written in our assembly-like language.
 
+>[!NOTE]
+>Each component of this simulation uses web technologies: HTML, CSS, JavaScript/TypeScript.
+>This allows for easy and quick access for everyone on any platform using a web browser.
+>It implies that the limitations(like performance) of the simulation are tightly bounded by browser's abilities.  
+
 Table of Contents
 
 1. [The Display Unit](./display-unit.md)

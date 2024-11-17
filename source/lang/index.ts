@@ -1,5 +1,5 @@
 import { VirtualChip } from "../chip"
-import { $, int } from "../common"
+import { $, int, limit } from "../common"
 import DisplayUnit from "../core"
 import { assemble } from "./assembler"
 
@@ -31,7 +31,7 @@ const el = {
 	assemble: $('#assemble')!,
 	sharebtn: $('#share')!,
 	textarea: $<HTMLTextAreaElement>('textarea')!,
-
+	speed: $<HTMLInputElement>('#speed')!
 }
 
 const display = new DisplayUnit($('#display')!, {
@@ -45,6 +45,10 @@ const display = new DisplayUnit($('#display')!, {
 const chip = new VirtualChip(display, 100)
 
 // activate controls
+el.speed.onchange = () => {
+	chip.speed = limit(int(el.speed.value, chip.speed), -1, 100)
+}
+
 el.run.onclick = () => {
 	el.display.focus()
 	chip.run()

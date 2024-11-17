@@ -21,7 +21,7 @@
 
 			#machinecode {
 				padding: 10px;
-				max-height: 200px;
+				height: 200px;
 				overflow-y: auto;
 				border: 1px solid;
 			}
@@ -64,7 +64,19 @@
 					</div>
 				</div>
 				<div>
-					<h3>Display Unit</h3>
+					<h3>
+						<span>Display Unit</span>
+						<span>
+							<span>clock speed</span>
+							<select id="speed">
+								<option value="-1">MAX-2</option>
+								<option value="0">MAX-1</option>
+								<option value="1">1000Hz</option>
+								<option value="10">100Hz</option>
+								<option value="100" selected>10Hz</option>
+							</select>
+						</span>
+					</h3>
 					<div id="display" tabindex="0"></div>
 				</div>
 			</main>

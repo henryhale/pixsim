@@ -47,11 +47,67 @@ The public interface provided by the chip defines;
 - `step`: executes the next instruction in the program
 - `run`: executes the entire program line by line
 
+## Chip's Clock Speed
+
+To simulate the chip's instruction execution process, we use the [setTimeout API](https://developer.mozilla.org/docs/Web/API/Window/setTimeout) with a default timeout value of `100` milliseconds.
+
+This implies that, by default;
+- each instruction takes in `100` ms to execute
+
+To determine the clock speed, we need to figure out how many clock cycles occur in `1` ms and how many cycles correspond to one instruction.
+
+Technically, the clock speed is the number of cycles per instruction.
+
+Clock speed = `number of clock cycles` / `instruction time (seconds)`
+
+So by default, clock speed = (1 / 0.1) = 10 Hz
+
+For the purposes of experimentation and customization, the chip's clock speed is configurable. Below is a list of speeds provided in the [language playground](https://henryhale.github.io/pixsim/lang.html).
+
+| **Time (ms)** | **Clock Speed (Hz)** 	|
+|---------------|-----------------------|
+| -				| MAX-2					|
+| 0				| MAX-1					|
+| 1				| 1000					|
+| 10			| 100					|
+| 100 (default)	| 10					|
+
+### Maximum Clock Speed:
+
+To achieve the maximum clock speed, theoretically, there must be no delay between execution of consecutive instructions.
+There are two approaches:
+1. `MAX-1`: use timeout = `0` for `setTimeout` function
+2. `MAX-2`: use infinite loop to execute one instruction at a time - break after the last
+
+`MAX-1` is a practical example of [zero delays](https://developer.mozilla.org/docs/Web/JavaScript/Event_loop#zero_delays) that which executes the instruction after the current
+task queue is empty. It actually creates irrational delays thereby giving slow rendering speeds. 
+
+Unlike `MAX-1`, `MAX-2` is swift and produces near-instatenuos rendering speed - since each iteraction completes with dom changes applied without any interruptions.
+
+After several experimentation, `MAX-1` is great if there too many changes to render since it is [never blocking](https://developer.mozilla.org/docs/Web/JavaScript/Event_loop#never_blocking), otherwise it appears slow. `MAX-2` is fast and great for few changes ~~but maybe slow on some devices with low memory since is blocking (user interaction may slow down/be blocked as the browser is executing and applying dom updates)~~.
+
+Thus, both options are provided to allow for user's experimentation. Use the [playgroud](https://henryhale.github.io/pixsim/lang.html) to run the following code with clock speed at `MAX-1` and then `MAX-2`
+```
+RESET
+@STROKERECT 0 0 64 64
+```
+
 ## Implementation
 
 The chip's simulation source code is located under the [source/chip](../source/chip/) folder.
+
+## Live Demo
+
+In the language playground, the chip is the core component that executes the instruction one after another. 
+
+- [Playground :rocket:](https://henryhale.github.io/pixsim/lang.html)
 
 ## References
 
 - [Instruction Cycle - Wikipedia](https://wikipedia.org/wiki/Instruction_cycle)
 - [Instruction Set Simulator - Wikipedia](https://wikipedia.org/wiki/Instruction_set_simulator)
+- [Fetch-Decode-Execute - Wikipedia](https://wikipedia.org/wiki/Instruction_cycle)
+- [setTimeout API](https://developer.mozilla.org/docs/Web/API/Window/setTimeout)
+- [Event Loop](https://developer.mozilla.org/docs/Web/JavaScript/Event_loop)
+- [Zero Delays - MDN](https://developer.mozilla.org/docs/Web/JavaScript/Event_loop#zero_delays)
+

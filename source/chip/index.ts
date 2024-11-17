@@ -1,6 +1,8 @@
 import { int } from "../common";
 import { IDisplayUnit } from "../core";
 
+const BLOCKING_SPEED = -1
+
 export interface Chip {
 	speed: number;
 	reset(): void;
@@ -114,12 +116,18 @@ export class VirtualChip implements Chip {
 
 	run(): void {
 		this.running = true
-		const exec = () => {
-			if (this.running && this.step()) {
-				this.signal = setTimeout(exec, int(this.speed))
+		if (this.speed == BLOCKING_SPEED) {
+			while (this.running) {
+				if (!this.step()) break;
 			}
+		} else {
+			const exec = () => {
+				if (this.running && this.step()) {
+					this.signal = setTimeout(exec, int(this.speed))
+				}
+			}
+			exec()
 		}
-		exec()
 	}
 }
 
