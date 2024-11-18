@@ -84,3 +84,25 @@ $('#import')!.onclick = () => {
 	}
 	inputfile.click()
 }
+
+$('#preview')!.onclick = () => {
+	const area = $('#previewArea')!
+	area.innerHTML = ''
+	area.classList.add('characters')
+	const views: HTMLElement[] = []
+	for(const x of charset) {
+		const box = h('div', `<div>${x.char.replace(' ', 'SPACE')}</div>`)
+		if (font.has(x.bin)) {
+			const d = new DisplayUnit(box, {
+				size: 10,
+				active: false,
+				controls: false
+			})
+			d.import(font.get(x.bin))
+		} else {
+			box.append(h('div', '<i>not found</i>'))
+		}
+		views.push(box)
+	}
+	area.append(...views)
+}

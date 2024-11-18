@@ -13,21 +13,39 @@
 				border-width: 10px;
 			}
 
-			#charset {
+			#char {
+				font-size: large;
+				padding-left: 10px;
+				padding-right: 10px;
+				margin-right: 10px;
+			}
+
+			.characters {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
 				gap: 2px;
 				padding: 10px;
 				text-align: center;
 			}
 
-			#charset > * {
+			.characters > * {
 				font-weight: bold;
+			}
+
+			#charset {
+				grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
 			}
 
 			input {
 				padding: 4px 8px;
 				margin-bottom: 1rem;
+			}
+
+			.preview {
+				padding: 20px;
+			}
+
+			#previewArea {
+				grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 			}
 			</style>
 
@@ -48,6 +66,9 @@
 					<h3>
 						<span>Edit Character</span>
 						<span id="char" class="highlight"></span>
+						<button id="save">Save</button>
+						<div>
+						</div>
 					</h3>
 					<div id="root"></div>
 					<div>
@@ -61,9 +82,8 @@
 					<div class="box">
 						<h3>Menu</h3>
 						<div id="extras">
-							<button id="save">Save Character</button>
-							<button id="import">Load Font</button>
 							<button id="export">Export Font</button>
+							<button id="import">Load Font</button>
 						</div>
 					</div>
 
@@ -71,7 +91,19 @@
 						<h3>Character Set</h3>
 						<small>Select a character to edit</small>
 					</div>
-					<div id="charset"></div>
+					<div id="charset" class="characters"></div>
+				</div>
+			</div>
+
+			<div class="preview">
+				<h3>
+					<span>Font Preview</span>
+					<button id="preview">Refresh</button>
+				</h3>
+				<div id="previewArea">
+					<p>
+						<i>Click </i> <span class="highlight">Refresh</span> <i>to load a preview of each character</i>
+					</p>
 				</div>
 			</div>
 		</div>
