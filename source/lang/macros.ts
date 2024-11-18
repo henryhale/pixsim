@@ -1,6 +1,6 @@
 import { int, range } from "../common"
 import { tokenize } from "./tokenize"
-import { bresenham } from "./helpers"
+import { bresenhamArc, bresenhamLine } from "./helpers"
 
 
 const MACRO_ID = '@'
@@ -55,7 +55,15 @@ export const macros: IMacros = {
 	},
 	DRAWLINE: (x0, y0, x1, y1) => {
 		const result: string[] = []
-		const points = bresenham(x0, y0, x1, y1)
+		const points = bresenhamLine(x0, y0, x1, y1)
+		for (const [x,y] of points) {
+			result.push(`MOVX ${x}`, `MOVY ${y}`, 'SET 1')
+		}
+		return result
+	},
+	STROKEARC: (cx, cy, r, startAngle, endAngle) => {
+		const result: string[] = []
+		const points = bresenhamArc(cx, cy, r, startAngle, endAngle)
 		for (const [x,y] of points) {
 			result.push(`MOVX ${x}`, `MOVY ${y}`, 'SET 1')
 		}
