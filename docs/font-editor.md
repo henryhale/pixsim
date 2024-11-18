@@ -4,14 +4,14 @@
 
 The font editor is a tool designed for creating and managing bitmap fonts for the [display simulator](./display-unit.md) basing on it's [character set](./charset.md).
 
-It allows for designing the appearances of the characters and export the graphical representation of each as a bitmap in one single json file.
+It allows for designing the appearances of the characters and export the graphical representation of each as a bitmap in one single `*.font.json` file.
 
 - Each character is exported as a bitmap containing the details on how it will be rendered. 
 - The exported font file contains a JSON string whose keys are correspond to the character's unique id (in binary) from the supported [character set](./charset.md).
 
 The editor provides features to visually edit character bitmaps, manage character sets, and preview the font in real-time. The tool allows exporting fonts in a compact format, including essential metadata like character dimensions and mapping to [character codes](./charset.md#character-codes). This ensures compatibility with the simulator's rendering engine while minimizing file size. Additionally, the editor supports importing previously exported fonts for further modifications or updates, enabling iterative font design and refinement.
 
-> Technically, computer font files are typically in binary format. They contain information necessary to render and display typefaces on screens or print for example;
+> Technically, computer font files are typically stored in binary format. They contain information necessary to render and display typefaces on screens or print for example;
 > - font name (e.g. "Times New Roman")
 > - font style (e.g. "Bold" or "Italic" or "Regular")
 > - font version
@@ -20,17 +20,29 @@ The editor provides features to visually edit character bitmaps, manage characte
 > - glyph outlines (vector shapes or bitmaps)
 > - hinting (for rendering at small sizes)
 > 
-> With the Font editor, focus is directed towards being as basic/minimal as possible while illustrating would-be approach for real-world use/standards/convention.
+> With the Font Editor, focus is directed towards being as basic/minimal as possible while illustrating the would-be approach for real-world use/standards/convention.
 
 ## Designing a Font
+
+Here's what you need to know before designing a PixSim font using the [Font Editor](https://henryhale.github.io/pixsim/font.html). The following are some of the important controls;
+- `cols`: represents **the width of a character**. Adjust it accordingly for each character. Adding line or character spacing for each character is not recommended. The text renderer will take care of that.
+- `rows`: represents **the height of a character**. **Keep this value constant for all characters**. Why? For now, it ensures that the line height of the text matches for all characters and therefore easy to track and render text on a new line.
+- `invert`: switches selected pixels off and vice versa. Be sure that this affects the exported font and it's not recommended to change it's default state.
+- `reset`: useful for resetting the display before working on a new character
+- `size`: useful for viewing a character at different scales. This is not exported as a part of the font.
+- Theming: just like `size`, it's not exported; that's for you
+
+### Default Font
+
+Once the Font Editor is loaded, the default font - **Penta** illustrates the nature and design of characters. It is 5-pixel bitmap font which means that each character has a maximum height of 5 filled pixels.
 
 ### New Font
 
 To design a **new** font with this tool;
-1. select the character to design
-2. adjust the display's properties to appropriate size: `cols` & `rows`
-3. create a graphical representation of the character by toggling on appropriate pixels
-4. Under the `Menu` section, select `Save Character` to save the character
+1. Select the character to design
+2. Adjust the display's properties to appropriate size: mainly `cols` 
+3. Create a graphical representation of the character by toggling on appropriate pixels
+4. Click `Save` to save the character
 5. Repeat steps 1-4 for all characters
 6. Under the `Metadata` section, fill in the details
 7. Select `Export Font` under the `Menu` section to download & save the font locally.
@@ -38,9 +50,10 @@ To design a **new** font with this tool;
 ### Update Existing Font
  
 To modify an already exported font;
-1. Select `Load Font` under the menu section
+1. Select `Load Font` under the `Menu` section
 2. A file access window will popup, locate and select the font file
 3. Now, follow the [above steps](#new-font) to modify characters in the font 
+4. To preview the font, select `Refresh` under `Font Preview` section.
 
 ## Implementation
 

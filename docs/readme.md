@@ -10,7 +10,7 @@ Based on the assembly language, the instruction set architecture(ISA) is designe
 Finally, the display unit's chip, that will execute each instruction in the ISA, is designed and tested using test programs written in our assembly-like language.
 
 >[!NOTE]
->Each component of this simulation uses web technologies: HTML, CSS, JavaScript/TypeScript.
+>Each component of this simulation uses web technologies: HTML, CSS, JavaScript/TypeScript and primarily designed for desktop use.
 >This allows for easy and quick access for everyone on any platform using a web browser.
 >It implies that the limitations(like performance) of the simulation are tightly bounded by browser's abilities.  
 

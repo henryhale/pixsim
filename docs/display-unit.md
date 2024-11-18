@@ -24,7 +24,7 @@ To create a new display unit, the dimensions (cols & rows) are required.
 
 Other features included for personalization:
 - `size`: the dimensions of the square-shaped pixel
-- `lines`: whether or not to show gaps between each pixel
+- `show grid`: whether or not to show gaps between each pixel
 - `theme`: specifies the color scheme of the pixels, default is black(off) and white(on)
 
 ### Actions
@@ -41,7 +41,9 @@ The display unit is the core components in this simulation. Other components do 
 - Initializing a grid of pixels 
 - Manipulation of pixel one at a time (toggling on/off)
 - Customization of the layout, size and color/theme of the pixels
-- Keyboard navigation when active (arrow keys - navigate, space/enter toggle state)
+- Keyboard navigation when active;
+	- Arrow keys - for navigation: <kbd>UP</kbd>, <kbd>DOWN</kbd>, <kbd>LEFT</kbd>, <kbd>RIGHT</kbd>
+	- <kbd>Space</kbd> or <kbd>Enter</kbd> - toggle a pixel's state
 
 ## Implementation
 
