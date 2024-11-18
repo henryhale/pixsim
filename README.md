@@ -39,7 +39,7 @@ The scope of this project lies in simulating how the monitor/screen works. More 
 
 ## Documentation
 
-To learn more about the implementation details, check out the [docummentation](./docs/index.md).
+To learn more about the implementation details, check out the [documentation](./docs/index.md).
 
 ## Background
 
