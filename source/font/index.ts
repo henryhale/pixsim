@@ -1,6 +1,8 @@
 import DisplayUnit from "../core"
 import { $, createUUID, downloadBlob, h } from "../common"
 import { ICharset, charset } from "./charset"
+import { Font } from "./type"
+import Penta from "./Penta.font.json"
 
 const display = new DisplayUnit($('#root')!, {
 	rows: 5,
@@ -12,18 +14,20 @@ const display = new DisplayUnit($('#root')!, {
 
 const font = new Map()
 let cbin: string
-
-$('#save')!.onclick = () => {
-	if (!cbin) return
-	const s = display.export()
-	font.set(cbin, s)
+const el = {
+	save: $('#save')!,
+	charset: $('#charset')!,
+	char: $('#char')!,
+	fontName: $<HTMLInputElement>('#fontName')!,
+	fontAuthor: $<HTMLInputElement>('#fontAuthor')!,
+	export: $('#export')!,
+	import: $('#import')!,
+	preview: $('#preview')!,
+	previewArea: $('#previewArea')!,
 }
 
-const box = $('#charset')!
-initCharset(charset)
-
 function initCharset(set: ICharset[]) {
-	box.innerHTML = ''
+	el.charset.innerHTML = ''
 	for (const x of set) {
 		const c = x.char.replace(' ', '&nbsp;')
 		const btn = h('button', c)
@@ -31,21 +35,40 @@ function initCharset(set: ICharset[]) {
 		btn.dataset.char = x.char
 		btn.onclick = () => {
 			cbin = btn.dataset.bin!
-			$('#char')!.textContent = btn.dataset.char!.replace(' ', 'SPACE')
+			el.char.textContent = btn.dataset.char!.replace(' ', 'SPACE')
 			if (font.has(btn.dataset.bin)) {
 				display.import(font.get(btn.dataset.bin))
 			}
 			window.scrollTo(0, 0)
 		}
 		if (x.char === ' ') btn.click()
-		box.append(btn)
+		el.charset.append(btn)
 	}
 }
 
-$('#export')!.onclick = () => {
-	const name = $<HTMLInputElement>('#fontname')!.value || createUUID()
-	const author = $<HTMLInputElement>('#fontauthor')!.value || 'anonymous'
-	const contents = JSON.stringify({
+function loadFont(importedFont: Font) {
+	const { name = '', author = '', codes = {} } = importedFont
+	font.clear()
+	el.fontName.value = name 
+	el.fontAuthor.value = author
+	charset.forEach(c => {
+		if (codes[c.bin]) {
+			const bitmap = codes[c.bin]
+			font.set(c.bin, bitmap)
+		}
+	})
+}
+
+el.save.onclick = () => {
+	if (!cbin) return
+	const s = display.export()
+	font.set(cbin, s)
+}
+
+el.export.onclick = () => {
+	const name = el.fontName.value || createUUID()
+	const author = el.fontAuthor.value || 'anonymous'
+	const fontData: Font = {
 		name,
 		author,
 		date: new Date().toDateString(),
@@ -53,11 +76,12 @@ $('#export')!.onclick = () => {
 			x[c[0]] = c[1]
 			return x
 		}, {} as Record<string, string>)
-	})
+	}
+	const contents = JSON.stringify(fontData)
 	downloadBlob(name + '.font.json', new Blob([contents], { type: "application/json" }))
 }
 
-$('#import')!.onclick = () => {
+el.import.onclick = () => {
 	const inputfile = h<HTMLInputElement>('input')
 	inputfile.type = 'file'
 	inputfile.accept = 'application/json'
@@ -66,16 +90,8 @@ $('#import')!.onclick = () => {
 		const reader = new FileReader()
 		reader.onload = () => {
 			try {
-				const {name, author, codes} = JSON.parse(reader.result as string)
-				font.clear()
-				$<HTMLInputElement>('#fontname')!.value = name 
-				$<HTMLInputElement>('#fontauthor')!.value = author
-				charset.forEach(c => {
-					if (codes[c.bin]) {
-						const bitmap = codes[c.bin]
-						font.set(c.bin, bitmap)
-					}
-				})
+				const font = JSON.parse(reader.result as string) as Font
+				loadFont(font)
 			} catch (error) {
 				console.error('invalid font file', error)
 			}
@@ -85,10 +101,9 @@ $('#import')!.onclick = () => {
 	inputfile.click()
 }
 
-$('#preview')!.onclick = () => {
-	const area = $('#previewArea')!
-	area.innerHTML = ''
-	area.classList.add('characters')
+el.preview.onclick = () => {
+	el.previewArea.innerHTML = ''
+	el.previewArea.classList.add('characters')
 	const views: HTMLElement[] = []
 	for(const x of charset) {
 		const box = h('div', `<div>${x.char.replace(' ', 'SPACE')}</div>`)
@@ -104,5 +119,11 @@ $('#preview')!.onclick = () => {
 		}
 		views.push(box)
 	}
-	area.append(...views)
+	el.previewArea.append(...views)
 }
+
+// initialize character set
+initCharset(charset)
+
+// load default font - Penta
+loadFont(Penta)
