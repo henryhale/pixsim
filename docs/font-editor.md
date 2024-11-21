@@ -65,7 +65,9 @@ some of the important controls;
 
 Once the Font Editor is loaded, the default font - **Penta** illustrates the
 nature and design of characters. It is 5-pixel bitmap font which means that each
-character has a maximum height of 5 filled pixels.
+character has a maximum height of 5 filled pixels. Letter and line spacing is
+not included for each character. View font file:
+[Penta](../source/font/Penta.font.json)
 
 ### New Font
 
