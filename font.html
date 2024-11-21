@@ -44,6 +44,12 @@
 				padding: 20px;
 			}
 
+			@media screen and (min-width: 900px) {
+				.preview {
+					grid-column: span 2 / span 2;
+				}
+			}
+
 			#previewArea {
 				grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 			}
@@ -51,9 +57,10 @@
 
 		<nav>
 			<h2>
-				<a href="/pixsim/">PixSim</a>
+				<a href="/pixsim/">👾 PixSim</a>
 				/ Font Editor
 			</h2>
+			<a href="#guide">Guide</a>
 			<a
 				target="_blank"
 				href="https://github.com/henryhale/pixsim/blob/master/docs/font-editor.md"
@@ -94,20 +101,49 @@
 				</div>
 				<div id="charset" class="characters"></div>
 			</div>
-		</div>
-
-		<div class="preview">
-			<h3>
-				<span>Font Preview</span>
-				<button id="preview">Refresh</button>
-			</h3>
-			<div id="previewArea">
-				<p>
-					<i>Click </i> <span class="highlight">Refresh</span>
-					<i>to load a preview of each character</i>
-				</p>
+			<div class="preview">
+				<h3>
+					<span>Font Preview</span>
+					<button id="preview">Refresh</button>
+				</h3>
+				<div id="previewArea">
+					<p>
+						<i>Click </i> <span class="highlight">Refresh</span>
+						<i>to load a preview of each character</i>
+					</p>
+				</div>
+			</div>
+			<div id="guide" class="preview">
+				<h4>Guide: How to create a font or modify an existing one?</h4>
+				<details>
+					<summary>View details</summary>
+					<b>Design a New Font</b>
+					<br>
+					To design a new font with this tool;
+					<ol>
+						<li>Select the character to design</li>
+						<li>Adjust the display's properties to appropriate size: fix <b>rows</b> and adjust <b>cols</b> for each character</li>
+						<li>Create a graphical representation of the character by toggling on appropriate pixels</li>
+						<li>Click <b>Save</b> to save the character</li>
+						<li>Repeat steps 1-4 for all characters</li>
+						<li>Under the <b>Metadata</b> section, fill in the details</li>
+						<li>Select <b>Export Font</b> under the <b>Menu</b> section to download & save the font locally</li>
+					</ol>
+					<br>
+					<b>Update Existing Font</b>
+					<br>
+					To modify an already exported font; 
+					<ol>
+						<li>Select <b>Load Font</b> under the <b>Menu</b> section</li>
+						<li>A file access window will popup, locate and select the font file</li>
+						<li>Now, follow the above steps to modify characters in the font</li>
+						<li>To preview the font, select <b>Refresh</b> under <b>Font Preview</b> section</li>
+					</ol>
+				</details>
 			</div>
 		</div>
+
+
 		<script type="module" src="./source/font/index.ts"></script>
 	</body>
 </html>
