@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>PixSim | Font Editor</title>
-		<link rel="shortcut icon" href="/favicon.svg" type="image/xml+svg">
+		<link rel="shortcut icon" href="/favicon.svg" type="image/xml+svg" />
 	</head>
 
 	<body>
@@ -47,64 +47,65 @@
 			#previewArea {
 				grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 			}
-			</style>
+		</style>
 
-		<div id="app">
-			<nav>
-				<h2>
-					<a href="/pixsim/">PixSim</a>
-					/ Font Editor
-				</h2>
-				<a target="_blank"
-					href="https://github.com/henryhale/pixsim/blob/master/docs/font-editor.md"
-					>Docs &#10138;</a
-				>
-			</nav>
+		<nav>
+			<h2>
+				<a href="/pixsim/">PixSim</a>
+				/ Font Editor
+			</h2>
+			<a
+				target="_blank"
+				href="https://github.com/henryhale/pixsim/blob/master/docs/font-editor.md"
+				>Docs &#10138;</a
+			>
+		</nav>
 
-			<div class="layout">
+		<div class="layout">
+			<div>
+				<h3>
+					<span>Edit Character</span>
+					<span id="char" class="highlight"></span>
+					<button id="save">Save</button>
+					<div></div>
+				</h3>
+				<div id="root"></div>
 				<div>
-					<h3>
-						<span>Edit Character</span>
-						<span id="char" class="highlight"></span>
-						<button id="save">Save</button>
-						<div>
-						</div>
-					</h3>
-					<div id="root"></div>
+					<h3>Metadata</h3>
+					<br />
+					<div>Font Name: <input type="text" id="fontName" /></div>
 					<div>
-						<h3>Metadata</h3>
-						<br>
-						<div>Font Name: <input type="text" id="fontName"></div>
-						<div>Font Author: <input type="text" id="fontAuthor"></div>
+						Font Author: <input type="text" id="fontAuthor" />
 					</div>
-				</div>
-				<div>
-					<div class="box">
-						<h3>Menu</h3>
-						<div id="extras">
-							<button id="export">Export Font</button>
-							<button id="import">Load Font</button>
-						</div>
-					</div>
-
-					<div>
-						<h3>Character Set</h3>
-						<small>Select a character to edit</small>
-					</div>
-					<div id="charset" class="characters"></div>
 				</div>
 			</div>
-
-			<div class="preview">
-				<h3>
-					<span>Font Preview</span>
-					<button id="preview">Refresh</button>
-				</h3>
-				<div id="previewArea">
-					<p>
-						<i>Click </i> <span class="highlight">Refresh</span> <i>to load a preview of each character</i>
-					</p>
+			<div>
+				<div class="box">
+					<h3>Menu</h3>
+					<div id="extras">
+						<button id="export">Export Font</button>
+						<button id="import">Load Font</button>
+					</div>
 				</div>
+
+				<div>
+					<h3>Character Set</h3>
+					<small>Select a character to edit</small>
+				</div>
+				<div id="charset" class="characters"></div>
+			</div>
+		</div>
+
+		<div class="preview">
+			<h3>
+				<span>Font Preview</span>
+				<button id="preview">Refresh</button>
+			</h3>
+			<div id="previewArea">
+				<p>
+					<i>Click </i> <span class="highlight">Refresh</span>
+					<i>to load a preview of each character</i>
+				</p>
 			</div>
 		</div>
 		<script type="module" src="./source/font/index.ts"></script>

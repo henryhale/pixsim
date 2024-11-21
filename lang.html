@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>PixSim | Language</title>
-		<link rel="shortcut icon" href="/favicon.svg" type="image/xml+svg">
+		<link rel="shortcut icon" href="/favicon.svg" type="image/xml+svg" />
 	</head>
 
 	<body>
@@ -35,56 +35,56 @@
 				padding: 5px;
 			}
 		</style>
-		<div id="app">
-			<nav>
-				<h2>
-					<a href="/pixsim/">PixSim</a>
-					/ Language
-				</h2>
-				<a target="_blank"
-					href="https://github.com/henryhale/pixsim/blob/master/docs/language.md"
-					>Docs &#10138;</a
-				>
-			</nav>
 
-			<div class="layout">
+		<nav>
+			<h2>
+				<a href="/pixsim/">PixSim</a>
+				/ Language
+			</h2>
+			<a
+				target="_blank"
+				href="https://github.com/henryhale/pixsim/blob/master/docs/language.md"
+				>Docs &#10138;</a
+			>
+		</nav>
+
+		<div class="layout">
+			<div>
+				<h3>Assembly Code</h3>
+				<textarea></textarea>
 				<div>
-					<h3>Assembly Code</h3>
-					<textarea></textarea>
-					<div>
-						<button type="button" id="assemble">1️⃣ Assemble</button>
-						<button type="button" id="run">2️⃣ Run</button>
-						<button type="button" id="step">Step</button>
-						<button type="button" id="reset">Reset</button>
-					</div>
-					<h3>Machine Code</h3>
-					<div id="machinecode">
-						<i>assemble to view machine code</i>
-					</div>
-					<div>
-						<h3>Share</h3>
-						<div id="extras">
-							<button id="share">Copy Link to Clipboard</button>
-						</div>
-					</div>
+					<button type="button" id="assemble">1️⃣ Assemble</button>
+					<button type="button" id="run">2️⃣ Run</button>
+					<button type="button" id="step">Step</button>
+					<button type="button" id="reset">Reset</button>
 				</div>
-				<div>
-					<h3>
-						<span>Display Unit</span>
-						<span>
-							<span>Clock Speed</span>
-							<select id="speed">
-								<option value="-1" selected>MAX-2</option>
-								<option value="0">MAX-1</option>
-								<option value="1">1000Hz</option>
-								<option value="10">100Hz</option>
-								<option value="100">10Hz</option>
-							</select>
-						</span>
-					</h3>
-					<div id="display" tabindex="0"></div>
+				<h3>Machine Code</h3>
+				<div id="machinecode">
+					<i>assemble to view machine code</i>
 				</div>
-			</main>
+			</div>
+			<div>
+				<h3>
+					<span>Display Unit</span>
+					<span>
+						<span>Clock Speed</span>
+						<select id="speed">
+							<option value="-1" selected>MAX-2</option>
+							<option value="0">MAX-1</option>
+							<option value="1">1000Hz</option>
+							<option value="10">100Hz</option>
+							<option value="100">10Hz</option>
+						</select>
+					</span>
+				</h3>
+				<div id="display" tabindex="0"></div>
+			</div>
+			<div>
+				<h3>Share</h3>
+				<div id="extras">
+					<button id="share">Copy Link to Clipboard</button>
+				</div>
+			</div>
 		</div>
 		<script type="module" src="./source/lang/index.ts"></script>
 	</body>
