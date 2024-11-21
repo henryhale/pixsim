@@ -8,7 +8,7 @@ this part, focus will be on drawn to implementing the basic characters only.
 Suppose that we want to display text on the display;
 
 -   how do we uniquely identify each character signal and then manipulate pixels
-    to create a visual illustration of the character itself?
+    to create a visual illustration of the character (glyph) itself?
 
 Well, this is where fonts come into play. But first, we need to list all
 characters to support and tag them.
@@ -32,7 +32,7 @@ The size of this character set is 64. This is small but perfect. Because;
 ## Character Codes
 
 Each character in the charset is assigned a unique number so that it can be
-identified and the correct graphical representation renderer.
+identified and the correct graphical representation rendered.
 
 | **Code (Decimal)** | **Code (Hex)** | **Code (Binary)** | **Character** | **Description**         |
 | ------------------ | -------------- | ----------------- | ------------- | ----------------------- | ------------------- |

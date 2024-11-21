@@ -6,8 +6,10 @@ The font editor is a tool designed for creating and managing bitmap fonts for
 the [display simulator](./display-unit.md) basing on it's
 [character set](./charset.md).
 
-It allows for designing the appearances of the characters and export the
+It allows for designing glyphs, say the appearances of the characters, and export the
 graphical representation of each as a bitmap in one single `*.font.json` file.
+
+>Glyphs are the visual representations of the characters.
 
 -   Each character is exported as a bitmap containing the details on how it will
     be rendered.
@@ -103,6 +105,7 @@ The font editor's source code under [source/font/](../source/font/) and
 
 ## References
 
+-   [Glyph - Wikipedia](https://wikipedia.org/wiki/Glyph)
 -   [Font - Wikipedia](https://wikipedia.org/wiki/Font)
 -   [Font Editor - Wikipedia](https://wikipedia.org/wiki/Font_editor)
 -   [Computer Font - Wikipedia](https://wikipedia.org/wiki/Computer_font)
