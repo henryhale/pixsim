@@ -62,15 +62,6 @@
 	background: var(--pixel-hover);
 }
 
-.pixsim input:not(input[type=checkbox]) {
-	width: 60px;
-}
-
-.pixsim input,
-.pixsim select {
-	padding: 4px 8px;
-}
-
 .pixsim button {
 	padding: 0.65rem;
 	width: 100%;
@@ -91,8 +82,33 @@
 	padding: 10px;
 }
 
-.pixsim .controls * {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.pixsim .controls > div {
+	padding: 4px;
+}
+
+.pixsim .controls > label {
+  display: flex;
+  flex-direction: column;
+  position: static;
+  width: 100%;
+}
+
+.pixsim .controls > label > span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  position: relative;
+  top: -0.4rem;
+  left: 0rem;
+  margin: 0 0 0 4px;
+  padding: 0 3px;
+  width: fit-content;
+}
+
+.pixsim .controls > label > input:not(input[type=checkbox]) {
+	width: 100%;
+	padding: 6px 8px;
+}
+
+.pixsim .controls > label > input:not(input[type=checkbox]):focus {
+  outline: none;
 }

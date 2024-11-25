@@ -96,7 +96,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		}
 	}
 	private initControls(): HTMLElement[] {
-		const labelrow = h('label', '<span>Rows:&nbsp;</span>')
+		const labelrow = h('label', '<span>Rows</span>')
 		const inputrow = h<HTMLInputElement>('input')
 		inputrow.type = 'number'
 		inputrow.step = '1'
@@ -105,7 +105,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		inputrow.value = '' + this.state.rows
 		labelrow.append(inputrow)
 
-		const labelcol = h('label', '<span>Cols:&nbsp;</span>')
+		const labelcol = h('label', '<span>Cols</span>')
 		const inputcol = h<HTMLInputElement>('input')
 		inputcol.type = 'number'
 		inputcol.step = '1'
@@ -114,7 +114,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		inputcol.value = '' + this.state.cols
 		labelcol.append(inputcol)
 
-		const labelsize = h('label', '<span>Size:&nbsp;</span>')
+		const labelsize = h('label', '<span>Size</span>')
 		const inputsize = h<HTMLInputElement>('input')
 		inputsize.type = 'number'
 		inputsize.step = '1'
@@ -129,9 +129,10 @@ export default class DisplayUnit implements IDisplayUnit {
 		inputtheme.value = this.state.theme
 		labeltheme.append(inputtheme)
 
-		const labellines = h('label', '<span>Show Grid&nbsp;</span>')
+		const labellines = h('div', '<label for="showgrid">Show Grid&nbsp;</label>')
 		const inputlines = h<HTMLInputElement>('input')
 		inputlines.type = 'checkbox'
+		inputlines.id = 'showgrid'
 		if (this.state.lines) inputlines.setAttribute('checked', 'true')
 		labellines.append(inputlines)
 
@@ -188,7 +189,7 @@ export default class DisplayUnit implements IDisplayUnit {
 		this.inputs.row = inputrow
 		this.inputs.col = inputcol
 
-		return [labelcol, labelrow, labelsize, labellines, labeltheme, labelinvert, labelclrscr]
+		return [labelcol, labelrow, labelsize, labeltheme, labelinvert, labelclrscr, labellines]
 	}
 	private renderPixels() {
 		this.grid.innerHTML = ''
