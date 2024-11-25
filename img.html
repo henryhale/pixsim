@@ -8,6 +8,12 @@
 	</head>
 
 	<body>
+		<style>
+			main {
+				padding: 2rem 10px;
+			}
+		</style>
+
 		<nav>
 			<h2>
 				<a href="/pixsim/">👾 PixSim</a>
@@ -20,31 +26,27 @@
 			>
 		</nav>
 
-		<div class="layout">
-			<div>
-				<div id="img-gen"></div>
-			</div>
-			<div>
-				<h4>Guide:</h4>
-				<ol>
-					<li>Select one pixel</li>
-					<li>
-						Use arrow keys(<span class="highlight">UP</span>,
-						<span class="highlight">DOWN</span>,
-						<span class="highlight">LEFT</span>,
-						<span class="highlight">RIGHT</span>) for quick
-						navigation
-					</li>
-					<li>
-						Use <span class="highlight">SPACE</span> or
-						<span class="highlight">ENTER</span> key to toggle pixel
-						state
-					</li>
-				</ol>
-				<h4>Download:</h4>
-				<div id="extras"></div>
-			</div>
-		</div>
+		<main style="padding: 2rem 10px;">
+			<div id="img-gen"></div>
+			<h4>Guide:</h4>
+			<ol>
+				<li>Select one pixel</li>
+				<li>
+					Use arrow keys(<span class="highlight">UP</span>,
+					<span class="highlight">DOWN</span>,
+					<span class="highlight">LEFT</span>,
+					<span class="highlight">RIGHT</span>) for quick
+					navigation
+				</li>
+				<li>
+					Use <span class="highlight">SPACE</span> or
+					<span class="highlight">ENTER</span> key to toggle pixel
+					state
+				</li>
+			</ol>
+			<h4>Download:</h4>
+			<div id="extras" class="extras"></div>
+		</main>
 
 		<script type="module" src="./source/img/index.ts"></script>
 	</body>

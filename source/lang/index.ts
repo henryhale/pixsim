@@ -1,8 +1,10 @@
 import { VirtualChip } from "../chip"
 import { $, int, limit } from "../common"
 import DisplayUnit from "../core"
+import { initButtons } from "../img/btns"
 import { assemble } from "./assembler"
 
+// init configuration 
 const config = {
 	code: '',
 	rows: 64,
@@ -30,6 +32,7 @@ const el = {
 	machinecode: $('#machinecode')!,
 	assemble: $('#assemble')!,
 	sharebtn: $('#share')!,
+	export: $('#export')!,
 	textarea: $<HTMLTextAreaElement>('textarea')!,
 	speed: $<HTMLInputElement>('#speed')!
 }
@@ -102,6 +105,10 @@ el.sharebtn.onclick = async () => {
 	}
 }
 
+// add export options
+el.export.append(...initButtons(display))
+
+// load default/shared code
 config.code = config.code || `; example program
 
 RESET ; clear screen
