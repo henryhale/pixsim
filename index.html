@@ -80,16 +80,18 @@
 		</div>
 
 		<script type="module">
-			import { $ } from "./source/common"
+			import { $, screen } from "./source/common";
 			import DisplayUnit from "./source/core";
 
-			new DisplayUnit($('#display'), {
+			const display = new DisplayUnit($('#display'), {
 				rows: 25,
 				cols: 25,
 				size: 15,
 				active: true,
 				controls: true,
 			});
+
+			display.import(screen);
 		</script>
 	</body>
 </html>
