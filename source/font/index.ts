@@ -7,7 +7,7 @@ import Penta from "./Penta.font.json"
 const display = new DisplayUnit($('#root')!, {
 	rows: 5,
 	cols: 7,
-	size: 16,
+	size: 20,
 	active: true,
 	controls: true
 })

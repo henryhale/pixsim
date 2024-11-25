@@ -42,7 +42,7 @@ const display = new DisplayUnit($('#display')!, {
 	lines: false
 })
 
-const chip = new VirtualChip(display, 100)
+const chip = new VirtualChip(display, -1)
 
 // activate controls
 el.speed.onchange = () => {

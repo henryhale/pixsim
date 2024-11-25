@@ -27,7 +27,7 @@
 }
 
 .pixsim .grid {
-	border: 5px solid var(--grid-border);
+	border: 5px ridge var(--grid-border);
 	background-color: var(--grid-bg);
 }
 
