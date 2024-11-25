@@ -1,8 +1,9 @@
 import { VirtualChip } from "../chip"
-import { $, int, limit } from "../common"
+import { $, h, int, limit } from "../common"
 import DisplayUnit from "../core"
 import { initButtons } from "../img/btns"
 import { assemble } from "./assembler"
+import { snippetMap, snippets } from "./examples"
 
 // init configuration 
 const config = {
@@ -33,6 +34,7 @@ const el = {
 	assemble: $('#assemble')!,
 	sharebtn: $('#share')!,
 	export: $('#export')!,
+	examples: $<HTMLSelectElement>('#examples')!,
 	textarea: $<HTMLTextAreaElement>('textarea')!,
 	speed: $<HTMLInputElement>('#speed')!
 }
@@ -107,6 +109,16 @@ el.sharebtn.onclick = async () => {
 
 // add export options
 el.export.append(...initButtons(display))
+
+// add code examples
+snippets.forEach((s) => {
+	const option = h<HTMLOptionElement>('option', s.title)
+	option.value = s.id.toString()
+	el.examples.append(option)
+})
+el.examples.onchange = () => {
+	el.textarea.value = snippetMap.get(el.examples.value)!
+}
 
 // load default/shared code
 config.code = config.code || `; example program
