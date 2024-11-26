@@ -79,10 +79,8 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
-	max-width: 800px;
-	margin: 0 auto;
 	padding: 1rem;
+	border-bottom: 1px solid;
 }
 
 nav h2 {
@@ -90,16 +88,21 @@ nav h2 {
 }
 
 nav > *:not(:last-child) {
-	margin-right: 4rem;
+	margin-right: 2rem;
 }
 
 .layout {
 	display: grid;
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 	gap: 10px;
-	max-width: 1300px;
-	margin: 0 auto;
 	padding: 2rem 1rem;
+}
+
+nav,
+.layout {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 @media screen and (min-width: 900px) {
