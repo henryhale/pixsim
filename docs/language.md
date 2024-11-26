@@ -77,15 +77,15 @@ implemented, reusable functions that do the ~hard~ stuff built on top of
 To distinguish builtin macros from instructions, the `@` sign is prefix as an
 identifier of every macro statement.
 
-|              | **Macro**                                      | **Description**                                                                                                          |
-| :----------: | :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| - [ ] &nbsp; | @DRAWCHAR <code>                               | Renders a single character starting from the cursor's current position                                                   |
-| - [x] &nbsp; | @DRAWLINE <x1> <y1> <x2> <y2>                  | Draws a line from (`<x0>`, `<y0>`) to (`<x1>`, `<y1>`) using Bresenham's line algorithm                                  |
-| - [x] &nbsp; | @FILLRECT <x> <y> <w> <h>                      | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
-| - [x] &nbsp; | @STROKERECT <x> <y> <w> <h>                    | Resets/clears the area in the rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)             |
-| - [x] &nbsp; | @CLEARRECT <x> <y> <w> <h>                     | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
-| - [ ] &nbsp; | @FILLARC <x> <y> <r> <startAngle> <endAngle>   | Draws a filled arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg    |
-| - [x] &nbsp; | @STROKEARC <x> <y> <r> <startAngle> <endAngle> | Draws an outlined arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg |
+|     | **Macro**                                      | **Description**                                                                                                          |
+| :-: | :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
+| ⬜️ | @DRAWCHAR <code>                               | Renders a single character starting from the cursor's current position                                                   |
+| ✅  | @DRAWLINE <x1> <y1> <x2> <y2>                  | Draws a line from (`<x0>`, `<y0>`) to (`<x1>`, `<y1>`) using Bresenham's line algorithm                                  |
+| ✅  | @FILLRECT <x> <y> <w> <h>                      | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
+| ✅  | @STROKERECT <x> <y> <w> <h>                    | Resets/clears the area in the rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)             |
+| ✅  | @CLEARRECT <x> <y> <w> <h>                     | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
+| ⬜️ | @FILLARC <x> <y> <r> <startAngle> <endAngle>   | Draws a filled arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg    |
+| ✅  | @STROKEARC <x> <y> <r> <startAngle> <endAngle> | Draws an outlined arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg |
 
 <!--     | - [ ] &nbsp;| @ROTATE <value>| Rotates the bitmap grid by the specified number of degrees (e.g., 90, 180, 270) | -->
 <!-- - `GETQ`: Retrives and stores the state of the current pixel to the accumulator -->

@@ -35,7 +35,7 @@ Each character in the charset is assigned a unique number so that it can be
 identified and the correct graphical representation rendered.
 
 | **Code (Decimal)** | **Code (Hex)** | **Code (Binary)** | **Character** | **Description**         |
-| ------------------ | -------------- | ----------------- | ------------- | ----------------------- | ------------------- |
+| ------------------ | -------------- | ----------------- | ------------- | ----------------------- |
 | 0                  | 0x00           | 000000            | Space         | Whitespace (space)      |
 | 1                  | 0x01           | 000001            | A             | Uppercase A             |
 | 2                  | 0x02           | 000010            | B             | Uppercase B             |
@@ -85,7 +85,7 @@ identified and the correct graphical representation rendered.
 | 46                 | 0x2E           | 101110            | <             | Less-than sign          |
 | 47                 | 0x2F           | 101111            | >             | Greater-than sign       |
 | 48                 | 0x30           | 110000            | /             | Slash/Forward Slash     |
-| 49                 | 0x31           | 110001            |               |                         | Pipe (vertical bar) |
+| 49                 | 0x31           | 110001            | \|            | Pipe (vertical bar)     |
 | 50                 | 0x32           | 110010            | [             | Left square bracket     |
 | 51                 | 0x33           | 110011            | ]             | Right square bracket    |
 | 52                 | 0x34           | 110100            | =             | Equals sign             |
