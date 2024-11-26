@@ -1,5 +1,5 @@
 import { VirtualChip } from "../chip"
-import { $, h, int, limit } from "../common"
+import { $, h, int, limit, url } from "../common"
 import DisplayUnit from "../core"
 import { initButtons } from "../img/btns"
 import { assemble } from "./assembler"
@@ -14,9 +14,7 @@ const config = {
 }
 
 try {
-	const params = new URLSearchParams(window.location.search)
-	const str = decodeURI(params.get('c') || '')
-	const c = JSON.parse(str)
+	const c = url.decode()
 	config.code = c.code
 	config.rows = int(c.rows, config.rows)
 	config.cols = int(c.cols, config.cols)
@@ -87,13 +85,12 @@ el.assemble.onclick = () => {
 
 el.sharebtn.onclick = async () => {
 	el.sharebtn.setAttribute('disabled', 'true')
-	const sharedConfig = JSON.stringify({
+	const link = url.encode({
 		code: el.textarea.value,
 		rows: display.rows,
 		cols: display.cols,
 		size: display.size
 	})
-	const link = window.location.origin + window.location.pathname + '?c=' + encodeURI(sharedConfig)
 	try {
 		await window.navigator.clipboard.writeText(link)
 		el.sharebtn.textContent = 'Copied!'
@@ -121,7 +118,7 @@ el.examples.onchange = () => {
 }
 
 // load default/shared code
-config.code = config.code || `; example program
+config.code = config.code || `; program: brick game character
 
 RESET ; clear screen
 
