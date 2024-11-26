@@ -1,4 +1,50 @@
 const code = [
+`; program: learn the basics
+
+; comments start with a semicolon
+
+RESET ; clear screen
+
+; example: brick game character
+
+; move cursor to point (30,30)
+MOVX 30 
+MOVY 30
+
+; turn on pixel - head
+SET 1
+
+; from current position,
+; move down by 1 unit
+; to point (30, 31)
+ADDY 1
+SET 1
+
+; point (31, 31)
+ADDX 1
+SET 1
+
+; point (31, 32)
+ADDY 1
+SET 1
+
+; point (29, 32)
+SUBX 2
+SET 1
+
+; point (29, 31)
+SUBY 1
+SET 1
+
+; end character
+
+NOOP ; do nothing
+NOOP
+INVERT ; invert screen state
+NOOP
+NOOP
+
+`,
 `; program: blank
 
 `,
