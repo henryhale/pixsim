@@ -8,8 +8,8 @@ export the image in SVG or PNG format.
 
 The process involves transforming the pixel states into a bitmap which is then
 transformed into squares whose size is equal to an individual pixel's. The
-square is colored basing on the current theme. For PNG, the squares are rendered
-on an Offscreen canvas element, transformed into a Blob of type `image/png` and
+square is colored basing on the current theme. For PNG/JPEG/WEBP, the squares are rendered
+on an Offscreen canvas element, transformed into a Blob of type `image/png` or `image/jpeg` or `image/webp` and
 finally downloaded. In case of SVG, `<rect>` elements are used to create pixel
 representations, then to a blob of type `image/svg+xml` and finally downloaded.
 
