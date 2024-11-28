@@ -38,10 +38,8 @@ export async function generateImageBlob(display: IDisplayUnit, imageType: string
 
 	// use offscreen canvas to generate an image
 	const canvas = new OffscreenCanvas(width, height)
-
-	// clear canvas
 	const ctx = canvas.getContext('2d')!
-	ctx.clearRect(0, 0, width, height)
+	
 	// render pixels
 	for (const p of renderQueue) {
 		ctx.save()
@@ -55,7 +53,7 @@ export async function generateImageBlob(display: IDisplayUnit, imageType: string
 		ctx.restore()
 	}
 
-	// generate an image: png, jpg, webp
+	// generate an image blob: png, jpg, webp
 	const image = await canvas.convertToBlob({ type: `image/${imageType}` })
 	
 	return image
