@@ -1,5 +1,5 @@
 import DisplayUnit from "../core"
-import { $, createUUID, downloadBlob, h } from "../common"
+import { $, createUUID, downloadBlob, getFontFile, h } from "../common"
 import { ICharset, charset } from "./charset"
 import { Font } from "./type"
 import Penta from "./Penta.font.json"
@@ -81,24 +81,10 @@ el.export.onclick = () => {
 	downloadBlob(name + '.font.json', new Blob([contents], { type: "application/json" }))
 }
 
-el.import.onclick = () => {
-	const inputfile = h<HTMLInputElement>('input')
-	inputfile.type = 'file'
-	inputfile.accept = 'application/json'
-	inputfile.onchange = (ev: Event) => {
-		const file = (ev.target as any).files[0]
-		const reader = new FileReader()
-		reader.onload = () => {
-			try {
-				const font = JSON.parse(reader.result as string) as Font
-				loadFont(font)
-			} catch (error) {
-				console.error('invalid font file', error)
-			}
-		}
-		reader.readAsText(file, 'ascii')
-	}
-	inputfile.click()
+el.import.onclick = async () => {
+	await getFontFile()
+	.then(font => loadFont(font))
+	.catch(console.error)
 }
 
 el.preview.onclick = () => {
@@ -122,8 +108,9 @@ el.preview.onclick = () => {
 	el.previewArea.append(...views)
 }
 
+// load default font - Penta
+loadFont(Penta)
+
 // initialize character set
 initCharset(charset)
 
-// load default font - Penta
-loadFont(Penta)
