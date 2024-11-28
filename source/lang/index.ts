@@ -4,6 +4,7 @@ import DisplayUnit from "../core"
 import { initButtons } from "../img/btns"
 import { assemble } from "./assembler"
 import { snippetMap, snippets } from "./examples"
+import { initFontSelector } from "../text/font"
 
 // init configuration 
 const config = {
@@ -116,6 +117,9 @@ snippets.forEach((s) => {
 el.examples.onchange = () => {
 	el.textarea.value = snippetMap.get(el.examples.value)!
 }
+
+// activate font selector
+initFontSelector()
 
 // load default/shared code
 config.code = config.code || `; program: brick game character

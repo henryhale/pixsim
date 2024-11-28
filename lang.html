@@ -73,8 +73,8 @@
 				<h3>
 					<span>Display Unit</span>
 					<span>
-						<span>Clock Speed</span>
 						<select id="speed">
+							<option disabled>Clock Speed</option>
 							<option value="-1" selected>MAX-2</option>
 							<option value="0">MAX-1</option>
 							<option value="1">1000Hz</option>
@@ -86,14 +86,22 @@
 				<div id="display" tabindex="0"></div>
 			</div>
 			<div>
-				<h3>Share</h3>
+				<h3>Settings</h3>
 				<div class="extras">
-					<button id="share">Copy Link to Clipboard</button>
+					<span>Font:</span>
+					<select name="" id="font-style">
+						<option value="0">Penta</option>
+					</select>
+					<button id="font-upload">Add PixSim Font</button>
 				</div>
 			</div>
 			<div>
-				<h3>Download</h3>
+				<h3>Export & Share</h3>
 				<div id="export" class="extras"></div>
+				<div class="extras">
+					<p>Share your work with others:</p>
+					<button id="share">📋 Copy Link to Clipboard</button>
+				</div>
 			</div>
 		</div>
 		<script type="module" src="./source/lang/index.ts"></script>
