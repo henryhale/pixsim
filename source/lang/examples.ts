@@ -45,6 +45,60 @@ NOOP
 NOOP
 
 `,
+`; program: macros(graphics)
+
+; macro statements begin with '@' sign
+
+; graphics macros with examples
+
+RESET ; clear screen
+
+; drawing a line
+; from point (10,40) to (50,60)
+@DRAWLINE 10 40 50 60
+
+; draw an outlined rectangle
+; from point (40,4)
+; width = 10, height = 20
+@STROKERECT 40 4 10 20
+
+; draw a filled rectangle
+; from point (1,2)
+; width = 25, height = 20
+@FILLRECT 1 2 25 20
+
+; clear a rectangular area of
+; the filled rectangle above
+; from point (4,5)
+; width - 10
+; height - 15
+@CLEARRECT 4 5 10 15
+
+; draw an outlined arc(sector)
+; center (20, 25)
+; radius = 10
+; angle range (0 deg to 180 deg)
+@STROKEARC 20 25 10 0 180
+
+`,
+`; program: macros(text)
+
+; macro statements begin with '@' sign
+
+; text macros with examples
+
+RESET ; clear screen
+
+; print a character from pixsim charset
+; from point (10, 12)
+; character - A
+@DRAWTEXT 10 12 'A'
+
+; print a string
+; from point (10, 20)
+@DRAWTEXT 10 20 'HELLO!'
+
+`,
 `; program: blank
 
 `,
