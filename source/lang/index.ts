@@ -48,6 +48,9 @@ const display = new DisplayUnit($('#display')!, {
 
 const chip = new VirtualChip(display, -1)
 
+// track executed line using program counter
+let prevExecutedLine: string | undefined
+
 // activate controls
 el.speed.onchange = () => {
 	chip.speed = limit(int(el.speed.value, chip.speed), -1, 100)
@@ -80,9 +83,31 @@ el.assemble.onclick = () => {
 		return
 	}
 	if (!binary) return
-	el.machinecode.innerHTML = binary.map(line => line.slice(0,4) + '&nbsp;&nbsp;' + line.slice(4) + '<br>').join('')
+	el.machinecode.innerHTML = binary.map((line, i) => {
+		// tag every machine code line for tracking
+		return `<div id='mc-${i}'>${line.slice(0,4)}&nbsp;&nbsp;${line.slice(4)}</div>`
+	}).join('')
 	chip.load(binary)
 }
+
+// update executed line for every tick
+chip.onTick(pc => {
+	if (prevExecutedLine) {
+		$(prevExecutedLine)?.classList.remove('executed')
+	}
+	prevExecutedLine = `#mc-${pc}`
+	const element = $(prevExecutedLine)
+	if (element) {
+		element.classList.add('executed')
+		const child = el.machinecode.children[0]
+		if (child && pc != 0) {
+			setTimeout(() => {
+				el.machinecode.scrollBy(0, child.scrollHeight)
+			})
+		}
+	}
+
+})
 
 el.sharebtn.onclick = async () => {
 	el.sharebtn.setAttribute('disabled', 'true')

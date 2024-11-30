@@ -18,7 +18,6 @@
 				font-family: "Courier New", Courier, monospace;
 				font-size: 20px;
 				padding: 10px;
-				border: 1px solid;
 			}
 
 			#machinecode {
@@ -26,6 +25,27 @@
 				height: 200px;
 				overflow-y: auto;
 				border: 1px solid;
+			}
+
+			#machinecode div {
+				position: relative;
+				padding: 0 10px;
+			}
+
+			.executed::before {
+				content: '⬅️';
+				position: absolute;
+				right: 0%;
+			}
+
+			.executed {
+				background-color: #ddd;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				.executed {
+					background-color: black;
+				}
 			}
 
 			#display {
@@ -61,10 +81,12 @@
 				<div>
 					<button type="button" id="assemble">1️⃣ Assemble</button>
 					<button type="button" id="run">2️⃣ Run</button>
-					<button type="button" id="step">Step</button>
-					<button type="button" id="reset">Reset</button>
+					<button style="float: right" type="button" id="reset">Reset</button>
 				</div>
-				<h3>Machine Code</h3>
+				<h3>
+					<span>Machine Code</span>
+					<button type="button" id="step">➜ Step</button>
+				</h3>
 				<div id="machinecode">
 					<i>assemble to view machine code</i>
 				</div>

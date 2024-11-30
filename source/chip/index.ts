@@ -9,6 +9,8 @@ export interface Chip {
 	load(program: string[]): void;
 	step(): boolean;
 	run(): void;
+	// private usage
+	onTick(callback: (pc: number) => void): void;
 }
 
 export class VirtualChip implements Chip {
@@ -19,6 +21,8 @@ export class VirtualChip implements Chip {
 	private signal?: number
 	private registers: Record<string, number>
 	public 	speed: number;
+
+	private tickCallback!: (pc: number) => void;
 
 	constructor(display: IDisplayUnit, speed: number) {
 		this.speed = speed
@@ -61,6 +65,8 @@ export class VirtualChip implements Chip {
 		const arg = instruction.slice(4)
 
 		this.execute(opcode, parseInt(arg, 2))
+
+		this.tickCallback?.call(undefined, this.pc)
 	
 		this.pc++
 		return true
@@ -127,6 +133,12 @@ export class VirtualChip implements Chip {
 				}
 			}
 			exec()
+		}
+	}
+
+	onTick(callback: (pc: number) => void): void {
+		if (typeof callback === 'function') {
+			this.tickCallback = callback
 		}
 	}
 }
