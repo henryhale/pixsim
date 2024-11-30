@@ -1,4 +1,4 @@
-# PixSim | Font Editor
+# 👾 PixSim | Font Editor
 
 ## Overview
 
@@ -6,16 +6,23 @@ The font editor is a tool designed for creating and managing bitmap fonts for
 the [display simulator](./display-unit.md) basing on it's
 [character set](./charset.md).
 
-It allows for designing glyphs, say the appearances of the characters, and export the
-graphical representation of each as a bitmap in one single `*.font.json` file.
+It allows for designing glyphs, say the appearances of the characters, and
+export the graphical representation of each as a bitmap in one single
+`*.font.json` file.
 
->Glyphs are the visual representations of the characters.
+> Glyphs are the visual representations of the characters.
 
 -   Each character is exported as a bitmap containing the details on how it will
     be rendered.
 -   The exported font file contains a JSON string whose keys are correspond to
     the character's unique id (in binary) from the supported
     [character set](./charset.md).
+
+> Why bitmaps? 
+>
+> Modern fonts like scalable fonts such as TrueType fonts are
+> stored as mathematical vector descriptions. These are eventually transformed
+> into bitmaps for rendeing on the screen(toggling on/off pixels).
 
 The editor provides features to visually edit character bitmaps, manage
 character sets, and preview the font in real-time. The tool allows exporting
@@ -109,6 +116,7 @@ The font editor's source code under [source/font/](../source/font/) and
 -   [Font - Wikipedia](https://wikipedia.org/wiki/Font)
 -   [Font Editor - Wikipedia](https://wikipedia.org/wiki/Font_editor)
 -   [Computer Font - Wikipedia](https://wikipedia.org/wiki/Computer_font)
+-   [Font rasterization - Wikipedia](https://wikipedia.org/wiki/Font_rasterization)
 -   [Font Hinting - Wikipedia](https://wikipedia.org/wiki/Font_hinting)
 -   [Kerning - Wikipedia](https://wikipedia.org/wiki/Kerning)
 -   [Bitmap, pixel, screen fonts - Dafont](https://www.dafont.com/bitmap.php)

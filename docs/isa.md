@@ -1,4 +1,4 @@
-# PixSim | Instruction Set Architecture
+# 👾 PixSim | Instruction Set Architecture
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# PixSim | Image Generator
+# 👾 PixSim | Image Generator
 
 ## Overview
 

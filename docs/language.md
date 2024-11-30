@@ -1,4 +1,4 @@
-# PixSim | Pixel Manipulation Language
+# 👾 PixSim | Pixel Manipulation Language
 
 ## Overview
 

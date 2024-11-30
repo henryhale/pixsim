@@ -1,4 +1,4 @@
-# PixSim | Display Unit
+# 👾 PixSim | Display Unit
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# PixSim | Charset
+# 👾 PixSim | Charset
 
 ## Overview
 

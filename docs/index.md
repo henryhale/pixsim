@@ -1,4 +1,4 @@
-# PixSim | Docs
+# 👾 PixSim | Docs
 
 ## Overview
 
@@ -15,10 +15,11 @@ and how control flow will be managed. Finally, the display unit's chip, that
 will execute each instruction in the ISA, is designed and tested using test
 programs written in our assembly-like language.
 
-> [!NOTE] Each component of this simulation uses web technologies: HTML, CSS,
+> [!NOTE]
+> Each component of this simulation uses web technologies: HTML, CSS,
 > JavaScript/TypeScript and primarily designed for desktop use. This allows for
 > easy and quick access for everyone on any platform using a web browser. It
-> implies that the limitations(like performance) of the simulation are tightly
+> implies that some limitations(like performance) of the simulation are tightly
 > bounded by browser's abilities.
 
 ## Table of Contents
@@ -30,8 +31,7 @@ programs written in our assembly-like language.
 5. [Character Encoding](./charset.md)
 6. [Application: Font Editor](./font-editor.md)
 7. [Application: Image Generator](./image-generator.md)
-8. Character Encoder & Decoder
-9. Character Rendering
+9. [Character Rendering](./text-rendering.md)
 10. Application: Text Editor
 
 ## Background

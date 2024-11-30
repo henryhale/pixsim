@@ -1,4 +1,4 @@
-# PixSim | Virtual Chip
+# 👾 PixSim | Virtual Chip
 
 ## Overview
 
