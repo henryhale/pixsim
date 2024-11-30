@@ -61,10 +61,6 @@ body {
 	min-height: 100vh;
 }
 
-textarea {
-	border-color: 1px solid currentColor;
-}
-
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
@@ -72,6 +68,9 @@ textarea {
 	}
 	a:hover {
 		color: #747bff;
+	}
+	button {
+		background-color: field;
 	}
 }
 
@@ -163,6 +162,7 @@ button {
 	-webkit-user-select: none;
 	touch-action: manipulation;
 	white-space: nowrap;
+	background-color: field;
 }
 
 @media (prefers-color-scheme: light) {

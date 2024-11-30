@@ -6,7 +6,7 @@ import { IDisplayUnit } from "../core"
 export function initButtons(display: IDisplayUnit): HTMLButtonElement[] {
 	return ["svg","png","jpeg","webp"]
 		.map(x => {
-			const btn = h<HTMLButtonElement>('button', x.toUpperCase())
+			const btn = h<HTMLButtonElement>('button', '💾 ' + x.toUpperCase())
 			btn.setAttribute('type', 'button')
 			
 			if (x == "svg") {

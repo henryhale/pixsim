@@ -12,7 +12,7 @@ function parse(line: string = ""): (string | null)[] {
 	const tokens = tokenize(line);
 	let instruction = tokens[0].toUpperCase();
 	const args = tokens.slice(1);
-	
+
 	// check for alias
 	if (ALIAS[instruction]) {
 		const [i, ...list] = tokenize(ALIAS[instruction])
