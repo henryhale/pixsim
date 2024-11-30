@@ -114,9 +114,9 @@
 				</div>
 			</div>
 			<div id="guide" class="preview">
-				<h4>Guide: How to create a font or modify an existing one?</h4>
+				<h3>Usage Guide</h3>
 				<details>
-					<summary>View details</summary>
+					<summary><b><u>How to create a font or modify an existing one?</u></b></summary>
 					<b>Design a New Font</b>
 					<br>
 					To design a new font with this tool;
@@ -138,6 +138,20 @@
 						<li>A file access window will popup, locate and select the font file</li>
 						<li>Now, follow the above steps to modify characters in the font</li>
 						<li>To preview the font, select <b>Refresh</b> under <b>Font Preview</b> section</li>
+					</ol>
+				</details>
+				<details>
+					<summary><b><u>How to use/test your font?</u></b></summary>
+					To view your exported font in action(for example rendering a string or some text;
+					<ol>
+						<li>Head over to <a target="_blank" href="lang.html">PixSim Language playground</a></li>
+						<li>Under <b>Assembly Code</b> section, select <b>blank</b> on example dropdown</li>
+						<li>Go to the <b>Settings</b> section, select <b>Add PixSim Font</b></li>
+						<li>A file explorer will pop up, locate and select your exported font file</li>
+						<li>Locate and select your font under the dropdown menu adjacent to the <b>Add PixSim Font</b> button</li>
+						<li>Clear and write the following code in the Assembly Code textarea: <mark>@DRAWTEXT 0 0 'HELLO WOLRD!'</mark></li>
+						<li>Finally, click <b>Assemble</b> and then <b>Run</b> to execute the code - you should be able to see the text rendered using your font.</li>
+						<li>HINT: Update the code to print any character in the charset at any position other than(0,0)</li>
 					</ol>
 				</details>
 			</div>
