@@ -19,34 +19,6 @@ a grid of small LEDs representing pixels. That's the basis of this project;
 taking you through the origins/evolution from just a grid of pixels to modern
 fields/usage like graphics and text rendering.
 
-### Objectives
-
-The main objective of this project is to illustrate how monitors/screens work by
-simulating their display mechanism, chip, and logic.
-
-Specifically, the objectives for this simulation are;
-
-To implement
-
-1. [x] [Display Unit](./docs/display-unit.md) - A grid of tiny monochromatic
-       pixels (say black and white) - bitmap
-2. [x] [Custom Assembly-like Language](./docs/language.md) for graphics or pixel
-       manipulation like drawing lines, shapes, and more
-    - [x] [Instruction Set](./docs/isa.md) - a standard for which the display
-          unit operates and communicates
-    - [x] [Virtual Chip](./docs/virtual-chip.md) - to simulate a cpu that sends
-          video signals to the display unit
-3. [x] [Character Encoding](./docs/character-encoding.md) - characters for our
-       display unit
-4. [x] [Font Editor](./docs/font-editor.md) - create a font containing all every
-       character in the character set
-5. [x] [Image Generator](./docs/image-generator.md) - convert the underlying
-       bitmap into an pixelated image The scope of this project lies in
-       simulating how the monitor/screen works. More technical details about
-       logic circuits, display chip or wiring are not included.
-6. [x] [Character Rendering](./docs/text-rendering.md) - transform binary data into
-       pixel data and then render/draw characters
-
 ## Live Demo
 
 -   [Full Demo :rocket:](https://henryhale.github.io/pixsim/)
@@ -54,7 +26,7 @@ To implement
 ## Documentation
 
 To learn more about the implementation details, check out the
-[documentation](./docs/index.md).
+[documentation](https://henryhale.github.io/pixsim/docs/).
 
 ## Original README
 

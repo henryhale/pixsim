@@ -1,4 +1,4 @@
-# 👾 PixSim | Image Generator
+# 👾 [PixSim](./index.md) | Image Generator
 
 ## Overview
 
@@ -16,11 +16,11 @@ representations, then to a blob of type `image/svg+xml` and finally downloaded.
 ## Implementation
 
 The source code for the image generation tool is located under
-[source/img folder](../source/img/) and [img.html](../img.html).
+[source/img folder](https://github.com/henryhale/pixsim/blob/master/source/img/) and [img.html](https://github.com/henryhale/pixsim/blob/master/img.html).
 
 ## Live Demo
 
--   [Image Generator :rocket:](https://henryhale.github.io/pixsim/img.html)
+-   🚀 [Image Generator](https://henryhale.github.io/pixsim/img.html)
 
 ## References
 

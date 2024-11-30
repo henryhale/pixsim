@@ -1,4 +1,4 @@
-# 👾 PixSim | Instruction Set Architecture
+# 👾 [PixSim](./index.md) | Instruction Set Architecture
 
 ## Overview
 
@@ -8,7 +8,7 @@ instructions.
 
 ## Instruction Format
 
-The [low-level language](./pml.md) will be compiled into binary (machine) code.
+The [low-level language](./language.md) will be compiled into binary (machine) code.
 A compiled instruction, in [big endian](https://wikipedia.org/wiki/Endianness)
 order, takes `12` bits where; the first `4` represent the instruction and the
 remaining `8` represent argument(immediate value) passed to the instruction.

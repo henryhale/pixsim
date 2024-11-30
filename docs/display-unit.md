@@ -1,4 +1,4 @@
-# 👾 PixSim | Display Unit
+# 👾 [PixSim](./index.md) | Display Unit
 
 ## Overview
 
@@ -64,11 +64,11 @@ their work and direct the output to this module.
 ## Implementation
 
 The source code for the display unit simulation can be found:
-[here](../source/core/)
+[here](https://github.com/henryhale/pixsim/blob/master/source/core/)
 
 ## Live Demo
 
--   [Display Unit :rocket:](https://henryhale.github.io/pixsim/)
+-   🚀 [Display Unit](https://henryhale.github.io/pixsim/)
 
 ## References
 

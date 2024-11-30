@@ -1,4 +1,4 @@
-# 👾 PixSim | Font Editor
+# 👾 [PixSim](./index.md) | Font Editor
 
 ## Overview
 
@@ -76,7 +76,7 @@ Once the Font Editor is loaded, the default font - **Penta** illustrates the
 nature and design of characters. It is 5-pixel bitmap font which means that each
 character has a maximum height of 5 filled pixels. Letter and line spacing is
 not included for each character. View font file:
-[Penta](../source/font/Penta.font.json)
+[Penta](https://github.com/henryhale/pixsim/blob/master//source/font/Penta.font.json)
 
 ### New Font
 
@@ -103,12 +103,12 @@ To modify an already exported font;
 
 ## Implementation
 
-The font editor's source code under [source/font/](../source/font/) and
-[font.html](../font.html).
+The font editor's source code under [source/font/](https://github.com/henryhale/pixsim/blob/master/source/font/) and
+[font.html](https://github.com/henryhale/pixsim/blob/master/font.html).
 
 ## Live Demo
 
--   [Font Editor :rocket:](https://henryhale.github.io/pixsim/font.html)
+-   🚀 [Font Editor](https://henryhale.github.io/pixsim/font.html)
 
 ## References
 

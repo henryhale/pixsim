@@ -1,4 +1,4 @@
-# 👾 PixSim | Pixel Manipulation Language
+# 👾 [PixSim](./index.md) | Pixel Manipulation Language
 
 ## Overview
 
@@ -90,11 +90,11 @@ identifier of every macro statement.
 ## Implementation
 
 The source code for the assembler is defined in the
-[source/lang folder](../source/lang/).
+[source/lang folder](https://github.com/henryhale/pixsim/blob/master/source/lang/).
 
 ## Live Demo
 
--   [Playground :rocket:](https://henryhale.github.io/pixsim/lang.html)
+-   🚀 [Playground](https://henryhale.github.io/pixsim/lang.html)
 
 ## References
 

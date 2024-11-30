@@ -1,9 +1,9 @@
-# 👾 PixSim | Virtual Chip
+# 👾 [PixSim](./index.md) | Virtual Chip
 
 ## Overview
 
 The chip simulation is basic and only includes the functionality limited to our
-[objectives](../README.md).
+[objectives](./index.md#objectives).
 
 The main components of the chip include;
 
@@ -129,14 +129,14 @@ RESET
 ## Implementation
 
 The chip's simulation source code is located under the
-[source/chip](../source/chip/) folder.
+[source/chip](https://github.com/henryhale/pixsim/blob/master/source/chip/) folder.
 
 ## Live Demo
 
 In the language playground, the chip is the core component that executes the
 instruction one after another.
 
--   [Playground :rocket:](https://henryhale.github.io/pixsim/lang.html)
+-   🚀 [Playground](https://henryhale.github.io/pixsim/lang.html)
 
 ## References
 

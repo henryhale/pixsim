@@ -1,4 +1,4 @@
-# 👾 PixSim | Charset
+# 👾 [PixSim](./index.md) | Charset
 
 ## Overview
 
