@@ -3,11 +3,10 @@ import { createUUID, downloadBlob, range } from "../common"
 import type { IDisplayUnit } from "../core"
 
 export function generateSVG(display: IDisplayUnit) {
-	const  { fillOn, fillOff, stroke, pixelMargin, size, collapsed, bitmap } = getDisplayProps(display)
-	
-	// generate svg
+	const { fillOn, fillOff, stroke, pixelMargin, size, collapsed, bitmap } = getDisplayProps(display)
+
 	let pixels = '', px = 0, py = 0
-	const q = pixelMargin * size
+	const pd = size * (collapsed ? (1 - pixelMargin) : 1), q = pixelMargin * size
 	for (const y of range(bitmap.length)) {
 		const row = bitmap[y]
 		for (const x of range(row.length)) {
@@ -17,13 +16,17 @@ export function generateSVG(display: IDisplayUnit) {
 				px += q
 				py += q
 			}
-			const fill = row[x] ? fillOn : fillOff
-			const sborder = `stroke="${stroke}" stroke-width="1"`
-			pixels += `<rect x="${px}" y="${py}" fill="${fill}" width="${size * (collapsed ? (1 - pixelMargin) : 1)}" height="${size * (collapsed ? (1 - pixelMargin) : 1)}" ${collapsed ? sborder : ''} />`
+			const fill = row[x] ? `fill="${fillOn}"` : ''
+			const border = collapsed ? `stroke="${stroke}" stroke-width="1"` : ''
+			pixels += `<rect x="${px}" y="${py}" ${fill} ${border} />`
 		}
 	}
 
- return `<svg width="${px + size}" height="${py + size}" xmlns="http://www.w3.org/2000/svg">${pixels}</svg>`
+	const style = `<style>rect { width: ${pd}px; height: ${pd}px; }</style>`
+	
+	const svg = `<svg width="${px + size}" height="${py + size}" fill="${fillOff}" xmlns="http://www.w3.org/2000/svg">${style}${pixels}</svg>`
+
+	return svg.replace(/\s+/g, ' ')
 }
 
 export function downloadSVG(svg = "") {
