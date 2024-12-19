@@ -4,7 +4,6 @@ import { extname } from "node:path";
 
 marked.use({
 	gfm: true,
-	breaks: true,
 })
 
 
