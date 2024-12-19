@@ -62,7 +62,6 @@ I know my idea is vague or wiggly. I am trying to formulate it in a better way.
 -   Display Controller(instruction set, assembler, virtual chip)
 -   Documentation
 -   Other(shareable/downloadable pixelated images, animations, games like maze)
-    -->
 
 </details>
 
