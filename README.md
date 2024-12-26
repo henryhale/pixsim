@@ -6,7 +6,7 @@
 
 A pixel-based led matrix display simulator
 
-![](./public/media/showcase.png)
+![](./public/media/screenshot.png)
 
 </div>
 
