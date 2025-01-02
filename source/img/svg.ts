@@ -16,15 +16,19 @@ export function generateSVG(display: IDisplayUnit) {
 				px += q
 				py += q
 			}
-			const fill = row[x] ? `fill="${fillOn}"` : ''
-			const border = collapsed ? `stroke="${stroke}" stroke-width="1"` : ''
-			pixels += `<rect x="${px}" y="${py}" ${fill} ${border} />`
+			const fill = row[x] ? ' class="on"' : ''
+			pixels += `<rect x="${px}" y="${py}"${fill} />`
 		}
 	}
-
-	const style = `<style>rect { width: ${pd}px; height: ${pd}px; }</style>`
 	
-	const svg = `<svg width="${px + size}" height="${py + size}" fill="${fillOff}" xmlns="http://www.w3.org/2000/svg">${style}${pixels}</svg>`
+	const border = collapsed ? `stroke:${stroke};stroke-width:1` : ''
+
+	const style = `<style>rect{width:${pd}px;height:${pd}px;fill:${fillOff};${border}}.on{fill:${fillOn}}</style>`
+
+	const width = px + size
+	const height = py + size
+
+	const svg = `<svg viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">${style}${pixels}</svg>`
 
 	return svg.replace(/\s+/g, ' ')
 }
