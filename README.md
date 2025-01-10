@@ -6,13 +6,13 @@
 
 A pixel-based led matrix display simulator
 
-![](./public/media/screenshot.png)
+![](./docs/public/media/screenshot.png)
 
 </div>
 
 ## Overview
 
-PixSim, _**pix**el **sim**ulator_ is an educational LED Matrix simulation
+PixSim, _**pix**el **sim**ulator_, is an educational LED Matrix simulation
 project that tends to explore how display systems like monitors/screens work.
 For instance, a desktop monitor or the screen on a digital watch is composed of
 a grid of small LEDs representing pixels. That's the basis of this project;
@@ -21,12 +21,12 @@ fields/usage like graphics and text rendering.
 
 ## Live Demo
 
--   [Full Demo :rocket:](https://henryhale.github.io/pixsim/)
+-   :rocket: [Full Demo](https://henryhale.github.io/pixsim/)
 
 ## Documentation
 
 To learn more about the implementation details, check out the
-[documentation](https://henryhale.github.io/pixsim/docs/).
+[documentation](https://henryhale.github.io/pixsim/).
 
 ## Original README
 

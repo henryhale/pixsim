@@ -1,163 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>PixSim | Font Editor</title>
-		<link rel="shortcut icon" href="/favicon.svg" type="image/xml+svg" />
-	</head>
 
-	<body>
-		<style>
-			table {
-				border-width: 10px;
-			}
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PixSim | Font Editor</title>
+	<link rel="shortcut icon" href="/pixsim/favicon.svg" type="image/xml+svg" />
+</head>
 
-			#char {
-				font-size: large;
-				padding-left: 10px;
-				padding-right: 10px;
-				margin-right: 10px;
-			}
+<body>
+	<style>
+		@import url(./style.css);
+		
+		table {
+			border-width: 10px;
+		}
 
-			.characters {
-				display: grid;
-				gap: 2px;
-				padding: 10px;
-				text-align: center;
-			}
+		#char {
+			font-size: large;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin-right: 10px;
+		}
 
-			.characters > * {
-				font-weight: bold;
-			}
+		.characters {
+			display: grid;
+			gap: 2px;
+			padding: 10px;
+			text-align: center;
+		}
 
-			#charset {
-				grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-			}
+		.characters>* {
+			font-weight: bold;
+		}
 
-			input {
-				padding: 4px 8px;
-				margin-bottom: 1rem;
-			}
+		#charset {
+			grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+		}
 
+		input {
+			padding: 4px 8px;
+			margin-bottom: 1rem;
+		}
+
+		.preview {
+			padding: 20px;
+		}
+
+		@media screen and (min-width: 900px) {
 			.preview {
-				padding: 20px;
+				grid-column: span 2 / span 2;
 			}
+		}
 
-			@media screen and (min-width: 900px) {
-				.preview {
-					grid-column: span 2 / span 2;
-				}
-			}
+		#previewArea {
+			grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+			overflow-x: hidden;
+		}
+	</style>
 
-			#previewArea {
-				grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-			}
-		</style>
+	<nav>
+		<h2>PixSim | Font Editor</h2>
+		<a target="_blank" href="/pixsim/guide/font.html#font-editor">Usage &#10138;</a>
+	</nav>
 
-		<nav>
-			<h2>
-				<a href="/pixsim/">👾 PixSim</a>
-				/ Font Editor
-			</h2>
-			<a href="#guide">Guide</a>
-			<a
-				target="_blank"
-				href="docs/font-editor.html"
-				>Docs &#10138;</a
-			>
-		</nav>
-
-		<div class="layout">
+	<div class="layout">
+		<div>
+			<h3>
+				<span>Edit Character</span>
+				<span id="char" class="highlight"></span>
+				<button id="save">Save</button>
+				<div></div>
+			</h3>
+			<div id="root"></div>
 			<div>
-				<h3>
-					<span>Edit Character</span>
-					<span id="char" class="highlight"></span>
-					<button id="save">Save</button>
-					<div></div>
-				</h3>
-				<div id="root"></div>
+				<h3>Metadata</h3>
+				<br />
+				<div>Font Name: <input type="text" id="fontName" /></div>
 				<div>
-					<h3>Metadata</h3>
-					<br />
-					<div>Font Name: <input type="text" id="fontName" /></div>
-					<div>
-						Font Author: <input type="text" id="fontAuthor" />
-					</div>
+					Font Author: <input type="text" id="fontAuthor" />
 				</div>
-			</div>
-			<div>
-				<div class="box">
-					<h3>Menu</h3>
-					<div class="extras">
-						<button id="export">Export Font</button>
-						<button id="import">Load Font</button>
-					</div>
-				</div>
-
-				<div>
-					<h3>Character Set</h3>
-					<small>Select a character to edit</small>
-				</div>
-				<div id="charset" class="characters"></div>
-			</div>
-			<div class="preview">
-				<h3>
-					<span>Font Preview</span>
-					<button id="preview">Refresh</button>
-				</h3>
-				<div id="previewArea">
-					<p>
-						<i>Click </i> <span class="highlight">Refresh</span>
-						<i>to load a preview of each character</i>
-					</p>
-				</div>
-			</div>
-			<div id="guide" class="preview">
-				<h3>Usage Guide</h3>
-				<details>
-					<summary><b><u>How to create a font or modify an existing one?</u></b></summary>
-					<b>Design a New Font</b>
-					<br>
-					To design a new font with this tool;
-					<ol>
-						<li>Select the character to design</li>
-						<li>Adjust the display's properties to appropriate size: fix <b>rows</b> and adjust <b>cols</b> for each character</li>
-						<li>Create a graphical representation of the character by toggling on appropriate pixels</li>
-						<li>Click <b>Save</b> to save the character</li>
-						<li>Repeat steps 1-4 for all characters</li>
-						<li>Under the <b>Metadata</b> section, fill in the details</li>
-						<li>Select <b>Export Font</b> under the <b>Menu</b> section to download & save the font locally</li>
-					</ol>
-					<br>
-					<b>Update Existing Font</b>
-					<br>
-					To modify an already exported font; 
-					<ol>
-						<li>Select <b>Load Font</b> under the <b>Menu</b> section</li>
-						<li>A file access window will popup, locate and select the font file</li>
-						<li>Now, follow the above steps to modify characters in the font</li>
-						<li>To preview the font, select <b>Refresh</b> under <b>Font Preview</b> section</li>
-					</ol>
-				</details>
-				<details>
-					<summary><b><u>How to use/test your font?</u></b></summary>
-					To view your exported font in action(for example rendering a string or some text;
-					<ol>
-						<li>Head over to <a target="_blank" href="lang.html">PixSim Language playground</a></li>
-						<li>Under <b>Assembly Code</b> section, select <b>blank</b> on example dropdown</li>
-						<li>Go to the <b>Settings</b> section, select <b>Add PixSim Font</b></li>
-						<li>A file explorer will pop up, locate and select your exported font file</li>
-						<li>Locate and select your font under the dropdown menu adjacent to the <b>Add PixSim Font</b> button</li>
-						<li>Clear and write the following code in the Assembly Code textarea: <mark>@DRAWTEXT 0 0 'HELLO WOLRD!'</mark></li>
-						<li>Finally, click <b>Assemble</b> and then <b>Run</b> to execute the code - you should be able to see the text rendered using your font.</li>
-						<li>HINT: Update the code to print any character in the charset at any position other than(0,0)</li>
-					</ol>
-				</details>
 			</div>
 		</div>
+		<div>
+			<div class="box">
+				<h3>Menu</h3>
+				<div class="extras">
+					<button id="export">Export Font</button>
+					<button id="import">Load Font</button>
+				</div>
+			</div>
 
+			<div>
+				<h3>Character Set</h3>
+				<small>Select a character to edit</small>
+			</div>
+			<div id="charset" class="characters"></div>
+		</div>
+		<div class="preview">
+			<h3>
+				<span>Font Preview</span>
+				<button id="preview">Refresh</button>
+			</h3>
+			<div id="previewArea" class="characters">
+				<p>
+					<i>Click </i> <span class="highlight">Refresh</span>
+					<i>to load a preview of each character</i>
+				</p>
+			</div>
+		</div>
+	</div>
 
-		<script type="module" src="./source/font/index.ts"></script>
-	</body>
+	<script type="module" src="source/font/index.ts"></script>
+</body>
+
 </html>

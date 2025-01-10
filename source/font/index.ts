@@ -89,7 +89,6 @@ el.import.onclick = async () => {
 
 el.preview.onclick = () => {
 	el.previewArea.innerHTML = ''
-	el.previewArea.classList.add('characters')
 	const views: HTMLElement[] = []
 	for(const x of charset) {
 		const box = h('div', `<div>${x.char.replace(' ', 'SPACE')}</div>`)
@@ -114,3 +113,4 @@ loadFont(Penta)
 // initialize character set
 initCharset(charset)
 
+el.preview.click()

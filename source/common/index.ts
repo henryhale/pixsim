@@ -1,3 +1,5 @@
+import "./iframe"
+
 export * from "./numbers"
 export * from "./dom"
 export * from "./themes"

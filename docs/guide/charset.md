@@ -1,4 +1,4 @@
-# 👾 [PixSim](./index.md) | Charset
+# Character Encoding
 
 ## Overview
 
@@ -13,14 +13,14 @@ Suppose that we want to display text on the display;
 Well, this is where fonts come into play. But first, we need to list all
 characters to support and tag them.
 
-## Charset
+## Character Set
 
 The character set will contain the following characters;
 
 -   Space
--   Letters - uppercase (A-Z)
--   Digits (0-9)
--   Special Symbols (.:,;()\*!?<>/|[]=+-\_{}#$^"'`)
+-   Letters - uppercase `A` ... `Z`
+-   Digits - `0` ... `9`
+-   Special Symbols  - `.` `:` `,` `;` `(`  `)`  `*`  `!`  `?` `<`  `>` `/` `|` `[` `]` `=` `+` `-` `_` `{` `}` `#` `$` `^` `"` `'`  `
 
 The size of this character set is 64. This is small but perfect. Because;
 

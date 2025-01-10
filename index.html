@@ -1,98 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>PixSim</title>
-		<link rel="shortcut icon" href="/favicon.svg" type="image/xml+svg">
-	</head>
 
-	<body>
-		<style>
-			h3 {
-				margin-bottom: 2rem;
-			}
-			#showcase {
-				display: flex;
-				flex-wrap: wrap;
-			}
-			#showcase img {
-				width: 50px;
-			}
-			@media screen and (min-width: 800px) {
-				#showcase img {
-					width: 80px;
-				}
-			}
-		</style>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PixSim | Language</title>
+	<link rel="shortcut icon" href="/pixsim/favicon.svg" type="image/xml+svg" />
+</head>
 
-		<nav>
-			<h2>👾 PixSim</h2>
-			<a href="docs/">Docs &#10138;</a>
-			<span>|</span>
-			<a target="_blank" href="https://github.com/henryhale/pixsim/">GitHub &#10138;</a>
-		</nav>
+<body>
+	<style>
+		@import url(./style.css);
 
-		<div class="layout">
-			<div>	
-				<div>
-					<h3>A pixel-based led matrix display simulator</h3>
-				</div>
-	
-				<div>
-					<h4>Showcase:</h4>
-					<div id="showcase">
-						<img src='/media/01.svg'>
-						<img src='/media/03.svg'>
-						<img src='/media/04.svg'>
-						<img src='/media/05.svg'>
-						<img src='/media/06.svg'>
-					</div>
-				</div>
-		
-				<div>
-					<h4>Applications:</h4>
-					<ul>
-						<li>
-							<a href="img.html">🎨 Image Generator</a>: create & export pixel art images
-						</li>
-						<li>
-							<a href="font.html">💎 Font Editor</a>: create & design a pixsim font
-						</li>
-						<li>
-							<a href="lang.html">✨ Pixel Manipulation Language</a>: write simple code to manipulate pixels
-						</li>
-					</ul>
-				</div>
-	
-				<div>
-					<h4>Guide:</h4>
-					<ol>
-						<li>Select one pixel</li>
-						<li>Use arrow keys(<span class="highlight">UP</span>, <span class="highlight">DOWN</span>, <span class="highlight">LEFT</span>, <span class="highlight">RIGHT</span>) for quick navigation</li>
-						<li>Use <span class="highlight">SPACE</span> or <span class="highlight">ENTER</span> key to toggle pixel state</li>
-					</ol>
-				</div>
-			</div>
+		textarea {
+			width: 100%;
+			min-width: 100%;
+			min-height: 200px;
+			resize: vertical;
+			margin-bottom: 1rem;
+			font-family: monospace;
+			font-size: 20px;
+			padding: 10px;
+		}
+
+		#machinecode {
+			padding: 10px;
+			height: 200px;
+			overflow-y: auto;
+			border: 1px solid;
+		}
+
+		#machinecode div {
+			position: relative;
+			padding: 0 10px;
+		}
+
+		.executed::before {
+			content: "⬅️";
+			position: absolute;
+			right: 0%;
+		}
+
+		.executed {
+			background-color: #ddd;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			.executed {
+				background-color: black;
+			}
+		}
+
+		#display {
+			outline: none;
+		}
+
+		select {
+			padding: 5px;
+		}
+	</style>
+
+	<nav>
+		<h2>PixSim | Language</h2>
+		<a target="_blank" href="/pixsim/guide/language.html">Docs &#10138;</a>
+	</nav>
+
+	<div class="layout">
+		<div>
+			<h3>
+				<span>Assembly Code</span>
+				<select id="examples">
+					<option disabled selected>Select Example</option>
+				</select>
+			</h3>
+			<textarea spellcheck="false"></textarea>
 			<div>
-				<div id="display"></div>
+				<button type="button" id="assemble">1️⃣ Assemble</button>
+				<button type="button" id="run">2️⃣ Run</button>
+				<button style="float: right" type="button" id="reset">
+					Reset
+				</button>
+			</div>
+			<h3>
+				<span>Machine Code</span>
+				<button type="button" id="step">➜ Step</button>
+			</h3>
+			<div id="machinecode">
+				<i>assemble to view machine code</i>
 			</div>
 		</div>
+		<div>
+			<h3>
+				<span>Display Unit</span>
+				<span>
+					<select id="speed">
+						<option disabled>Clock Speed</option>
+						<option value="-1" selected>MAX-2</option>
+						<option value="0">MAX-1</option>
+						<option value="1">1000Hz</option>
+						<option value="10">100Hz</option>
+						<option value="100">10Hz</option>
+					</select>
+				</span>
+			</h3>
+			<div id="display" tabindex="0"></div>
+		</div>
+		<div>
+			<h3>Settings</h3>
+			<div class="extras">
+				<span>Font:</span>
+				<select name="" id="font-style">
+					<option value="0">Penta</option>
+				</select>
+				<button id="font-upload">Add PixSim Font</button>
+			</div>
+		</div>
+		<div>
+			<h3>Export & Share</h3>
+			<div id="export" class="extras"></div>
+			<div class="extras">
+				<p>Share your work with others:</p>
+				<button id="share">📋 Copy Link to Clipboard</button>
+			</div>
+		</div>
+	</div>
+	<script type="module" src="source/lang/index.ts"></script>
+</body>
 
-		<script type="module">
-			import { $, screen } from "./source/common";
-			import DisplayUnit from "./source/core";
-
-			const display = new DisplayUnit($('#display'), {
-				rows: 25,
-				cols: 25,
-				size: 15,
-				active: true,
-				controls: true,
-				theme: 'dracula'
-			});
-
-			display.import(screen);
-		</script>
-	</body>
 </html>

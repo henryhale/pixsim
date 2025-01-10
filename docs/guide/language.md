@@ -1,11 +1,11 @@
-# 👾 [PixSim](./index.md) | Pixel Manipulation Language
+# Pixel Manipulation Language
 
 ## Overview
 
 This module specifies the syntax and semantics of an Assembly-like language
-limited to pixel manipulation on the [display unit](./display-unit.md). The
-langauge will be a human-readable way of representing machine instructions for
-the display's [chip](./virtual-chip.md).
+limited to pixel manipulation on the [display unit](./display.md). The langauge
+will be a human-readable way of representing machine instructions for the
+display's [chip](./chip.md).
 
 ## Instructions
 
@@ -20,7 +20,7 @@ What you should know:
     -   `off` -> `0`
 -   Manipulation of the pixels uses an abstract cursor consisting of two
     coordinates, _x_ and _y_ stored in
-    [internal registers](./virtual-chip.md#internal-registers) of the chip.
+    [internal registers](./chip.md#internal-registers) of the chip.
 
 | **Instruction** | **Description**                                                          |
 | :-------------- | :----------------------------------------------------------------------- |
@@ -42,6 +42,9 @@ According to the list above, there are two types of instructions;
 -   `VALUE`: value instructions accept one and only one argument. The argument
     must be of `INTEGER` type.
 
+> For a full list of instructions, instruction format and available opcodes,
+> check out the [instruction set architecture](./isa.md).
+
 ## Comments
 
 In this language, comments are identified by lines(or a section of a line)
@@ -49,7 +52,7 @@ starting with a semicolon `;`.
 
 **Example**:
 
-```
+```asm
 ; this is a comment
 ; another comment
 RESET ; inline comment
@@ -77,24 +80,60 @@ implemented, reusable functions that do the ~hard~ stuff built on top of
 To distinguish builtin macros from instructions, the `@` sign is prefix as an
 identifier of every macro statement.
 
-|     | **Macro**                                      | **Description**                                                                                                          |
-| :-: | :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| ✅  | @DRAWTEXT <x> <y> <text>                       | Renders the `<text`> string starting from position (`<x>`, `<y>`)                                                        |
-| ✅  | @DRAWLINE <x1> <y1> <x2> <y2>                  | Draws a line from (`<x0>`, `<y0>`) to (`<x1>`, `<y1>`) using Bresenham's line algorithm                                  |
-| ✅  | @FILLRECT <x> <y> <w> <h>                      | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
-| ✅  | @STROKERECT <x> <y> <w> <h>                    | Resets/clears the area in the rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)             |
-| ✅  | @CLEARRECT <x> <y> <w> <h>                     | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
-| ⬜️ | @FILLARC <x> <y> <r> <startAngle> <endAngle>   | Draws a filled arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg    |
-| ✅  | @STROKEARC <x> <y> <r> <startAngle> <endAngle> | Draws an outlined arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg |
+|     | **Macro**                                           | **Description**                                                                                                          |
+| :-: | :-------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
+| ✅  | @DRAWTEXT <x\> <y\> <text\>                         | Renders the `<text`> string starting from position (`<x>`, `<y>`)                                                        |
+| ✅  | @DRAWLINE <x1\> <y1\> <x2\> <y2\>                   | Draws a line from (`<x0>`, `<y0>`) to (`<x1>`, `<y1>`) using Bresenham's line algorithm                                  |
+| ✅  | @CLEARRECT <x\> <y\> <w\> <h\>                      | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
+| ✅  | @STROKERECT <x\> <y\> <w\> <h\>                     | Resets/clears the area in the rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)             |
+| ✅  | @FILLRECT <x\> <y\> <w\> <h\>                       | Draws a filled rectangle defined by the corners (`<x>`, `<y>`) and (`<x>`+`<w>`, `<y>`+`<h>`)                            |
+| ✅  | @STROKEARC <x\> <y\> <r\> <startAngle\> <endAngle\> | Draws an outlined arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg |
+| ⬜️ | @FILLARC <x\> <y\> <r\> <startAngle\> <endAngle\>   | Draws a filled arc centered at (`<x>`, `<y>`) with the given radius `<r>` from `<startAngle>` deg to `<endAngle>` deg    |
 
-## Implementation
+## Writing Programs
 
-The source code for the assembler is defined in the
-[source/lang folder](https://github.com/henryhale/pixsim/blob/master/source/lang/).
+Writing programs is a breeze. In section, you'll find a recommend program structure
+and example programs.
+
+For every new program, a brief comment with the title or name of the program
+should be appear on the first line followed by a blank line. It helps you or
+others(when you share) understand what the program is about. For example a
+simple `hello world` program would have
+
+```asm
+; program: hello world
+
+```
+
+A short description of the program is optional but also be added to give more
+details
+
+```asm
+; program: hello world
+; desc: print 'HELLO WORLD!' on the screen
+```
+
+For the rest of the program, group instructions doing the same thing together followed by a blank line.
+For example: clear screen and then print hello world
+
+```asm
+; program: hello world
+
+; clear screen
+RESET
+
+; print string from point (4,4)
+@DRAWTEXT 4 4 'HELLO WORLD!'
+```
 
 ## Live Demo
 
--   🚀 [Playground](https://henryhale.github.io/pixsim/lang.html)
+-   🚀 [Playground](../demo/index.md)
+
+## Implementation
+
+View source on GitHub:
+[source/lang/](https://github.com/henryhale/pixsim/blob/master/source/lang/)
 
 ## References
 
