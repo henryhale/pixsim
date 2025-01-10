@@ -1,6 +1,6 @@
 <div align=center>
 
-<img width=45 src='./public/favicon.svg'>
+<img width=45 src='./docs/public/favicon.svg'>
 
 # PixSim
 
