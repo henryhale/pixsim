@@ -59,16 +59,20 @@ To implement
     - Font editor - create a font containing all every character in the
       character set
 
+[![](https://mermaid.ink/img/pako:eNqFVU1P4zAQ_StWEJcq1bZbykIOK21bkJCoFm2Bw272YJJxa-HYke0srSj_fcfOR-vmQE6e8fObzJtn-T3KVA5REg2Hw1RmSjK-TlJJiN1AAQmRUFlNhcsIulOVTQiI11R6eCqZUG_ZhmpLZo8uJviZ6mWtabkhT3d_0mgwmGn1ZkCTO2lBM5rBYJBGf2us-25ybpVG6Bz_pIkCwIKbEosj4v5mQZbUar5tkwFwrqTVShjP5ZdkVlmrpAlgt7j3VApFcwS6gNQRhGVvtqXS9mdpORIgso5Jk-igIPNe53OlwffuFmS1MxaKk65zriFzTORxdsj-MAaKFwFOjm4dnHueb3iJu89c24oK4sIAUOsTiNXrfrnWbetLKun6pEbXxwpHgbuIbVYBrGW75QJMy7eglvZQD1ohYeFAK_oP8i4RIL2SJ5LWdiDD4fd9o8eOOJ_sD1LVwHb2HjpXRUFlbva1XDWiMY7b_4UV0JErSy0ytVaSwQQ8cMYl1Tu0rrG68uMKOf3SIx_4FgQaKUdKxDTCe9D5eSt6_XN4X2iGd4HMuC1oaXq9HAzqDzjJfG5_kPsA9KHH3eOBfVuqBrQ6d_tfHFmv4JE0jcvvCpz2PrwD7UwyQY1ZACMVR6FLJUFaQxgXIjmDMZsyiFEu9QrJ2Wg8_Xb90oTDN57bTfK13J7wZHhLekyMsQmMOibGLtlo9BmTqW3aJxuzK7juyCaTy-sxfEaWg6Vc9LkmMGXTjuuCji-uspBr7LiO2Bobx43T4tas8WHScSB1IO0xUTe42FsvricXt_4KlTw-2Fkl7jzREyuVURwVoAvKc3wS3t35NPIvQRoluMyB0UrYNErlB0JpZdVqJ7MowdsBcVR59y84dfxtUqtqvYkSRoXBqKTyt1JFF4MXZlm_Qf4p-vgPRqAxmg?type=png)](https://mermaid.live/edit#pako:eNqFVU1P4zAQ_StWEJcq1bZbykIOK21bkJCoFm2Bw272YJJxa-HYke0srSj_fcfOR-vmQE6e8fObzJtn-T3KVA5REg2Hw1RmSjK-TlJJiN1AAQmRUFlNhcsIulOVTQiI11R6eCqZUG_ZhmpLZo8uJviZ6mWtabkhT3d_0mgwmGn1ZkCTO2lBM5rBYJBGf2us-25ybpVG6Bz_pIkCwIKbEosj4v5mQZbUar5tkwFwrqTVShjP5ZdkVlmrpAlgt7j3VApFcwS6gNQRhGVvtqXS9mdpORIgso5Jk-igIPNe53OlwffuFmS1MxaKk65zriFzTORxdsj-MAaKFwFOjm4dnHueb3iJu89c24oK4sIAUOsTiNXrfrnWbetLKun6pEbXxwpHgbuIbVYBrGW75QJMy7eglvZQD1ohYeFAK_oP8i4RIL2SJ5LWdiDD4fd9o8eOOJ_sD1LVwHb2HjpXRUFlbva1XDWiMY7b_4UV0JErSy0ytVaSwQQ8cMYl1Tu0rrG68uMKOf3SIx_4FgQaKUdKxDTCe9D5eSt6_XN4X2iGd4HMuC1oaXq9HAzqDzjJfG5_kPsA9KHH3eOBfVuqBrQ6d_tfHFmv4JE0jcvvCpz2PrwD7UwyQY1ZACMVR6FLJUFaQxgXIjmDMZsyiFEu9QrJ2Wg8_Xb90oTDN57bTfK13J7wZHhLekyMsQmMOibGLtlo9BmTqW3aJxuzK7juyCaTy-sxfEaWg6Vc9LkmMGXTjuuCji-uspBr7LiO2Bobx43T4tas8WHScSB1IO0xUTe42FsvricXt_4KlTw-2Fkl7jzREyuVURwVoAvKc3wS3t35NPIvQRoluMyB0UrYNErlB0JpZdVqJ7MowdsBcVR59y84dfxtUqtqvYkSRoXBqKTyt1JFF4MXZlm_Qf4p-vgPRqAxmg)
+
 ## Live Demo
 
--   Try it yourself: 🚀 [Launch](../demo/index.md)
+-   Try it yourself: 🚀
+    [Launch](https://henryhale.github.io/pixsim/app/index.html)
 
 ## Support the Project
 
 If you find this project helpful, please consider:
-- Starring the repository on [GitHub](https://github.com/henryhale/pixsim)
-- [Contributing](https://github.com/henryhale/pixsim) code or documentation
-- Sharing with others
+
+-   Starring the repository on [GitHub](https://github.com/henryhale/pixsim)
+-   [Contributing](https://github.com/henryhale/pixsim) code or documentation
+-   Sharing with others
 
 ## License
 

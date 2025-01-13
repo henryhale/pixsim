@@ -39,7 +39,7 @@ export default defineConfig({
 		nav: [
 			{ text: "Home", link: "/" },
 			{ text: "Guide", link: "/guide/" },
-			{ text: "Playground", link: "/demo/" },
+			{ text: "Demos", link: "/apps/" },
 		],
 
 		sidebar: [
@@ -65,18 +65,19 @@ export default defineConfig({
 			},
 			{
 				text: "Interactive Demos",
+				link: "/apps/",
 				items: [
-					{ text: "🖥️ Matrix Display", link: "/demo/display" },
-					{ text: "📝 Font Editor", link: "/demo/font" },
-					{ text: "✨ Playground", link: "/demo/" },
+					{ text: "🖥️ Matrix Display", link: "https://henryhale.github.io/pixsim/app/display.html", },
+					{ text: "📝 Font Editor", link: "https://henryhale.github.io/pixsim/app/font.html" },
+					{ text: "✨ Playground", link: "https://henryhale.github.io/pixsim/app/index.html" },
 				]
 			},
 			{
 				text: "Contributing",
-				collapsed: true,
+				collapsed: false,
 				items: [
 					{ text: "Development Setup", link: "/misc/dev-setup" },
-					{ text: "Project Roadmap", link: "/misc/roadmap" },
+					// { text: "Project Roadmap", link: "/misc/roadmap" },
 				]
 			}
 		],

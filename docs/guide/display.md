@@ -65,19 +65,25 @@ their work and direct the output to this module.
 
 ## Display Rendering
 
-All display operations are synchronous. When the state of a pixel is changed, an update to re-render the state of the pixel is triggered immediately thereafter. For a batch of pixels, it is handled as a sequence or queue updating one by one until the end.
+All display operations are synchronous. When the state of a pixel is changed, an
+update to re-render the state of the pixel is triggered immediately thereafter.
+For a batch of pixels, it is handled as a sequence or queue updating one by one
+until the end.
 
 ## Usage Guide
 
-Here is how to use the [display unit](../demo/display.md);
+Here is how to use the
+[display unit](https://henryhale.github.io/pixsim/app/display.html);
 
-- Select one pixel
-- Click or use <kbd>Space</kbd> or <kbd>Enter</kbd> to toggle a pixel's state
-- **PRO**: Use arrow keys: <kbd>UP</kbd>, <kbd>DOWN</kbd>, <kbd>LEFT</kbd>, <kbd>RIGHT</kbd> for quick navigation
+-   Select one pixel
+-   Click or use <kbd>Space</kbd> or <kbd>Enter</kbd> to toggle a pixel's state
+-   **PRO**: Use arrow keys: <kbd>UP</kbd>, <kbd>DOWN</kbd>, <kbd>LEFT</kbd>,
+    <kbd>RIGHT</kbd> for quick navigation
 
 ## Implementation
 
-View source on GitHub: [source/core/](https://github.com/henryhale/pixsim/blob/master/source/core/)
+View source on GitHub:
+[source/core/](https://github.com/henryhale/pixsim/blob/master/source/core/)
 
 ## References
 

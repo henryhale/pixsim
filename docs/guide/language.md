@@ -92,8 +92,8 @@ identifier of every macro statement.
 
 ## Writing Programs
 
-Writing programs is a breeze. In section, you'll find a recommend program structure
-and example programs.
+Writing programs is a breeze. In section, you'll find a recommend program
+structure and example programs.
 
 For every new program, a brief comment with the title or name of the program
 should be appear on the first line followed by a blank line. It helps you or
@@ -113,8 +113,8 @@ details
 ; desc: print 'HELLO WORLD!' on the screen
 ```
 
-For the rest of the program, group instructions doing the same thing together followed by a blank line.
-For example: clear screen and then print hello world
+For the rest of the program, group instructions doing the same thing together
+followed by a blank line. For example: clear screen and then print hello world
 
 ```asm
 ; program: hello world
@@ -128,7 +128,7 @@ RESET
 
 ## Live Demo
 
--   🚀 [Playground](../demo/index.md)
+-   🚀 [Playground](https://henryhale.github.io/pixsim/app/index.html)
 
 ## Implementation
 

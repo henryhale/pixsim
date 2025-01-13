@@ -15,7 +15,7 @@ hero:
       link: /guide/
     - theme: alt
       text: Playground
-      link: /demo/
+      link: /apps/
     - theme: alt
       text: View on GitHub
       link: https://github.com/henryhale/pixsim

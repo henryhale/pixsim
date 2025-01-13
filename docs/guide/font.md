@@ -67,9 +67,10 @@ Breakdown of the font file schema:
 
 ## Font Editor
 
-The [font editor application](../app/font.html) is a tool designed for creating
-and managing bitmap fonts for the [display simulator](../app/display.html)
-basing on it's [character set](./charset.md).
+The [font editor application](https://henryhale.github.io/pixsim/app/font.html)
+is a tool designed for creating and managing bitmap fonts for the
+[display simulator](https://henryhale.github.io/pixsim/app/font.html) basing on
+it's [character set](./charset.md).
 
 ### Features
 
@@ -87,8 +88,8 @@ basing on it's [character set](./charset.md).
 ## Designing a Font
 
 Here's what you need to know before designing a PixSim font using the
-[Font Editor](../app/font.html). The following are some of the important
-controls;
+[Font Editor](https://henryhale.github.io/pixsim/app/font.html). The following
+are some of the important controls;
 
 -   `cols`: represents **the width of a character**. Adjust it accordingly for
     each character. Adding line or character spacing for each character is not
@@ -145,8 +146,9 @@ To modify an already exported font;
 To view your exported font in action for example rendering a string or some
 text;
 
-1. Head over to <a target="_blank" href="./index.html">PixSim Language
-   playground</a>
+1. Head over to
+   <a target="_blank" href="https://henryhale.github.io/pixsim/app/index.html">PixSim
+   Language playground</a>
 2. Under `Assembly Code` section, select `blank` on example dropdown
 3. Go to the `Settings` section, select `Add PixSim Font`
 4. A file explorer will pop up, locate and select your exported font file
@@ -163,7 +165,7 @@ text;
 
 ## Live Demo
 
--   🚀 [Font Editor](../demo/font.md)
+-   🚀 [Font Editor](https://henryhale.github.io/pixsim/app/font.html)
 
 ## Implementation
 

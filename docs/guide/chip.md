@@ -3,7 +3,8 @@
 ## Overview
 
 The chip simulation is basic and only includes the functionality limited to our
-[objectives](./index.md#objectives) and more specifically to executing instructions in the [instruction set](./isa.md#instruction-set).
+[objectives](./index.md#objectives) and more specifically to executing
+instructions in the [instruction set](./isa.md#instruction-set).
 
 The main components of the chip include;
 
@@ -83,7 +84,7 @@ So by default, clock speed = (1 / 0.1) = 10 Hz
 
 For the purposes of experimentation and customization, the chip's clock speed is
 configurable. Below is a list of speeds provided in the
-[language playground](../app/index.html).
+[language playground](https://henryhale.github.io/pixsim/app/index.html).
 
 | **Time (ms)** | **Clock Speed (Hz)** |
 | ------------- | -------------------- |
@@ -120,8 +121,9 @@ interaction may slow down/be blocked as the browser is executing and applying
 dom updates)~~.
 
 Thus, both options are provided to allow for user's experimentation. Use the
-[playgroud](../app/index.html) to run the following
-code with clock speed at `MAX-1` and observe. Then try again with `MAX-2`.
+[playgroud](https://henryhale.github.io/pixsim/app/index.html) to run the
+following code with clock speed at `MAX-1` and observe. Then try again with
+`MAX-2`.
 
 ```asm
 ; program: draw an outlined sqaure
@@ -138,7 +140,7 @@ RESET
 In the language playground, the chip is the core component that executes the
 instruction one after another.
 
--   🚀 [Playground](../demo/index.md)
+-   🚀 [Playground](https://henryhale.github.io/pixsim/app/index.html)
 
 ## Implementation
 
