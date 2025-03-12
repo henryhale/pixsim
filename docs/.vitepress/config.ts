@@ -40,6 +40,7 @@ export default defineConfig({
 			{ text: "Home", link: "/" },
 			{ text: "Guide", link: "/guide/" },
 			{ text: "Demos", link: "/apps/" },
+			{ text: "About", items: [{ text: "Team", link: "/about/team.md" }] },
 		],
 
 		sidebar: [
